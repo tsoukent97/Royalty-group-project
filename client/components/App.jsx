@@ -1,24 +1,14 @@
-import React, {useState, useEffect} from 'react'
-import {getGreeting} from '../apiClient'
+import React from 'react'
+import LogIn from './LogIn'
+import AdminHome from './admin/AdminHome'
+import CustomerHome from './customer/CustomerHome'
 
 const App = () => {
-
-  const [greeting, setGreeting] = useState('')
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    getGreeting()
-      .then((greeting) => {
-        console.log(greeting)
-        setGreeting(greeting)
-      })
-  }, [count])
-
   return (
     <>
-    {count}
-    <h1>{greeting}</h1>
-    <button onClick={() => setCount(count + 1)}>Click</button>
+      <LogIn />
+      <AdminHome />
+      <CustomerHome />
     </>
   )
 }
