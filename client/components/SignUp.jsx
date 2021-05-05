@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 function Login () {
     // const initialData = {
@@ -9,7 +9,7 @@ function Login () {
 
     return (
         <>
-        <h1>Login Page</h1>
+        <h1>Sign up page</h1>
 
         <div>
             <form>
