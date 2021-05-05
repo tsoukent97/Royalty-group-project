@@ -20,3 +20,5 @@ function getCustomers (db = connection) {
 function getOneCustomer (id, db = connection) {
   return db('customers').where('id', id).first()
 }
+
+function getAllCards (business_id, customer_id, stamp_count, db = connection)
