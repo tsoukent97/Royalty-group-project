@@ -1,24 +1,23 @@
 import React, {useState, useEffect} from 'react'
 import {getGreeting} from '../apiClient'
+import { HashRouter as Router, Route } from 'react-router-dom'
+import SignUp from './SignUp'
+import Login from './Login'
+import Home from './Home'
 
 const App = () => {
 
   const [greeting, setGreeting] = useState('')
   const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    getGreeting()
-      .then((greeting) => {
-        console.log(greeting)
-        setGreeting(greeting)
-      })
-  }, [count])
 
   return (
     <>
-    {count}
-    <h1>{greeting}</h1>
-    <button onClick={() => setCount(count + 1)}>Click</button>
+    <Router>
+      <Route exact path ={'/'} component={Home} />
+      <Route exact path ={'/SignUp'} component={SignUp} />
+      <Route exact path = {'/Login'} component={Login} />
+    </Router>
     </>
   )
 }
