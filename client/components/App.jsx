@@ -15,8 +15,9 @@ const App = () => {
         password: registerPassword
       },
       withCredentials: true,
-      url: 'http://localhost:3000/register',
+      url: 'http://localhost:3000/register'
     }).then((res) => console.log(res))
+      .catch(err => console.log(err.message))
   }
 
   function login () {
@@ -27,8 +28,9 @@ const App = () => {
         password: loginPassword
       },
       withCredentials: true,
-      url: 'http://localhost:3000/login',
+      url: 'http://localhost:3000/login'
     }).then((res) => console.log(res))
+      .catch(err => console.log(err.message))
   }
 
   function getUser () {
@@ -39,8 +41,9 @@ const App = () => {
         password: loginPassword
       },
       withCredentials: true,
-      url: 'http://localhost:3000/getUser',
+      url: 'http://localhost:3000/getUser'
     }).then((res) => console.log(res))
+      .catch(err => console.log(err.message))
   }
 
   return (
