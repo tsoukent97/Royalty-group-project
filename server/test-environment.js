@@ -5,9 +5,8 @@ const config = require('./db/knexfile').test
 module.exports = {
   getTestDb: () => knex(config),
 
-  initialise: db => db.migrate
-    .latest()
+  initialise: db => db.migrate.latest()
     .then(() => db.seed.run()),
 
-  cleanup: db => db.destory()
+  cleanup: db => db.destroy()
 }
