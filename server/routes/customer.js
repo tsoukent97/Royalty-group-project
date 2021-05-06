@@ -1,14 +1,14 @@
 const express = require('express')
+const router = express.Router()
 const db = require('../db/db')
 
-const router = express.Router()
-
 router.get('/', (req, res) => {
-  db.getUserCards(req.params.id)
-    .then(cards => {
-      console.log(cards)
-      return res.status(200)
+  db.getCustomers()
+    .then(customers => {
+      return res.json(customers)
     }).catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
+
+module.exports = router

@@ -13,7 +13,7 @@ server.use(express.static(path.join(__dirname, './public')))
 server.use(cors('*'))
 
 server.use('/customer', customer)
-server.use('/business', business)
-server.use('/', landing)
+// server.use('/business', business)
+// server.use('/', landing)
 
 module.exports = server
