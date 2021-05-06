@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require('../db/db')
 
 // red lines are only because of linting, doesnt like nesting promises fro some reason
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
   const { name, userName } = req.params.body
   db.addCustomer(name, userName)
     .then(id => {
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 })
 
 // red lines are only because of linting, doesnt like nesting promises fro some reason
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
   const { name, address, phoneNumber, email } = req.params.body
   db.addBusiness(name, address, phoneNumber, email)
     .then(id => {
