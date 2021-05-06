@@ -16,12 +16,22 @@ afterEach(() => testEnv.cleanup(testDb))
 // adding new cards, customers, bus
 // deleting customer, cards, bus
 
-test('deletes a card', () => {
-  const businessId = 1
-  const customerId = 1
-  return db.deleteCard(businessId, customerId, testDb)
+// test('deletes a card', () => {
+//   const businessId = 1
+//   const customerId = 1
+//   return db.deleteCard(businessId, customerId, testDb)
+//     .then(result => {
+//       expect(result).toEqual(1)
+//       return null
+//     })
+// })
+
+test('get a customer profile', () => {
+  const testId = 901
+  expect.assertions(1)
+  return db.getCustomerProfile(testId, testDb)
     .then(result => {
-      expect(result).toEqual(1)
+      expect(result).toEqual({ id: 901, name: 'Aaron' })
       return null
     })
 })
