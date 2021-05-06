@@ -15,7 +15,21 @@ const customerExists = (username, db = connection) => {
     })
 }
 
+const getCustomerById = (id, db = connection) => {
+  return db('customers').where('id', id).select().first()
+}
+
+function addCustomer (name, userName, db = connection) {
+  return db('customers').insert(
+    {
+      name: name,
+      user_name: userName
+    })
+}
+
 module.exports = {
   getCustomers,
-  customerExists
+  customerExists,
+  getCustomerById,
+  addCustomer
 }

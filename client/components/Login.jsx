@@ -1,56 +1,55 @@
-import React, {useState} from 'react'
-
+import React, { useState } from 'react'
 
 function Login () {
-    const [form, setForm] = useState({
-        Username: '',
-        Password: ''
-      })
-    
-    const [error, setError] = useState('')
+  const [form, setForm] = useState({
+    Username: '',
+    Password: ''
+  })
 
-    function hideError () {
-        setError('')
-    }
+  const [error, setError] = useState('')
 
-    // function handleChange (e) {
-        
-    // }
+  function hideError () {
+    setError('')
+  }
 
-    function handleClick (e) {
-        e.preventDefault()
-        
-            // .catch(err => {
-            //     if (err.message === 'INVALID_CREDENTIALS') {
-            //         SetError('Username and password combination not found')
-            //     }
-            // })
-    }
+  // function handleChange (e) {
 
-    return (
-        <>
-        <h2>Login page</h2>
-        <div onClick={hideError}>
-            { error && `Error:${error}`}
-        </div>
+  // }
 
-        <div>
-            <form>
-                <select>
-                    <option value="">User Type </option>
-                    <option value='customer'>Customer</option>
-                    <option value='business'>Buiness</option>
-                </select>
-                
-                <input placeholder="Enter username" name="username"></input>
+  function handleClick (e) {
+    e.preventDefault()
 
-                <input placeholder="Enter password" name="password"></input>
+    // .catch(err => {
+    //     if (err.message === 'INVALID_CREDENTIALS') {
+    //         SetError('Username and password combination not found')
+    //     }
+    // })
+  }
 
-                <button onClick={handleClick}>Login</button>
-            </form>
-        </div>
-        </>
-    )
+  return (
+    <>
+      <h2>Login page</h2>
+      <div onClick={hideError}>
+        { error && `Error:${error}`}
+      </div>
+
+      <div>
+        <form>
+          <select>
+            <option value="">User Type </option>
+            <option value='customer'>Customer</option>
+            <option value='business'>Buiness</option>
+          </select>
+
+          <input placeholder="Enter username" name="username"></input>
+
+          <input placeholder="Enter password" name="password"></input>
+
+          <button onClick={handleClick}>Login</button>
+        </form>
+      </div>
+    </>
+  )
 }
 
-export default Login 
+export default Login
