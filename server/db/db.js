@@ -7,13 +7,12 @@ module.exports = {
   getCustomerProfile,
   getBusinessProfile,
   getCustomerCards,
-  // getSignedUp,
   addCustomer,
   addBusiness,
   addCard,
   deleteCustomer,
-  deleteBusiness
-  // deleteCard
+  deleteBusiness,
+  deleteCard
 }
 
 // Need to make these functions
@@ -58,13 +57,6 @@ function getCustomerCards (id, db = connection) {
     .select('businesses.name as name')
 }
 
-// function getSignedUp (id, db = connection) {
-//   return db('businesses')
-//     .join('cards', 'cards.businesses_id', 'businesses.id')
-//     .where('businesses.id', id)
-//     .select('cards.customer_id')
-// }
-
 // returns customer profile, instead of ID. nested getCustomerProfile function in router
 function addCustomer (name, userName, db = connection) {
   return db('customers').insert(
@@ -94,22 +86,20 @@ function addCard (businessId, customerId, db = connection) {
     })
 }
 
-// no route yet as not sure where it will be needed
 function deleteCustomer (id, db = connection) {
   return db('customers')
     .delete()
     .where('id', id)
 }
 
-// no route yet as not sure where it will be needed
 function deleteBusiness (id, db = connection) {
   return db('businesses')
     .delete()
     .where('id', id)
 }
 
-// function deleteCard (businessId, customerId, db = connection) {
-//   return db('cards')
-//   .delete()
-//   .where('customer_id', customer_id == 'business_id', business_id)
-// }
+function deleteCard (businessId, customerId, db = connection) {
+  return db('cards')
+    .delete()
+    .where('customer_id', customerId, 'business_id', businessId)
+}
