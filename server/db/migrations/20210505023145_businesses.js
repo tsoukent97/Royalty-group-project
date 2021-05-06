@@ -6,6 +6,7 @@ exports.up = (knex) => {
     table.binary('hash')
     table.string('address')
     table.integer('phone_number')
+    table.string('email')
   })
 }
 
