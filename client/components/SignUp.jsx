@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-function Signup (props) {
+function Signup () {
   const [customerForm, setCustomerForm] = useState({
     username: '',
     password: '',
@@ -14,6 +14,7 @@ function Signup (props) {
       [name]: value
     })
   }
+
   return (
     <>
       <h1>Sign up: Customer</h1>
@@ -38,20 +39,8 @@ function Signup (props) {
           <button>Sign up</button>
         </form>
       </div>
-      <p>{ customerForm.username }</p>
-      <p>{ customerForm.password }</p>
     </>
   )
 }
 
 export default Signup
-
-// const initialBizData = {
-//   username: '',
-//   password: '',
-//   email: '',
-//   address: '',
-//   phoneNumber: '',
-//   userTyoe: 'business'
-// }
-// const [businessForm, setBusinessForm] = useState(initBusinessData)
