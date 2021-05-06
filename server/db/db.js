@@ -10,8 +10,6 @@ module.exports = {
 }
 
 // Need to make these functions
-// getting all cards for one customer
-// getting all users for one bus for admin user only
 // adding new cards, customers, bus
 // deleting customer, cards, bus
 
