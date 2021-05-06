@@ -1,14 +1,18 @@
 import React from 'react'
 import LogIn from './LogIn'
-import AdminHome from './admin/AdminHome'
+import SignUp from './SignUp'
+import BusinessHome from './business/BusinessHome'
 import CustomerHome from './customer/CustomerHome'
+import {HashRouter as Router, Route} from 'react-router-dom'
 
 const App = () => {
   return (
     <>
-      <LogIn />
-      <AdminHome />
-      <CustomerHome />
+    <Router>
+      <Route exact path={"/login"} component={LogIn} />
+      <Router exact path={"/Customerhome"} component={CustomerHome} />
+      <Router exact path={"/Businesshome"} component={BusinessHome} />
+    </Router>
     </>
   )
 }

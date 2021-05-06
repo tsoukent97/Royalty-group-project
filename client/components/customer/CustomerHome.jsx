@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBarCustomer from './NavBarCustomer'
+import NavCustomer from './NavCustomer'
 
 export default function CustomerHome () {
   return (
