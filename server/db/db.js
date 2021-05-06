@@ -5,7 +5,8 @@ const connection = require('knex')(config)
 module.exports = {
   getCustomers,
   getOneCustomer,
-  getUserCards
+  getUserCards,
+  getSignedUp
 }
 
 // Need to make these functions
@@ -27,4 +28,11 @@ function getUserCards (id, db = connection) {
     .join('cards', 'cards.customer_id', 'customers.id')
     .where('customers.id', id)
     .select('cards.businesses_id')
+}
+
+function getSignedUp (id, db = connection) {
+  return db('businesses')
+    .join('cards', 'cards.businesses_id', 'businesses.id')
+    .where('businesses.id', id)
+    .select('cards.customer_id')
 }
