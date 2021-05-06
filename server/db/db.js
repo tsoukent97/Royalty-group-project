@@ -6,7 +6,13 @@ module.exports = {
   getCustomers,
   getOneCustomer,
   getUserCards,
-  getSignedUp
+  getSignedUp,
+  addCustomer,
+  addBusiness,
+  addCard,
+  deleteCustomer,
+  deleteBusiness,
+  deleteCard
 }
 
 // Need to make these functions
@@ -34,3 +40,25 @@ function getSignedUp (id, db = connection) {
     .where('businesses.id', id)
     .select('cards.customer_id')
 }
+
+function addCustomer (customers, db = connection) {
+  return db('customers').insert(customers)
+}
+
+function addBusiness (businesses, db = connection) {
+  return db('businesses').insert(businesses)
+}
+
+function addCard (cards, db = connection) {
+  return db('cards').insert(cards)
+}
+
+function deleteCustomer (id, customer, db = connection) {
+  return db('customers').delete().where('id', id)
+}
+
+function deleteBusiness (id, business, db = connection) {
+  return db('businesses').delete().where('id', id)
+}
+
+function deleteCard ()
