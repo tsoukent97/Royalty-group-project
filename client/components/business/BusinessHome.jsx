@@ -1,7 +1,7 @@
 import React from 'react'
-import NavBarAdmin from './NavBarAdmin'
+import NavBusiness from './NavBusiness'
 
-export default function AdminHome () {
+export default function BusinessHome () {
   return (
     <div>
       <NavBarAdmin />

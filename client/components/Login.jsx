@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 
+let userInfo = {}
 
-function Login () {
-    const [form, setForm] = useState({
-        Username: '',
-        Password: ''
-      })
+function Login (props) {
+    const initialData = {
+        Username: "",
+        Password: ""
+    }
+
+    const [form, setForm] = useState(initialData)
     
     const [error, setError] = useState('')
 
@@ -13,18 +16,19 @@ function Login () {
         setError('')
     }
 
-    // function handleChange (e) {
-        
-    // }
+    function handleChange (e) {
+        const { name, value } = e.target
+        setForm({
+            ...form,
+            [name]:value
+        })
+    }
 
-    function handleClick (e) {
+    function handleSubmit (e) {
         e.preventDefault()
-        
-            // .catch(err => {
-            //     if (err.message === 'INVALID_CREDENTIALS') {
-            //         SetError('Username and password combination not found')
-            //     }
-            // })
+        userInfo = setForm
+        props.history.push('/')
+        return null
     }
 
     return (
@@ -33,20 +37,16 @@ function Login () {
         <div onClick={hideError}>
             { error && `Error:${error}`}
         </div>
-
+        
         <div>
             <form>
-                <select>
-                    <option value="">User Type </option>
-                    <option value='customer'>Customer</option>
-                    <option value='business'>Buiness</option>
-                </select>
-                
-                <input placeholder="Enter username" name="username"></input>
-
-                <input placeholder="Enter password" name="password"></input>
-
-                <button onClick={handleClick}>Login</button>
+                <label>Username:</label>
+                <input placeholder="Enter username" name="username" onChange={handleChange}></input>
+                <br></br>
+                <label>Password:</label>
+                <input placeholder="Enter password" name="password" onChange={handleChange}></input>
+                <br></br>
+                <button onClick={handleSubmit}>Login</button>
             </form>
         </div>
         </>
