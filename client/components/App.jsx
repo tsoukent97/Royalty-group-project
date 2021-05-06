@@ -1,12 +1,12 @@
 import React from 'react'
-import LogIn from './LogIn'
+import Login from './Login'
 import AdminHome from './admin/AdminHome'
 import CustomerHome from './customer/CustomerHome'
 
 const App = () => {
   return (
     <>
-      <LogIn />
+      <Login />
       <AdminHome />
       <CustomerHome />
     </>
