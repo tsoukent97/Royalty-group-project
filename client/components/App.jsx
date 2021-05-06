@@ -1,5 +1,5 @@
 import React from 'react'
-import LogIn from './LogIn'
+import Login from './Login'
 import AdminHome from './admin/AdminHome'
 import CustomerHome from './customer/CustomerHome'
 import SignUp from './SignUp'
@@ -7,7 +7,7 @@ import SignUp from './SignUp'
 const App = () => {
   return (
     <>
-      <LogIn />
+      <Login />
       <SignUp />
       <AdminHome />
       <CustomerHome />
