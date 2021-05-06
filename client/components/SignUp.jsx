@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-function Signup () {
+function Signup (props) {
   const [customerForm, setCustomerForm] = useState({
     username: '',
     password: '',
@@ -13,6 +13,11 @@ function Signup () {
       ...customerForm,
       [name]: value
     })
+  }
+
+  function handleSubmit (e) {
+    e.preventDefault()
+    console.log(setCustomerForm)
   }
 
   return (
@@ -28,6 +33,7 @@ function Signup () {
             value={customerForm.username}
             onChange={handleChange}
           />
+          <br></br>
           <label>Password</label>
           <input type='text'
             placeholder='Password'
@@ -36,7 +42,8 @@ function Signup () {
             value={customerForm.password}
             onChange={handleChange}
           />
-          <button>Sign up</button>
+          <br></br>
+          <button onSubmit={handleSubmit}>Sign up</button>
         </form>
       </div>
     </>
