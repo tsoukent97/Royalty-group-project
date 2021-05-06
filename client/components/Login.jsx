@@ -41,10 +41,10 @@ function Login (props) {
         <div>
             <form>
                 <label>Username:</label>
-                <input placeholder="Enter username" name="username" onChange={handleChange}></input>
+                <input placeholder="Enter username..." name="username" onChange={handleChange}></input>
                 <br></br>
                 <label>Password:</label>
-                <input placeholder="Enter password" name="password" onChange={handleChange}></input>
+                <input placeholder="Enter password..." name="password" onChange={handleChange}></input>
                 <br></br>
                 <button onClick={handleSubmit}>Login</button>
             </form>
