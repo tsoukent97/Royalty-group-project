@@ -12,7 +12,7 @@ exports.seed = (knex) => {
         { id: 106, name: 'Cinnamon_Cafe', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
         { id: 107, name: 'Kent_One', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
         { id: 108, name: 'Kent_Two', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 109, name: 'Knet_Three', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
+        { id: 109, name: 'Kent_Three', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
         { id: 110, name: 'Riverside_Cafe', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
         { id: 111, name: 'Milk_&_Honey_Cafe', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
         { id: 112, name: 'Subway', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
