@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function NavBarAdmin () {
+export default function NavBusiness () {
   return (
     <nav>
       <li>Home</li>
