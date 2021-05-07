@@ -10,12 +10,15 @@ const App = () => {
   return (
     <>
     <Router>
-      <Route exact path={"/login"} component={Login} />
-      <Router exact path={"/Customerhome"} component={CustomerHome} />
-      <Router exact path={"/Businesshome"} component={BusinessHome} />
+      <Route exact path={'/'} component={Home} />
+      <Route exact path={"/CustomerLogin"} component={(props) => <Login {...props} isCustomer={true} />} />
+      <Route exact path={"/BusinessLogin"} component={(props) => <Login {...props} isCustomer={false} />} />
+      <Route exact path={"/Customerhome"} component={CustomerHome} />
+      <Route exact path={"/Businesshome"} component={BusinessHome} />
     </Router>
     </>
   )
 }
 
 export default App
+
