@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-
-let userInfo = {}
+import { loginCustomer } from '../api/passportAPI'
 
 function Login (props) {
   const initialData = {
@@ -9,7 +8,6 @@ function Login (props) {
   }
 
   const [form, setForm] = useState(initialData)
-
   const [error, setError] = useState('')
 
   function hideError () {
@@ -26,7 +24,7 @@ function Login (props) {
 
   function handleSubmit (e) {
     e.preventDefault()
-    userInfo = setForm
+    loginCustomer(form)
     props.history.push('/')
     return null
   }

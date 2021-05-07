@@ -2,11 +2,11 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1/auth'
 
-export function loginUser (user) {
+export function loginCustomer (customer) {
   return request.post(rootUrl + '/login')
     .send({
-      username: user.username,
-      password: user.password
+      username: customer.username,
+      password: customer.password
     })
     .then(res => res.body)
 }
