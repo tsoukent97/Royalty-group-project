@@ -16,22 +16,43 @@ afterEach(() => testEnv.cleanup(testDb))
 // adding new cards, customers, bus
 // deleting customer, cards, bus
 
-test('getCustomers gets all customers', () => {
-  const expected = 5
-  return db.getCustomers(testDb)
-    .then(customers => {
-      const actual = customers.length
-      return expect(actual).toBe(expected)
+test('deletes a card', () => {
+  const businessId = 105
+  const customerId = 901
+  return db.deleteCard(businessId, customerId, testDb)
+    .then(result => {
+      expect(result).toEqual(1)
+      return null
     })
-    .catch(err => expect(err).toBeNull())
 })
 
-test('getOneCustomer gets one customer', () => {
-  const expected = 'Aaron'
-  return db.getOneCustomer(901, testDb)
-    .then(customer => {
-      const actual = customer.name
-      return expect(actual).toBe(expected)
+test('get a customer profile', () => {
+  const testId = 901
+  expect.assertions(1)
+  return db.getCustomerProfile(testId, testDb)
+    .then(result => {
+      expect(result).toEqual({ id: 901, name: 'Aaron' })
+      return null
     })
-    .catch(err => expect(err).toBeNull())
+})
+
+test('get a business profile', () => {
+  const testId = 101
+  expect.assertions(1)
+  return db.getBusinessProfile(testId, testDb)
+    .then(result => {
+      expect(result).toEqual({ id: 101, name: 'Starbucks', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' })
+      return null
+    })
+})
+
+test('add a new customer', () => {
+  const testName = 'bob'
+  const testUserName = 'bobby123'
+  expect.assertions(1)
+  return db.addCustomer(testName, testUserName, testDb)
+    .then(result => {
+      expect(result).toEqual([906])
+      return null
+    })
 })
