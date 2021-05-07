@@ -4,7 +4,8 @@ import SignUp from './SignUp'
 import Home from './Home'
 import BusinessHome from './business/BusinessHome'
 import CustomerHome from './customer/CustomerHome'
-import {HashRouter as Router, Route} from 'react-router-dom'
+import SignUp from './SignUp'
+import { HashRouter as Router, Route } from 'react-router-dom'
 
 const App = () => {
   return (
