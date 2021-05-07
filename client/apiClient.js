@@ -1,4 +1,5 @@
 import request from 'superagent'
+<<<<<<< HEAD
 
 const rootUrl = '/api/v1/auth'
 
@@ -16,3 +17,5 @@ export function registerUser (user) {
     .send(user)
     .then(res => res.body)
 }
+=======
+>>>>>>> main
