@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
+// TODO
+// Stitch this form into api client, connect to DB
+// Style this in semantic ui
+
 function Signup (props) {
   const [customerForm, setCustomerForm] = useState({
     username: '',
