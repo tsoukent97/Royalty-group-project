@@ -19,6 +19,7 @@ const getCustomerById = (id, db = connection) => {
   return db('customers').where('id', id).select().first()
 }
 
+// this might end up here twice because I stole it from Nicole's branch
 function addCustomer (name, userName, db = connection) {
   return db('customers').insert(
     {
