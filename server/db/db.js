@@ -101,5 +101,6 @@ function deleteBusiness (id, db = connection) {
 function deleteCard (businessId, customerId, db = connection) {
   return db('cards')
     .delete()
-    .where('customer_id', customerId, 'business_id', businessId)
+    .where('customer_id', customerId)
+    .where('business_id', businessId)
 }
