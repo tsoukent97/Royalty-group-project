@@ -1,5 +1,6 @@
 // grid of images, 3 columns
 // uncomment navCustomer once ready
+// replace placeholder with company logos
 
 import React from 'react'
 // import NavCustomer from './NavCustomer'
