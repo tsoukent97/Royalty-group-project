@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { Button, Form } from 'semantic-ui-react'
 
 // TODO
 // Stitch this form into api client, connect to DB
@@ -27,8 +28,8 @@ function Signup (props) {
   return (
     <>
       <h1>Sign up: Customer</h1>
-      <div>
-        <form>
+      <Form className='signup' size='mini'>
+        <Form.Field>
           <label>Username</label>
           <input type='text'
             placeholder='Username'
@@ -37,7 +38,8 @@ function Signup (props) {
             value={customerForm.username}
             onChange={handleChange}
           />
-          <br></br>
+        </Form.Field>
+        <Form.Field>
           <label>Password</label>
           <input type='text'
             placeholder='Password'
@@ -46,10 +48,9 @@ function Signup (props) {
             value={customerForm.password}
             onChange={handleChange}
           />
-          <br></br>
-          <button onSubmit={handleSubmit}>Sign up</button>
-        </form>
-      </div>
+        </Form.Field>
+        <Button onSubmit={handleSubmit} type='submit'>Submit</Button>
+      </Form>
     </>
   )
 }

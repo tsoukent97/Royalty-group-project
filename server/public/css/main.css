@@ -10,3 +10,7 @@
 .alert-info {
   margin: 0 auto;
 }
+
+.signup {
+  max-width: 20rem;
+}

@@ -6,7 +6,7 @@ export default function NavCustomer () {
     <Container>
       <Menu stackable widths={5}>
         <Menu.Item>
-          <img src='/logo.png' alt='Our logo here' />
+          <img src='/logo.png' alt='logo' />
         </Menu.Item>
         <Menu.Item>Welcome, username here</Menu.Item>
         <Menu.Item>Your Royalty Cards</Menu.Item>
