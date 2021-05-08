@@ -1,24 +1,49 @@
+// grid of images, 3 columns
+// uncomment navCustomer once ready
+
 import React from 'react'
 // import NavCustomer from './NavCustomer'
-import { Grid, Image, Button } from 'semantic-ui-react'
+import { Grid, Image } from 'semantic-ui-react'
 
 function CustomerHome () {
   return (
     <div>
-      <Button primary>Primary</Button>
-      <Button secondary>Secondary</Button>
-      <Grid relaxed columns={4}>
+      <Grid relaxed columns={3}>
         <Grid.Column>
-          <Image src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/wireframe/image.png' alt='Image2' />
         </Grid.Column>
         <Grid.Column>
-          <Image src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
         </Grid.Column>
       </Grid>
     </div>
