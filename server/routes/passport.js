@@ -36,7 +36,7 @@ router.post('/login', async (req, res, next) => {
     else {
       req.logIn(customer, e => {
         if (e) throw e
-        res.json('Successfully Authenticated')
+        res.json('Login Succeeded')
       })
     }
   })(req, res, next)

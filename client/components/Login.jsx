@@ -25,8 +25,19 @@ function Login (props) {
   function handleSubmit (e) {
     e.preventDefault()
     loginCustomer(form)
-    props.history.push('/')
-    return null
+      .then((auth) => {
+        setForm(initialData)
+        console.log(auth)
+        if (auth === 'Login Succeeded') {
+          console.log('logged in')
+          props.history.push('/')
+        } else {
+          setError(auth)
+        } return null
+      })
+      .catch(e => {
+        console.log(e.message)
+      })
   }
 
   return (

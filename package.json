@@ -1,6 +1,6 @@
 {
-  "name": "boilerplate-react-webpack",
-  "version": "0.2.3",
+  "name": "loyal-tea",
+  "version": "0.1.0",
   "description": "A webpack React starter",
   "repository": "https://github.com/dev-academy-challenges/boilerplate-react-webpack.git",
   "main": "server/index.js",

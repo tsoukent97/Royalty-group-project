@@ -6,7 +6,6 @@ module.exports = {
   getCustomers,
   customerExists,
   getCustomerById,
-  getCustomerProfile,
   getBusinessProfile,
   getCustomerCards,
   addCustomer,
@@ -29,14 +28,7 @@ function getCustomers (id, db = connection) {
   return db('cards').select('customer_id')
     .where('business_id', id)
 }
-// return an object of customer details. EX: {id: 901, name:"Aaron"}
-// route is http://localhost:3000/customer/:id
-function getCustomerProfile (id, db = connection) {
-  return db('customers')
-    .select('id', 'name')
-    .where('id', id)
-    .first()
-}
+
 // returns an object of business details EX:
 // {"id":102,"name":"Gong_Cha","address":"2 Fun Lane","phone_number":800838383,"email":"example@example.com"}
 // route is http://localhost:3000/business/:id
@@ -60,11 +52,11 @@ function getCustomerCards (id, db = connection) {
 }
 
 // returns customer profile, instead of ID. nested getCustomerProfile function in router
-function addCustomer (name, userName, db = connection) {
+function addCustomer (name, username, db = connection) {
   return db('customers').insert(
     {
       name: name,
-      user_name: userName
+      username: username
     })
 }
 
@@ -115,6 +107,9 @@ function deleteCard (businessId, customerId, db = connection) {
     .where('customer_id', customerId)
     .where('business_id', businessId)
 }
+
+// return an object of customer details. {"id":901,"name":"Aaron","user_type":"customer","hash":null}
+// route is http://localhost:3000/customer/:id
 
 function getCustomerById (id, db = connection) {
   return db('customers').where('id', id).select().first()

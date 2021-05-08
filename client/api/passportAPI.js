@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const rootUrl = '/api/v1/auth'
+const rootUrl = 'http://localhost:3000'
 
 export function loginCustomer (customer) {
   return request.post(rootUrl + '/login')
