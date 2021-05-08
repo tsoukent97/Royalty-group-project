@@ -10,40 +10,40 @@ function CustomerHome () {
     <div>
       <Grid relaxed columns={3}>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image2' />
+          <Image href='#' src='/images/placeholder.png' alt='Image2' />
         </Grid.Column>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
         </Grid.Column>
         <Grid.Column>
-          <Image href='#' src='/images/wireframe/image.png' alt='Image1' />
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
         </Grid.Column>
       </Grid>
     </div>
