@@ -3,6 +3,7 @@ import { Container, Button, Menu } from 'semantic-ui-react'
 
 export default function NavBusiness () {
   return (
+<<<<<<< HEAD
     <Container>
       <Menu stackable widths={5}>
         <Menu.Item>
@@ -15,5 +16,12 @@ export default function NavBusiness () {
         </Menu.Item>
       </Menu>
     </Container>
+=======
+    <nav>
+      <li>Home</li>
+      <li>Log Out</li>
+      <li><a href='/#/Businesshome/AccountInfo'>Account Information</a></li>
+    </nav>
+>>>>>>> main
   )
 }

@@ -5,7 +5,7 @@ import { Button, Form, Grid } from 'semantic-ui-react'
 // Stitch this form into api client, connect to DB
 // Style this in semantic ui
 
-function Signup (props) {
+function SignUp (props) {
   const [customerForm, setCustomerForm] = useState({
     username: '',
     password: '',
@@ -23,6 +23,11 @@ function Signup (props) {
   function handleSubmit (e) {
     e.preventDefault()
     console.log(setCustomerForm)
+  }
+
+  function homePath (e) {
+    e.preventDefault()
+    props.history.push('/')
   }
 
   return (
@@ -55,8 +60,11 @@ function Signup (props) {
           </Form>
         </Grid.Column>
       </Grid>
+      <div>
+        <button onClick={homePath}>Home</button>
+      </div>
     </>
   )
 }
 
-export default Signup
+export default SignUp

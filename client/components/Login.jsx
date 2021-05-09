@@ -1,20 +1,14 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 let userInfo = {}
 
 function Login (props) {
     const initialData = {
-        Username: "",
-        Password: ""
+        username: '',
+        password: '',
     }
 
     const [form, setForm] = useState(initialData)
-    
-    const [error, setError] = useState('')
-
-    function hideError () {
-        setError('')
-    }
 
     function handleChange (e) {
         const { name, value } = e.target
@@ -26,31 +20,61 @@ function Login (props) {
 
     function handleSubmit (e) {
         e.preventDefault()
-        userInfo = setForm
-        props.history.push('/')
+        userInfo = form
+        props.history.push(props.isCustomer ? '/Customerhome': '/Businesshome')
         return null
+    }
+    function toggleBusiness (e) {
+        e.preventDefault()
+        props.history.push(props.isCustomer ? '/BusinessLogin': '/CustomerLogin')
+    }
+
+    function homePath (e) {
+        e.preventDefault()
+        props.history.push('/')
     }
 
     return (
         <>
-        <h2>Login page</h2>
-        <div onClick={hideError}>
-            { error && `Error:${error}`}
-        </div>
-        
+        <label></label>
+        <button onClick={toggleBusiness}>{props.isCustomer? 'Business Login': 'Customer Login'}</button>
         <div>
-            <form>
-                <label>Username:</label>
-                <input placeholder="Enter username..." name="username" onChange={handleChange}></input>
+           <form>
+           <h2>{props.isCustomer ? 'Customer': 'Business'} login page</h2>
+                <label>{props.isCustomer ? 'Username:': 'Business:'}</label>
+                <input 
+                placeholder={props.isCustomer ? 'Enter username...': 'Enter business...'}
+                name='username' 
+                onChange={handleChange} 
+                value={form.username}
+                type='text'
+                required>
+
+                </input>
+
                 <br></br>
+
                 <label>Password:</label>
-                <input placeholder="Enter password..." name="password" onChange={handleChange}></input>
+                <input 
+                placeholder='Enter password...'
+                name='password' 
+                type='text'
+                onChange={handleChange} 
+                value={form.password}
+                required>
+                </input>
                 <br></br>
-                <button onClick={handleSubmit}>Login</button>
+                <button type='button' onClick={handleSubmit}>Login</button>
+                <br></br>
+                <br></br>
+                <br></br>
+        <div>
+            <button onClick={homePath}>Home</button>
+        </div>
             </form>
         </div>
         </>
     )
 }
 
-export default Login 
+export default Login
