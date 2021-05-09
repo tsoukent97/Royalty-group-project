@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
+import { registerUser } from '../api/passportAPI'
 
 // TODO
 // Stitch this form into api client, connect to DB

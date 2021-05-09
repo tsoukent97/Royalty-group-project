@@ -4,7 +4,7 @@ exports.up = (knex) => {
     table.string('name')
     table.string('user_name')
     table.string('user_type')
-    table.binary('hash')
+    table.binary('password')
   })
 }
 

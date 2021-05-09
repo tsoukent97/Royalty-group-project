@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
+import { loginCustomer } from '../api/passportAPI'
 
 let userInfo = {}
 
@@ -19,30 +20,30 @@ function Login (props) {
     })
   }
 
-  function handleSubmit (e) {
-    e.preventDefault()
-    userInfo = form
-    props.history.push(props.isCustomer ? '/Customerhome' : '/Businesshome')
-    return null
-  }
-  
   // function handleSubmit (e) {
   //   e.preventDefault()
-  //   loginCustomer(form)
-  //     .then((auth) => {
-  //       setForm(initialData)
-  //       console.log(auth)
-  //       if (auth === 'Login Succeeded') {
-  //         console.log('logged in')
-  //         props.history.push('/')
-  //       } else {
-  //         setError(auth)
-  //       } return null
-  //     })
-  //     .catch(e => {
-  //       console.log(e.message)
-  //     })
+  //   userInfo = form
+  //   props.history.push(props.isCustomer ? '/Customerhome' : '/Businesshome')
+  //   return null
   // }
+
+  function handleSubmit (e) {
+    e.preventDefault()
+    loginCustomer(form)
+      .then((auth) => {
+        setForm(initialData)
+        console.log(auth)
+        if (auth === 'Login Succeeded') {
+          console.log('logged in')
+          props.history.push(props.isCustomer ? '/Customerhome' : '/Businesshome')
+        } else {
+          setError(auth)
+        } return null
+      })
+      .catch(e => {
+        console.log(e.message)
+      })
+  }
 
   function toggleBusiness (e) {
     e.preventDefault()
