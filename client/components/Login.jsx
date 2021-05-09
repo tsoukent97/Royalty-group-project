@@ -40,6 +40,7 @@ function Login (props) {
       < Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle' >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Form className='signup' size='large'>
+            <Button onClick={homePath}>Home</Button>
             <Button onClick={toggleBusiness}>{props.isCustomer ? 'Business Login' : 'Customer Login'}</Button>
             <h2>{props.isCustomer ? 'Customer' : 'Business'} login page</h2>
             <Form.Field>
@@ -64,8 +65,7 @@ function Login (props) {
                 required
               />
             </Form.Field>
-            <Button type='button' onClick={handleSubmit}>Login</Button>
-            <Button onClick={homePath}>Home</Button>
+            <Button positive type='button' onClick={handleSubmit}>Login</Button>
           </Form>
         </Grid.Column >
       </Grid >

@@ -15,9 +15,12 @@ function Home (props) {
   return (
     <>
       <div className='home'>
-        <h1>Home Page</h1>
-        <Button onClick={signupPath}>Signup</Button>
-        <Button onClick={loginPath}>Login</Button>
+        <h1>Loyaltea Home Page</h1>
+        <Button.Group size='large'>
+          <Button onClick={signupPath}>Signup</Button>
+          <Button.Or />
+          <Button positive onClick={loginPath}>Login</Button>
+        </Button.Group>
       </div>
     </>
   )

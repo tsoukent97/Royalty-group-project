@@ -34,6 +34,7 @@ function SignUp (props) {
     <>
       <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
+          <Button onClick={homePath}>Home</Button>
           <h1>Sign up: Customer</h1>
           <Form className='signup' size='large'>
             <Form.Field>
@@ -56,13 +57,10 @@ function SignUp (props) {
                 onChange={handleChange}
               />
             </Form.Field>
-            <Button onSubmit={handleSubmit} type='submit'>Submit</Button>
+            <Button positive onSubmit={handleSubmit} type='submit'>Submit</Button>
           </Form>
         </Grid.Column>
       </Grid>
-      <div>
-        <button onClick={homePath}>Home</button>
-      </div>
     </>
   )
 }
