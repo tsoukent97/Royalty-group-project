@@ -4,8 +4,8 @@ let userInfo = {}
 
 function Login (props) {
     const initialData = {
-        username: "",
-        password: "",
+        username: '',
+        password: '',
     }
 
     const [form, setForm] = useState(initialData)
@@ -28,19 +28,26 @@ function Login (props) {
         e.preventDefault()
         props.history.push(props.isCustomer ? '/BusinessLogin': '/CustomerLogin')
     }
+
+    function homePath (e) {
+        e.preventDefault()
+        props.history.push('/')
+    }
+
     return (
         <>
         <label></label>
-        <button onClick={toggleBusiness}>{props.isCustomer? "Business Login": "Customer Login"}</button>
+        <button onClick={toggleBusiness}>{props.isCustomer? 'Business Login': 'Customer Login'}</button>
         <div>
            <form>
-           <h2>{props.isCustomer ? "Customer": "Business"} login page</h2>
-                <label>{props.isCustomer ? "Username": "Business"}</label>
+           <h2>{props.isCustomer ? 'Customer': 'Business'} login page</h2>
+                <label>{props.isCustomer ? 'Username:': 'Business:'}</label>
                 <input 
-                placeholder={props.isCustomer ? "Enter username...": "Enter business..."}
-                name="username" 
+                placeholder={props.isCustomer ? 'Enter username...': 'Enter business...'}
+                name='username' 
                 onChange={handleChange} 
                 value={form.username}
+                type='text'
                 required>
 
                 </input>
@@ -49,15 +56,21 @@ function Login (props) {
 
                 <label>Password:</label>
                 <input 
-                placeholder="Enter password..." 
-                name="password" 
-                type="password"
+                placeholder='Enter password...'
+                name='password' 
+                type='text'
                 onChange={handleChange} 
                 value={form.password}
                 required>
                 </input>
                 <br></br>
-                <button type="button" onClick={handleSubmit}>Login</button>
+                <button type='button' onClick={handleSubmit}>Login</button>
+                <br></br>
+                <br></br>
+                <br></br>
+        <div>
+            <button onClick={homePath}>Home</button>
+        </div>
             </form>
         </div>
         </>
