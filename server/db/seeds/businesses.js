@@ -4,21 +4,20 @@ exports.seed = (knex) => {
     .then(() => {
       // Inserts seed entries
       return knex('businesses').insert([
-        { id: 101, name: 'Starbucks', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 102, name: 'Gong_Cha', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 103, name: 'Eb_Games', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 104, name: 'French_Tart', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 105, name: 'Robert_Harris', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 106, name: 'Cinnamon_Cafe', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 107, name: 'Kent_One', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 108, name: 'Kent_Two', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 109, name: 'Kent_Three', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 110, name: 'Riverside_Cafe', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 111, name: 'Milk_&_Honey_Cafe', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 112, name: 'Subway', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 113, name: 'Sam_One', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 114, name: 'Sam_Two', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' },
-        { id: 115, name: 'Sam_Three', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' }
+        { id: 101, business: 'Starbucks', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/starbucks.png' },
+        { id: 102, business: 'Gong Cha', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/gong-char.png' },
+        { id: 104, business: 'French Tart', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/french-tart.png' },
+        { id: 105, business: 'Robert Harris', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/robert-harris.png' },
+        { id: 106, business: 'Cinnamon Cafe', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/cinnamon-cafe.png' },
+        { id: 107, business: 'Nike', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/nike.png' },
+        { id: 108, business: 'Countdown', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/countdown.png' },
+        { id: 109, business: 'Air New Zealand', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/air-nz.png' },
+        { id: 110, business: 'Riverside Cafe', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/riverside-cafe.png' },
+        { id: 111, business: 'Milk & Honey Cafe', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/milk-honey.png' },
+        { id: 112, business: 'Subway', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/subway.png' },
+        { id: 113, business: 'Jetstar', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/jetstar' },
+        { id: 114, business: 'Mitre 10', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/mitre10.png' },
+        { id: 115, business: 'BP', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/bp.png' }
       ])
     })
 }

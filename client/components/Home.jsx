@@ -1,7 +1,7 @@
 import React from 'react'
+import { Button } from 'semantic-ui-react'
 
 function Home (props) {
-
   function signupPath (e) {
     e.preventDefault()
     props.history.push('/CustomerSignup')
@@ -14,6 +14,7 @@ function Home (props) {
 
   return (
     <>
+<<<<<<< HEAD
     <h2>Home Page</h2>
     <div>
       <img src="./images/Royalty.png" alt="logo" />
@@ -23,6 +24,16 @@ function Home (props) {
       <button onClick={loginPath}>Login</button>
     </div>
 
+=======
+      <div className='home'>
+        <h1>Loyaltea Home Page</h1>
+        <Button.Group size='large'>
+          <Button onClick={signupPath}>Signup</Button>
+          <Button.Or />
+          <Button positive onClick={loginPath}>Login</Button>
+        </Button.Group>
+      </div>
+>>>>>>> main
     </>
   )
 }

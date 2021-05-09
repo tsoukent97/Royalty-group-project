@@ -1,10 +1,22 @@
 import React from 'react'
+import { Container, Button, Menu } from 'semantic-ui-react'
 
-export default function NavBarCustomer () {
+export default function NavCustomer () {
   return (
-    <nav>
-      <li>Home</li>
-      <li>Log out</li>
-    </nav>
+    <Container>
+      <Menu stackable widths={5}>
+        <Menu.Item>
+          <img src='/logo.png' alt='logo' />
+        </Menu.Item>
+        <Menu.Item>Welcome, username here</Menu.Item>
+        <Menu.Item>Your Royalty Cards</Menu.Item>
+        <Menu.Item position='right'>
+          <Button primary>Add a card</Button>
+        </Menu.Item>
+        <Menu.Item position='right'>
+          <Button secondary>Logout</Button>
+        </Menu.Item>
+      </Menu>
+    </Container>
   )
 }
