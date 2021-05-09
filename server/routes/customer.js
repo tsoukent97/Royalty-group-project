@@ -29,4 +29,25 @@ router.patch('/:id/delete', (req, res) => {
     })
 })
 
+// router.get('/test', (req, res) => {
+//   // const { businessId, customerId } = req.query
+//   console.log('test')
+//   // db.getStampCount(businessId, customerId)
+//   //   .then((count) => {
+//   //     return res.json(count)
+//   //   }).catch(err => {
+//   //     res.status(500).send('DATABASE ERROR: ' + err.message)
+//   //   })
+// })
+
+router.get('/home', (req, res) => {
+  console.log('test')
+  // db.getCustomerProfile(req.params.id)
+  //   .then(customer => {
+  //     return res.json(customer)
+  //   }).catch(err => {
+  //     res.status(500).send('DATABASE ERROR: ' + err.message)
+  //   })
+})
+
 module.exports = router
