@@ -16,11 +16,11 @@
 }
 
 .footer-container {
-  bottom : 2px;
-  height: 40px;
-  margin-top: 40px;
+  bottom : 0;
+  padding: 2rem;
+  margin: 0 auto;
   text-align: center;
-  vertical-align: middle;
-  position:fixed;
-  width:100%;
+  position: fixed;
+  width: 100%;
+  background-color: cornflowerblue;
 }
