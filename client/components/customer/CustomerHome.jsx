@@ -5,10 +5,12 @@
 import React from 'react'
 // import NavCustomer from './NavCustomer'
 import { Grid, Image } from 'semantic-ui-react'
+import NavCustomer from './NavCustomer'
 
 function CustomerHome () {
   return (
     <div>
+      <NavCustomer />
       <Grid relaxed columns={3}>
         <Grid.Column>
           <Image href='#' src='/images/placeholder.png' alt='Image1' />

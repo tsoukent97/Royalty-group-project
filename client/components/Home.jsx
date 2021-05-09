@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from 'semantic-ui-react'
 
 function Home (props) {
   function signupPath (e) {
@@ -13,12 +14,14 @@ function Home (props) {
 
   return (
     <>
-      <div>
-        <h2>Home Page</h2>
-        <button onClick={signupPath}>Signup</button>
-        <button onClick={loginPath}>Login</button>
+      <div className='home'>
+        <h1>Loyaltea Home Page</h1>
+        <Button.Group size='large'>
+          <Button onClick={signupPath}>Signup</Button>
+          <Button.Or />
+          <Button positive onClick={loginPath}>Login</Button>
+        </Button.Group>
       </div>
-
     </>
   )
 }
