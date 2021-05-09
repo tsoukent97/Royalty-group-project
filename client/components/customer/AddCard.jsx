@@ -14,7 +14,7 @@ export default function AddCard () {
   console.log(cards)
   return (
     <>
-      {cards.map((card, i) => <li key={i}>{card.name}</li>)}
+      {cards.map((card, i) => <li key={i}>{card.business}</li>)}
     </>
   )
 }
