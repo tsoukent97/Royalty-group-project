@@ -14,6 +14,18 @@ export function deleteCustomer (id) {
     .then(res => res.body)
 }
 
+export function updateStampCount (businessId, customerId) {
+  return request
+    .patch(customerServer + '/?businessId=' + businessId + '&customerId=' + customerId)
+    .then(res => res.body)
+}
+
+export function getAllCards (id) {
+  return request
+    .get(customerServer + '/' + id + '/addCard')
+    .then(res => res.body)
+}
+
 export function getBusinessProfile (id) {
   return request.get(businessServer + '/' + id)
     .then(res => res.body)

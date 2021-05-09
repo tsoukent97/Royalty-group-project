@@ -1,8 +1,11 @@
 import React from 'react'
 import QRCode from 'qrcode.react'
+import { updateStampCount } from '../../apiClient'
 
 export default function QrCode () {
-    
+  function handleClick () {
+    updateStampCount()
+  }
   return (
     <div>
       <QRCode
@@ -12,7 +15,7 @@ export default function QrCode () {
         level={'H'}
         includeMargin={true}
       />
-      {/* <a onClick={downloadQR}> Download QR </a> */}
+      <a onClick={() => handleClick()}> Scan QR </a>
     </div>
   )
 }

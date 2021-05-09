@@ -4,6 +4,7 @@ import Home from './Home'
 import Signup from './SignUp'
 import BusinessHome from './business/BusinessHome'
 import CustomerHome from './customer/CustomerHome'
+import AddCard from './customer/AddCard'
 import AccountInfo from './business/AccountInfo'
 import QrCode from './customer/QrCode'
 import Footer from './Footer'
@@ -18,6 +19,7 @@ const App = () => {
         <Route exact path={'/CustomerLogin'} component={(props) => <Login {...props} isCustomer={true} />} />
         <Route exact path={'/BusinessLogin'} component={(props) => <Login {...props} isCustomer={false} />} />
         <Route exact path={'/Customerhome'} component={CustomerHome} />
+        <Route exact path={'/Customerhome/addCard'} component={AddCard} />
         <Route exact path={'/Customerhome/cardInfo'} component={QrCode} />
         <Route exact path={'/Businesshome'} component={BusinessHome} />
         <Route exact path={'/Businesshome/AccountInfo'} component={AccountInfo} />

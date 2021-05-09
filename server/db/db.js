@@ -13,6 +13,7 @@ module.exports = {
   deleteCustomer,
   deleteBusiness,
   deleteCard,
+  getAllCards,
   getStampCount,
   updateStampCount
 }
@@ -102,10 +103,13 @@ function deleteCard (businessId, customerId, db = connection) {
     .where('customer_id', customerId)
     .where('business_id', businessId)
 }
-
+function getAllCards (db = connection) {
+  return db('businesses').select('name')
+}
 function getStampCount (businessId, customerId, db = connection) {
   return db('cards')
-    .where(['customer_id', 'business_id'], [customerId, businessId])
+    .where('customer_id', customerId)
+    .where('business_id', businessId)
     .select('stamp_count')
 }
 
@@ -113,5 +117,5 @@ function updateStampCount (businessId, customerId, stampCount, db = connection) 
   return db('cards')
     .where('customer_id', customerId)
     .where('business_id', businessId)
-    .update({stamp_count: stampCount + 1 })
+    .update({ stamp_count: stampCount + 1 })
 }
