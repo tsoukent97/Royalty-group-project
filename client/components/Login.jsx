@@ -41,12 +41,13 @@ function Login (props) {
         <div>
            <form>
            <h2>{props.isCustomer ? 'Customer': 'Business'} login page</h2>
-                <label>{props.isCustomer ? 'Username': 'Business'}</label>
+                <label>{props.isCustomer ? 'Username:': 'Business:'}</label>
                 <input 
                 placeholder={props.isCustomer ? 'Enter username...': 'Enter business...'}
                 name='username' 
                 onChange={handleChange} 
                 value={form.username}
+                type='text'
                 required>
 
                 </input>
@@ -57,7 +58,7 @@ function Login (props) {
                 <input 
                 placeholder='Enter password...'
                 name='password' 
-                type='password'
+                type='text'
                 onChange={handleChange} 
                 value={form.password}
                 required>
