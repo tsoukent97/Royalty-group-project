@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button, Form, Grid } from 'semantic-ui-react'
 
 let userInfo = {}
 
@@ -21,12 +22,12 @@ function Login (props) {
   function handleSubmit (e) {
     e.preventDefault()
     userInfo = form
-    props.history.push(props.isCustomer ? '/Customerhome': '/Businesshome')
+    props.history.push(props.isCustomer ? '/Customerhome' : '/Businesshome')
     return null
   }
   function toggleBusiness (e) {
     e.preventDefault()
-    props.history.push(props.isCustomer ? '/BusinessLogin': '/CustomerLogin')
+    props.history.push(props.isCustomer ? '/BusinessLogin' : '/CustomerLogin')
   }
 
   function homePath (e) {
@@ -36,38 +37,39 @@ function Login (props) {
 
   return (
     <>
-      <label></label>
-      <button onClick={toggleBusiness}>{props.isCustomer? 'Business Login': 'Customer Login'}</button>
-      <div>
-        <form>
-          <h2>{props.isCustomer ? 'Customer': 'Business'} login page</h2>
-          <label>{props.isCustomer ? 'Username:': 'Business:'}</label>
-          <input 
-            placeholder={props.isCustomer ? 'Enter username...': 'Enter business...'}
-            name='username' 
-            onChange={handleChange} 
-            value={form.username}
-            type='text'
-            required
-          />
-          <br></br>
-
-          <label>Password:</label>
-          <input 
-            placeholder='Enter password...'
-            name='password' 
-            type='text'
-            onChange={handleChange} 
-            value={form.password}
-            required>
-          </input>
-          <br></br>
-          <button type='button' onClick={handleSubmit}>Login</button>
-          <div>
-            <button onClick={homePath}>Home</button>
-          </div>
-        </form>
-      </div>
+      < Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle' >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <h1>Sign up: Customer</h1>
+          <Form className='signup' size='large'>
+            <Button onClick={toggleBusiness}>{props.isCustomer ? 'Business Login' : 'Customer Login'}</Button>
+            <h2>{props.isCustomer ? 'Customer' : 'Business'} login page</h2>
+            <Form.Field>
+              <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
+              <input
+                placeholder={props.isCustomer ? 'Enter username...' : 'Enter business...'}
+                name='username'
+                onChange={handleChange}
+                value={form.username}
+                type='text'
+                required
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Password:</label>
+              <input
+                placeholder='Enter password...'
+                name='password'
+                type='text'
+                onChange={handleChange}
+                value={form.password}
+                required
+              />
+            </Form.Field>
+            <Button type='button' onClick={handleSubmit}>Login</Button>
+            <Button onClick={homePath}>Home</Button>
+          </Form>
+        </Grid.Column >
+      </Grid >
     </>
   )
 }
