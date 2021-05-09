@@ -3,6 +3,7 @@ import Login from './Login'
 import Home from './Home'
 import BusinessHome from './business/BusinessHome'
 import CustomerHome from './customer/CustomerHome'
+import AccountInfo from './business/AccountInfo'
 import { HashRouter as Router, Route } from 'react-router-dom'
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route exact path={'/BusinessLogin'} component={(props) => <Login {...props} isCustomer={false} />} />
         <Route exact path={'/Customerhome'} component={CustomerHome} />
         <Route exact path={'/Businesshome'} component={BusinessHome} />
+        <Route exact path={'/Businesshome/AccountInfo'} component={AccountInfo} />
       </Router>
     </>
   )

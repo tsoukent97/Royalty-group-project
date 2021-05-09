@@ -15,16 +15,12 @@ module.exports = {
   deleteCard
 }
 
-// Need to make these functions
-// adding new cards, customers, bus
-// deleting customer, cards, bus
-
 // returns an array of objects of customer_id signed up under the business. EX:
 // [{"customer_id":901},{"customer_id":902},{"customer_id":903},{"customer_id":904},{"customer_id":905}]
 // for {name: "Gong Cha", business_id: 102}
 // route is http://localhost:3000/business/:id/customers
 function getCustomers (id, db = connection) {
-  return db('cards').select('customer_id')
+  return db('cards').select('customer_id', 'stamp_count')
     .where('business_id', id)
 }
 // return an object of customer details. EX: {id: 901, name:"Aaron"}
