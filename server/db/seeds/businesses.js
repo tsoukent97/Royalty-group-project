@@ -6,6 +6,7 @@ exports.seed = (knex) => {
       return knex('businesses').insert([
         { id: 101, name: 'Starbucks', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com', logo: './images/starbucks.png' },
         { id: 102, name: 'Gong Cha', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com', logo: './images/gong-char.png' },
+        { id: 103, name: 'EB Games', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com', logo: './images/eb-games.png' },
         { id: 104, name: 'French Tart', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com', logo: './images/french-tart.png' },
         { id: 105, name: 'Robert Harris', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com', logo: './images/robert-harris.png' },
         { id: 106, name: 'Cinnamon Cafe', user_type: 'business', hash: 'password', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com', logo: './images/cinnamon-cafe.png' },
