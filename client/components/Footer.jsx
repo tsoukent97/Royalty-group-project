@@ -2,9 +2,9 @@ import React from 'react'
 
 function Footer () {
   return (
-    <div>
-      <h2>Contact Us</h2>
-      <h4>loyaltea@post.com</h4>
+    <div className="footer-container">
+      <h2 className="footer">Contact Us</h2>
+      <h4 className="footer-email">loyaltea@post.com</h4>
     </div>
   )
 }
