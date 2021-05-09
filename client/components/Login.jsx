@@ -44,9 +44,9 @@ function Login (props) {
             <Button onClick={toggleBusiness}>{props.isCustomer ? 'Business Login' : 'Customer Login'}</Button>
             <h2>{props.isCustomer ? 'Customer' : 'Business'} login page</h2>
             <Form.Field>
-              <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
+              <label>{props.isCustomer ? 'Username:' : 'Business username:'}</label>
               <input
-                placeholder={props.isCustomer ? 'Enter username...' : 'Enter business...'}
+                placeholder={props.isCustomer ? 'Enter username...' : 'Enter business username...'}
                 name='username'
                 onChange={handleChange}
                 value={form.username}
