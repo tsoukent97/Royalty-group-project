@@ -17,9 +17,8 @@
 }
 
 .card-grid {
-  margin: 0 auto;
-  height: auto;
-  max-width: 50%;
+  bottom: 75%;
+  padding-top: 3rem;
 }
 
 .card {
