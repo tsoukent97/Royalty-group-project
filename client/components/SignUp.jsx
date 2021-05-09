@@ -24,6 +24,11 @@ function SignUp () {
     console.log(setCustomerForm)
   }
 
+  function homePath (e) {
+    e.preventDefault()
+    props.history.push('/')
+  }
+
   return (
     <>
       <h1>Sign up: Customer</h1>
@@ -49,6 +54,12 @@ function SignUp () {
           <br></br>
           <button onSubmit={handleSubmit}>Sign up</button>
         </form>
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div>
+        <button onClick={homePath}>Home</button>
       </div>
     </>
   )
