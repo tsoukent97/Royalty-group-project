@@ -14,19 +14,22 @@ export default function BusinessHome () {
   }, [])
 
   return (
-    <div>
+    <>
       <NavBusiness />
       <Graph />
-      <div>
-          Total Customer: {customers.length}
+      <div className='app'>
+        <p>Total Customers: {customers.length}</p>
         <table>
-          <tr>
-            <td>Customer ID</td>
-            <td>Stamp Count</td>
-          </tr>
-          {customers.map((customer, i) => <tr key={i}>{customer.customer_id}<td>{customer.stamp_count}</td></tr>)}
+          <tbody>
+            <tr>
+              <td>Customer ID</td>
+              <td>Stamp Count</td>
+            </tr>
+            {customers.map((customer, i) =>
+              <tr key={i}>{customer.customer_id}<td>{customer.stamp_count}</td></tr>)}
+          </tbody>
         </table>
       </div>
-    </div>
+    </>
   )
 }

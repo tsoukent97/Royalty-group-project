@@ -1,13 +1,12 @@
 import React from 'react'
 import Login from './Login'
 import Home from './Home'
-import Signup from './Signup'
+import Signup from './SignUp'
 import BusinessHome from './business/BusinessHome'
 import CustomerHome from './customer/CustomerHome'
 import AccountInfo from './business/AccountInfo'
 import Footer from './Footer'
 import { HashRouter as Router, Route } from 'react-router-dom'
-import NavBusiness from './business/NavBusiness'
 
 const App = () => {
   return (

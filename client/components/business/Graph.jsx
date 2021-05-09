@@ -1,6 +1,7 @@
 // import NavBusiness from './NavBusiness'
 import React, { Component } from 'react'
 import Chart from 'react-apexcharts'
+
 export default class Graph extends Component {
   constructor (props) {
     super(props)
@@ -26,16 +27,12 @@ export default class Graph extends Component {
   render () {
     return (
       <div className='app'>
-        <div className='row'>
-          <div className='mixed-chart'>
-            <Chart
-              options={this.state.options}
-              series={this.state.series}
-              type='bar'
-              width='500'
-            />
-          </div>
-        </div>
+        <Chart
+          options={this.state.options}
+          series={this.state.series}
+          type='bar'
+          width='500'
+        />
       </div>
     )
   }
