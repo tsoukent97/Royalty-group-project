@@ -5,6 +5,7 @@ export default function NavBusiness () {
     <nav>
       <li>Home</li>
       <li>Log Out</li>
+      <li><a href='/#/Businesshome/AccountInfo'>Account Information</a></li>
     </nav>
   )
 }
