@@ -7,6 +7,7 @@ import CustomerHome from './customer/CustomerHome'
 import AccountInfo from './business/AccountInfo'
 import Footer from './Footer'
 import { HashRouter as Router, Route } from 'react-router-dom'
+import NavBusiness from './business/NavBusiness'
 
 const App = () => {
   return (
