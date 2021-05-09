@@ -7,6 +7,7 @@ import { Button, Form, Grid } from 'semantic-ui-react'
 
 function SignUp (props) {
   const [customerForm, setCustomerForm] = useState({
+    email: '',
     username: '',
     password: '',
     userType: 'Customer'
@@ -30,38 +31,52 @@ function SignUp (props) {
     props.history.push('/')
   }
 
+  function toggleBusiness(e) {
+    e.preventDefault()
+    props.history.push(props.isCustomer ? '/BusinessSignup' : '/CustomerSignup')
+  }
+
   return (
-    <>
-      <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Button onClick={homePath}>Home</Button>
-          <h1>Sign up: Customer</h1>
-          <Form className='signup' size='large'>
-            <Form.Field>
-              <label>Username</label>
-              <input type='text'
-                placeholder='Username'
-                name='username'
-                required
-                value={customerForm.username}
-                onChange={handleChange}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label>Password</label>
-              <input type='text'
-                placeholder='Password'
-                name='password'
-                required
-                value={customerForm.password}
-                onChange={handleChange}
-              />
-            </Form.Field>
-            <Button positive onSubmit={handleSubmit} type='submit'>Submit</Button>
-          </Form>
-        </Grid.Column>
-      </Grid>
-    </>
+    <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Button onClick={toggleBusiness}>{props.isCustomer ? 'Business Sign up' : 'Customer Sign up'}</Button>
+        <h1>{props.isCustomer ? 'Customer' : 'Business'} Sign up</h1>
+        <Form>
+          <Form.Field>
+            <label>Email:</label>
+            <input type='text'
+              placeholder='Enter email'
+              name='email'
+              required
+              value={customerForm.email}
+              onChange={handleChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
+            <input type='text'
+              placeholder={props.isCustomer ? 'Choose username' : 'Choose business name'}
+              name='username'
+              required
+              value={customerForm.username}
+              onChange={handleChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Password:</label>
+            <input type='text'
+              placeholder='Choose password'
+              name='password'
+              required
+              value={customerForm.password}
+              onChange={handleChange}
+            />
+          </Form.Field>
+          <Button postive onSubmit={handleSubmit} type='submit'>Submit</Button>
+        </Form>
+        <Button onClick={homePath}>Home</Button>
+      </Grid.Column>
+    </Grid>
   )
 }
 
