@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // TODO
 // Stitch this form into api client, connect to DB
 // Style this in semantic ui
 
-function SignUp () {
+function SignUp (props) {
   const [customerForm, setCustomerForm] = useState({
+    email:'',
     username: '',
     password: '',
     userType: 'Customer'
@@ -29,23 +30,38 @@ function SignUp () {
     props.history.push('/')
   }
 
+  function toggleBusiness(e) {
+    e.preventDefault()
+    props.history.push(props.isCustomer ? '/BusinessSignup' : '/CustomerSignup')
+  }
+
   return (
     <>
-      <h1>Sign up: Customer</h1>
+      <button onClick={toggleBusiness}>{props.isCustomer? 'Business Sign up': 'Customer Sign up'}</button>
+      <h2>{props.isCustomer ? 'Customer': 'Business'} Sign up</h2>
       <div>
         <form>
-          <label>Username</label>
+          <label>Email:</label>
+          <input type='text' 
+          placeholder='Enter email' 
+          name='email'
+          required
+          value={customerForm.email}
+          onChange={handleChange}
+          />
+          <br></br>
+          <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
           <input type='text'
-            placeholder='Username'
+            placeholder={props.isCustomer ? 'Choose username': 'Choose business name'}
             name='username'
             required
             value={customerForm.username}
             onChange={handleChange}
           />
           <br></br>
-          <label>Password</label>
+          <label>Password:</label>
           <input type='text'
-            placeholder='Password'
+            placeholder='Choose password'
             name='password'
             required
             value={customerForm.password}

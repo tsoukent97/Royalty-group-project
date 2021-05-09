@@ -36,7 +36,6 @@ function Login (props) {
 
     return (
         <>
-        <label></label>
         <button onClick={toggleBusiness}>{props.isCustomer? 'Business Login': 'Customer Login'}</button>
         <div>
            <form>
