@@ -1,13 +1,54 @@
-import React from 'react'
-import NavCustomer from './NavCustomer'
+// grid of images, 3 columns
+// uncomment navCustomer once ready
+// replace placeholder with company logos
 
-export default function CustomerHome () {
+import React from 'react'
+// import NavCustomer from './NavCustomer'
+import { Grid, Image } from 'semantic-ui-react'
+
+function CustomerHome () {
   return (
     <div>
-      <NavBarCustomer />
-      <div>
-        {/* This is where user's cards show up */}
-      </div>
+      <Grid relaxed columns={3}>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image2' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
+        </Grid.Column>
+        <Grid.Column>
+          <Image href='#' src='/images/placeholder.png' alt='Image1' />
+        </Grid.Column>
+      </Grid>
     </div>
   )
 }
+
+export default CustomerHome

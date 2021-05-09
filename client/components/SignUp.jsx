@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { Button, Form, Grid } from 'semantic-ui-react'
 
 // TODO
 // Stitch this form into api client, connect to DB
 // Style this in semantic ui
 
-function SignUp () {
+function SignUp (props) {
   const [customerForm, setCustomerForm] = useState({
     username: '',
     password: '',
@@ -24,31 +25,43 @@ function SignUp () {
     console.log(setCustomerForm)
   }
 
+  function homePath (e) {
+    e.preventDefault()
+    props.history.push('/')
+  }
+
   return (
     <>
-      <h1>Sign up: Customer</h1>
+      <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <h1>Sign up: Customer</h1>
+          <Form className='signup' size='large'>
+            <Form.Field>
+              <label>Username</label>
+              <input type='text'
+                placeholder='Username'
+                name='username'
+                required
+                value={customerForm.username}
+                onChange={handleChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Password</label>
+              <input type='text'
+                placeholder='Password'
+                name='password'
+                required
+                value={customerForm.password}
+                onChange={handleChange}
+              />
+            </Form.Field>
+            <Button onSubmit={handleSubmit} type='submit'>Submit</Button>
+          </Form>
+        </Grid.Column>
+      </Grid>
       <div>
-        <form>
-          <label>Username</label>
-          <input type='text'
-            placeholder='Username'
-            name='username'
-            required
-            value={customerForm.username}
-            onChange={handleChange}
-          />
-          <br></br>
-          <label>Password</label>
-          <input type='text'
-            placeholder='Password'
-            name='password'
-            required
-            value={customerForm.password}
-            onChange={handleChange}
-          />
-          <br></br>
-          <button onSubmit={handleSubmit}>Sign up</button>
-        </form>
+        <button onClick={homePath}>Home</button>
       </div>
     </>
   )
