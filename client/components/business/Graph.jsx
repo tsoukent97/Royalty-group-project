@@ -1,6 +1,7 @@
 // import NavBusiness from './NavBusiness'
 import React, { Component } from 'react'
 import Chart from 'react-apexcharts'
+import { Container } from 'semantic-ui-react'
 
 export default class Graph extends Component {
   constructor (props) {
@@ -26,14 +27,22 @@ export default class Graph extends Component {
 
   render () {
     return (
-      <div className='app'>
-        <Chart
-          options={this.state.options}
-          series={this.state.series}
-          type='bar'
-          width='500'
-        />
-      </div>
+      <>
+        <Container>
+          <div className="app">
+            <div className="row">
+              <div className="mixed-chart">
+                <Chart
+                  options={this.state.options}
+                  series={this.state.series}
+                  type='bar'
+                  width='500'
+                />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </>
     )
   }
 }

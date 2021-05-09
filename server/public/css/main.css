@@ -28,9 +28,11 @@
 }
 
 .app {
+  padding: 4rem;
   margin: 0 auto;
   width: 100%;
   text-align: center;
+  justify-content: center;
 }
 
 .home {
