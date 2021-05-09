@@ -3,8 +3,8 @@ import React from 'react'
 function Footer () {
   return (
     <div className="footer-container">
-      <h2 className="footer">Contact Us</h2>
-      <h4 className="footer-email">loyaltea@post.com</h4>
+      <h1>Contact Us</h1>
+      <p>loyaltea@post.com</p>
     </div>
   )
 }
