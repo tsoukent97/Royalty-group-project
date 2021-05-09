@@ -1,18 +1,15 @@
 import React, { useState } from 'react'
-import { loginCustomer } from '../api/passportAPI'
+import { Button, Form, Grid } from 'semantic-ui-react'
+
+let userInfo = {}
 
 function Login (props) {
   const initialData = {
-    Username: '',
-    Password: ''
+    username: '',
+    password: ''
   }
 
   const [form, setForm] = useState(initialData)
-  const [error, setError] = useState('')
-
-  function hideError () {
-    setError('')
-  }
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -24,40 +21,73 @@ function Login (props) {
 
   function handleSubmit (e) {
     e.preventDefault()
-    loginCustomer(form)
-      .then((auth) => {
-        setForm(initialData)
-        console.log(auth)
-        if (auth === 'Login Succeeded') {
-          console.log('logged in')
-          props.history.push('/')
-        } else {
-          setError(auth)
-        } return null
-      })
-      .catch(e => {
-        console.log(e.message)
-      })
+    userInfo = form
+    props.history.push(props.isCustomer ? '/Customerhome' : '/Businesshome')
+    return null
+  }
+  
+  // function handleSubmit (e) {
+  //   e.preventDefault()
+  //   loginCustomer(form)
+  //     .then((auth) => {
+  //       setForm(initialData)
+  //       console.log(auth)
+  //       if (auth === 'Login Succeeded') {
+  //         console.log('logged in')
+  //         props.history.push('/')
+  //       } else {
+  //         setError(auth)
+  //       } return null
+  //     })
+  //     .catch(e => {
+  //       console.log(e.message)
+  //     })
+  // }
+
+  function toggleBusiness (e) {
+    e.preventDefault()
+    props.history.push(props.isCustomer ? '/BusinessLogin' : '/CustomerLogin')
+  }
+
+  function homePath (e) {
+    e.preventDefault()
+    props.history.push('/')
   }
 
   return (
     <>
-      <h2>Login page</h2>
-      <div onClick={hideError}>
-        { error && `Error:${error}`}
-      </div>
-
-      <div>
-        <form>
-          <label>Username:</label>
-          <input placeholder="Enter username..." name="username" onChange={handleChange}></input>
-          <br></br>
-          <label>Password:</label>
-          <input placeholder="Enter password..." name="password" onChange={handleChange}></input>
-          <br></br>
-          <button onClick={handleSubmit}>Login</button>
-        </form>
-      </div>
+      < Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle' >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Form className='signup' size='large'>
+            <Button onClick={homePath}>Home</Button>
+            <Button onClick={toggleBusiness}>{props.isCustomer ? 'Business Login' : 'Customer Login'}</Button>
+            <h2>{props.isCustomer ? 'Customer' : 'Business'} login page</h2>
+            <Form.Field>
+              <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
+              <input
+                placeholder={props.isCustomer ? 'Enter username...' : 'Enter business...'}
+                name='username'
+                onChange={handleChange}
+                value={form.username}
+                type='text'
+                required
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Password:</label>
+              <input
+                placeholder='Enter password...'
+                name='password'
+                type='text'
+                onChange={handleChange}
+                value={form.password}
+                required
+              />
+            </Form.Field>
+            <Button positive type='button' onClick={handleSubmit}>Login</Button>
+          </Form>
+        </Grid.Column >
+      </Grid >
     </>
   )
 }
