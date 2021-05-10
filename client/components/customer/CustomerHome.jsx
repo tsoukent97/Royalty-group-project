@@ -7,6 +7,8 @@ import { Container, Grid, Image } from 'semantic-ui-react'
 import { getCustomerCards } from '../../apiClient'
 import NavCustomer from './NavCustomer'
 
+const id = 902
+
 function CustomerHome () {
   const [state, setState] = useState([{
     business: '',
@@ -16,7 +18,7 @@ function CustomerHome () {
   ])
 
   useEffect(() => {
-    getCustomerCards(902)
+    getCustomerCards(id)
       .then(cards => {
         setState(cards)
         return null
