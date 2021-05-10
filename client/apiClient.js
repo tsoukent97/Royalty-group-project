@@ -16,7 +16,7 @@ export function deleteCustomer (id) {
 
 export function getStampCount (businessId, customerId) {
   return request
-    .get(customerServer + '/stampCount/?businessId=' + businessId + '&customerId=' + customerId)
+    .get(customerServer + '/' + customerId + '/query?businessId=' + businessId + '&customerId=' + customerId)
     .then(res => res.body)
 }
 
