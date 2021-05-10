@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button, Container } from 'semantic-ui-react'
 
 function Home (props) {
   function signupPath (e) {
@@ -14,11 +14,14 @@ function Home (props) {
 
   return (
     <>
+      <div>
+        <Container textAlign='center'>
+          <img className='logo' src="./images/Royalty.png" alt="logo" />
+        </Container>
+      </div>
       <div className='home'>
-        <h1>Loyaltea Home Page</h1>
-        <img src="./images/Royalty.png" alt="logo" />
         <Button.Group size='large'>
-          <Button onClick={signupPath}>Signup</Button>
+          <Button primary onClick={signupPath}>Signup</Button>
           <Button.Or />
           <Button positive onClick={loginPath}>Login</Button>
         </Button.Group>
