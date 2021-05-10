@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getBusinessProfile } from '../../apiClient'
+import { getBusinessProfile } from '../../api/apiClient'
 
 export default function AccountInfo () {
   const [businessInfo, setBusinessInfo] = useState([])

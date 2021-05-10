@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Graph from './Graph'
 import NavBusiness from './NavBusiness'
-import { getCustomers } from '../../apiClient'
+import { getCustomers } from '../../api/apiClient'
 
 export default function BusinessHome () {
   const [customers, setCustomers] = useState([])

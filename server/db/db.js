@@ -36,7 +36,7 @@ function getCustomers (id, db = connection) {
 // route is http://localhost:3000/business/:id
 function getBusinessProfile (id, db = connection) {
   return db('businesses')
-    .select('id', 'name', 'address', 'phoneNumber', 'email')
+    .select('id', 'business', 'address', 'phoneNumber', 'email', 'logo')
     .where('id', id)
     .first()
 }
@@ -50,7 +50,7 @@ function getCustomerCards (id, db = connection) {
     .join('cards', 'cards.customer_id', 'customers.id')
     .join('businesses', 'cards.business_id', 'businesses.id')
     .where('customers.id', id)
-    .select('businesses.business as business')
+    .select('businesses.business as business', 'businesses.id as id', 'businesses.logo as logo')
 }
 
 // returns customer profile, instead of ID. nested getCustomerProfile function in router
