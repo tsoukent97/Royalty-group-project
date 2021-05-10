@@ -3,7 +3,7 @@ import { Container, Button, Menu } from 'semantic-ui-react'
 
 export default function NavBusiness () {
   return (
-    <Container>
+    <Container className="nav-business">
       <Menu stackable widths={5}>
         <Menu.Item>np
           <img src='/logo.png' alt='logo' />

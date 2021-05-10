@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Chart from 'react-apexcharts'
-import { Container } from 'semantic-ui-react'
 
 export default class Graph extends Component {
   constructor (props) {

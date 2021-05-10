@@ -4,12 +4,31 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-#apexchartsbasicxbar {
+/* Business Home/chart */
+#apexchartsbasicxbar, .row {
   padding-top: 5rem;
   margin: 0 auto;
   width: 100%;
 }
 
+table, tbody {
+  border: solid 2px black;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.app {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.wrapper {
+  padding-top: 5rem;
+}
+
+/* Customer home styles */
 .g-3 {
   margin: 0 auto;
 }
@@ -29,14 +48,8 @@
   max-width: 50%;
 }
 
-.app {
-  padding: 4rem;
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
-  justify-content: center;
-}
 
+/* Home page styles */
 .home {
   display: block;
   bottom: 40%;
