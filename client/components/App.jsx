@@ -15,7 +15,8 @@ const App = () => {
     <>
       <Router>
         <Route exact path={'/'} component={Home} />
-        <Route exact path={'/Signup'} component={Signup} />
+        <Route exact path={'/CustomerSignup'} component={(props) => <Signup {...props} isCustomer={true} />} />
+        <Route exact path={'/BusinessSignup'} component={(props) => <Signup {...props} isCustomer={false} />} />
         <Route exact path={'/CustomerLogin'} component={(props) => <Login {...props} isCustomer={true} />} />
         <Route exact path={'/BusinessLogin'} component={(props) => <Login {...props} isCustomer={false} />} />
         <Route exact path={'/Customerhome'} component={CustomerHome} />

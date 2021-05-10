@@ -36,40 +36,38 @@ function Login (props) {
   }
 
   return (
-    <>
-      < Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle' >
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Form className='signup' size='large'>
-            <Button onClick={homePath}>Home</Button>
-            <Button onClick={toggleBusiness}>{props.isCustomer ? 'Business Login' : 'Customer Login'}</Button>
+    <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle' >
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Button onClick={toggleBusiness}>{props.isCustomer ? 'Business Login' : 'Customer Login'}</Button>
+        <Form className='signup' size='large'>
+          <Form.Field>
             <h2>{props.isCustomer ? 'Customer' : 'Business'} login page</h2>
-            <Form.Field>
-              <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
-              <input
-                placeholder={props.isCustomer ? 'Enter username...' : 'Enter business...'}
-                name='username'
-                onChange={handleChange}
-                value={form.username}
-                type='text'
-                required
-              />
-            </Form.Field>
-            <Form.Field>
-              <label>Password:</label>
-              <input
-                placeholder='Enter password...'
-                name='password'
-                type='text'
-                onChange={handleChange}
-                value={form.password}
-                required
-              />
-            </Form.Field>
-            <Button positive type='button' onClick={handleSubmit}>Login</Button>
-          </Form>
-        </Grid.Column >
-      </Grid >
-    </>
+            <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
+            <input
+              placeholder={props.isCustomer ? 'Enter username...' : 'Enter business...'}
+              name='username'
+              onChange={handleChange}
+              value={form.username}
+              type='text'
+              required
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Password:</label>
+            <input
+              placeholder='Enter password...'
+              name='password'
+              type='text'
+              onChange={handleChange}
+              value={form.password}
+              required
+            />
+          </Form.Field>
+          <Button positive type='button' onClick={handleSubmit}>Login</Button>
+          <Button onClick={homePath}>Home</Button>
+        </Form>
+      </Grid.Column >
+    </Grid >
   )
 }
 
