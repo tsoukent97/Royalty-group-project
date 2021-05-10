@@ -3,10 +3,10 @@ import Login from './Login'
 import Home from './Home'
 import Signup from './SignUp'
 import BusinessHome from './business/BusinessHome'
-import CustomerHome from './customer/CustomerHome'
+import { CustomerHome } from './customer/CustomerHome'
 import AddCard from './customer/AddCard'
 import AccountInfo from './business/AccountInfo'
-import QrCode from './customer/QrCode'
+import Card from './customer/Card'
 import Footer from './Footer'
 import { HashRouter as Router, Route } from 'react-router-dom'
 
@@ -21,7 +21,7 @@ const App = () => {
         <Route exact path={'/BusinessLogin'} component={(props) => <Login {...props} isCustomer={false} />} />
         <Route exact path={'/Customerhome'} component={CustomerHome} />
         <Route exact path={'/Customerhome/addCard'} component={AddCard} />
-        <Route exact path={'/Customerhome/cardInfo'} component={QrCode} />
+        <Route exact path={'/Customerhome/cardInfo'} component={Card} />
         <Route exact path={'/Businesshome'} component={BusinessHome} />
         <Route exact path={'/Businesshome/AccountInfo'} component={AccountInfo} />
         <Route path={'/'} component={Footer} />

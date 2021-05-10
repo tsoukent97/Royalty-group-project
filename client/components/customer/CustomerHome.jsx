@@ -4,10 +4,12 @@
 import React, { useState, useEffect } from 'react'
 // import NavCustomer from './NavCustomer'
 import { Container, Grid, Image } from 'semantic-ui-react'
-import { getCustomerCards } from '../../apiClient'
+import { getCustomerCards } from '../../api/apiClient'
+import { Link } from 'react-router-dom'
 import NavCustomer from './NavCustomer'
 
 const id = 902
+let businessId = 0
 
 function CustomerHome () {
   const [state, setState] = useState([{
@@ -28,14 +30,20 @@ function CustomerHome () {
       })
   }, [])
 
+  function handleClick (id) {
+    businessId = id
+    // props.history.push('/Customerhome/cardInfo')
+    return null
+  }
+
   return (
     <div>
       <NavCustomer />
       <Grid relaxed columns={3}>
-        {state.map((card) => <Grid.Column key={card.id}><Image href='#' src={card.logo} alt={card.business} /></Grid.Column>)}
+        {state.map((card) => <Grid.Column key={card.id}><Link to={'Customerhome/cardInfo'}><Image href='#' src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/></Link></Grid.Column>)}
       </Grid>
     </div>
   )
 }
 
-export default CustomerHome
+export { CustomerHome, businessId }

@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import QRCode from 'qrcode.react'
-import { updateStampCount } from '../../apiClient'
+import { businessId } from './CustomerHome'
+import { updateStampCount, getStampCount } from '../../api/apiClient'
 
 export default function QrCode () {
-  function handleClick () {
-    updateStampCount()
+  const [stamps, setStamps] = useState({})
+
+  useEffect(() => {
+    const customerId = 901
+    getStampCount(businessId, customerId)
+      .then(currentCount =>
+        setStamps(currentCount[0]))
+      .catch(e => console.error(e.message))
+  }, [])
+
+  function reloadStamps () {
+    const customerId = 901
+    getStampCount(businessId, customerId)
+      .then(currentCount =>
+        setStamps(currentCount[0]))
+      .catch(e => console.error(e.message))
   }
+  function handleClick () {
+    const customerId = 901
+    updateStampCount(businessId, customerId)
+    reloadStamps()
+    return null
+  }
+
   return (
     <div>
       <QRCode
@@ -15,7 +37,8 @@ export default function QrCode () {
         level={'H'}
         includeMargin={true}
       />
-      <a onClick={() => handleClick()}> Scan QR </a>
+      <button onClick={() => handleClick()}>Click to add stamp</button>
+      <h3>Current stamps: {stamps.stamp_count} /10 </h3>
     </div>
   )
 }
