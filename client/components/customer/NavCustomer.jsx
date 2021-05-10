@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Button, Menu } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 export default function NavCustomer () {
   return (
@@ -11,7 +12,7 @@ export default function NavCustomer () {
         <Menu.Item>Welcome, username here</Menu.Item>
         <Menu.Item>Your Royalty Cards</Menu.Item>
         <Menu.Item position='right'>
-          <Button primary>Add a card</Button>
+          <Link to={'/Customerhome/addCard'}><Button primary>Add a card</Button></Link>
         </Menu.Item>
         <Menu.Item position='right'>
           <Button secondary>Logout</Button>
