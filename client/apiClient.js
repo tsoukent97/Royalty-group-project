@@ -49,4 +49,3 @@ export function deleteBusiness (id) {
     .patch(businessServer + '/' + id + '/delete')
     .then(res => res.body)
 }
-

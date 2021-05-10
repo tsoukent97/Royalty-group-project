@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
+import { loginCustomer } from '../api/passportAPI'
 
-let userInfo = {}
+// let userInfo = {}
 
 function Login (props) {
-  const initialData = {
+  const initialState = {
     username: '',
     password: ''
   }
 
-  const [form, setForm] = useState(initialData)
+  const [form, setForm] = useState(initialState)
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -21,10 +22,18 @@ function Login (props) {
 
   function handleSubmit (e) {
     e.preventDefault()
-    userInfo = form
-    props.history.push(props.isCustomer ? '/Customerhome' : '/Businesshome')
-    return null
+    loginCustomer(form)
+      .then((auth) => {
+        console.log(auth)
+        if (auth === 'Login Succeeded') {
+          props.history.push('/Customerhome')
+        } return null
+      })
+      .catch(e => {
+        console.log(e.message)
+      })
   }
+
   function toggleBusiness (e) {
     e.preventDefault()
     props.history.push(props.isCustomer ? '/BusinessLogin' : '/CustomerLogin')

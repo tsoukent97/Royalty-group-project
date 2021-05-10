@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
+import { registerUser } from '../api/passportAPI'
 
 // TODO
 // Stitch this form into api client, connect to DB
 // Style this in semantic ui
 
+const initialState = {
+  username: '',
+  password: '',
+  userType: 'Customer'
+}
+
 function SignUp (props) {
-  const [customerForm, setCustomerForm] = useState({
-    username: '',
-    password: '',
-    address: '',
-    phoneNumber: '',
-    email: '',
-    userType: 'Customer'
-  })
+  const [customerForm, setCustomerForm] = useState(initialState)
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -25,7 +25,16 @@ function SignUp (props) {
 
   function handleSubmit (e) {
     e.preventDefault()
-    console.log(setCustomerForm)
+    registerUser(customerForm)
+      .then((auth) => {
+        if (auth === 'Username created') {
+          props.history.push('/Customerhome')
+        }
+        return null
+      })
+      .catch(e => {
+        console.log(e.message)
+      })
   }
 
   function homePath (e) {
@@ -104,7 +113,7 @@ function SignUp (props) {
               />}
           </Form.Field>
           <Button primary onClick={homePath}>Home</Button>
-          <Button positive type='submit' onSubmit={handleSubmit}>Submit</Button>
+          <Button positive type='submit' onClick={handleSubmit}>Submit</Button>
         </Form>
       </Grid.Column>
     </Grid>
