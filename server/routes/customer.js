@@ -50,7 +50,7 @@ router.post('/addCard', (req, res) => {
     })
 })
 
-router.get('/', (req, res) => {
+router.patch('/', (req, res) => {
   const { businessId, customerId } = req.query
   db.getStampCount(businessId, customerId)
     .then(customer => {

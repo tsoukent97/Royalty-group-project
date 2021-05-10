@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getAllCards, addCard } from '../../apiClient'
+import { getAllCards, addCard } from '../../api/apiClient'
 
 export default function AddCard () {
   const [cards, setCards] = useState([])
