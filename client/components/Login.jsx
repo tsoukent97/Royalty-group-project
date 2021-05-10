@@ -70,7 +70,7 @@ function Login (props) {
             <input
               placeholder='Enter password...'
               name='password'
-              type='text'
+              type='password'
               onChange={handleChange}
               value={form.password}
               required
