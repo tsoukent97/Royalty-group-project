@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import QrCode from './QrCode'
-import { getBusinessProfile, getStampCount } from '../../api/apiClient'
+import { getBusinessProfile } from '../../api/apiClient'
 import { businessId } from './CustomerHome'
 
 export default function Card () {
