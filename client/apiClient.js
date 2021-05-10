@@ -24,6 +24,14 @@ export function getAllCards (id) {
   return request
     .get(customerServer + '/' + id + '/addCard')
     .then(res => res.body)
+    .catch(err => console.log(err))
+}
+
+export function addCard (businessId, customerId) {
+  return request
+    .post(customerServer + '/addCard/?businessId=' + businessId + '&customerId=' + customerId)
+    .send(businessId, customerId)
+    .then(res => res.body)
 }
 
 export function getBusinessProfile (id) {

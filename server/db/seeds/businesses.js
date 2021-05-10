@@ -6,7 +6,7 @@ exports.seed = (knex) => {
       return knex('businesses').insert([
         { id: 101, business: 'Starbucks', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/starbucks.jpg' },
         { id: 102, business: 'Gong Cha', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/gong-char.jpg' },
-        { id: 102, business: 'Eb Games', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/eb-games.jpg' },
+        { id: 103, business: 'Eb Games', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/eb-games.jpg' },
         { id: 104, business: 'French Tart', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/french-tart.jpg' },
         { id: 105, business: 'Robert Harris', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/robert-harris.jpg' },
         { id: 106, business: 'Cinnamon Cafe', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/cinnamon-cafe.jpg' },
