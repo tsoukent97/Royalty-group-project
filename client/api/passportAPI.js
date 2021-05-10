@@ -16,3 +16,8 @@ export function registerUser (user) {
     .send(user)
     .then(res => res.body)
 }
+
+export function getCustomer () {
+  return request
+    .get(rootUrl + '/user')
+}

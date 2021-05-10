@@ -9,7 +9,7 @@ export default function NavCustomer () {
         <Menu.Item>
           <img src='/logo.png' alt='logo' />
         </Menu.Item>
-        <Menu.Item>Welcome, username here</Menu.Item>
+        <Menu.Item>Welcome, {} here</Menu.Item>
         <Menu.Item>Your Royalty Cards</Menu.Item>
         <Menu.Item position='right'>
           <Link to={'/Customerhome/addCard'}><Button primary>Add a card</Button></Link>
