@@ -3,9 +3,9 @@
 // replace placeholder with company logos
 
 import React from 'react'
-import { Grid, Image } from 'semantic-ui-react'
+// import NavCustomer from './NavCustomer'
+import { Container, Grid, Image } from 'semantic-ui-react'
 import NavCustomer from './NavCustomer'
-
 
 function CustomerHome () {
   return (

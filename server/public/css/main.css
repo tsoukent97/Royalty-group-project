@@ -4,10 +4,6 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.card {
-  margin: 0 auto;
-}
-
 .g-3 {
   margin: 0 auto;
 }
@@ -16,22 +12,43 @@
   margin: 0 auto;
 }
 
-.signup {
-  max-width: 20rem;
+.card-grid {
+  bottom: 75%;
+  padding-top: 3rem;
+}
+
+.card {
+  margin: 0 auto;
+  height: auto;
+  max-width: 50%;
 }
 
 .app {
+  padding: 4rem;
   margin: 0 auto;
   width: 100%;
   text-align: center;
+  justify-content: center;
 }
 
 .home {
-  bottom: 75%;
+  display: block;
+  bottom: 40%;
   margin: 0 auto;
   width: 100%;
   position: fixed;
   text-align: center;
+}
+
+.ui.container {
+  margin: 0 auto;
+}
+
+.logo {
+  height: auto;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .footer-container {
@@ -39,7 +56,7 @@
   padding: 2rem;
   margin: 0 auto;
   text-align: center;
-  position: fixed;
   width: 100%;
   background-color: antiquewhite;
+  position: absolute;
 }
