@@ -5,7 +5,7 @@ export default function AddCard () {
   const [cards, setCards] = useState([])
 
   useEffect(() => {
-    getAllCards(901)
+    getAllCards()
       .then(allCards =>
         setCards(allCards))
       .catch(e => console.error(e.message))

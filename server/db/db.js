@@ -39,7 +39,7 @@ function getCustomerProfile (id, db = connection) {
 // route is http://localhost:3000/business/:id
 function getBusinessProfile (id, db = connection) {
   return db('businesses')
-    .select('id', 'name', 'address', 'phoneNumber', 'email')
+    .select('id', 'business', 'address', 'phoneNumber', 'email', 'logo')
     .where('id', id)
     .first()
 }

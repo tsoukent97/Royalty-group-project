@@ -14,6 +14,12 @@ export function deleteCustomer (id) {
     .then(res => res.body)
 }
 
+export function getStampCount (businessId, customerId) {
+  return request
+    .get(customerServer + '/stampCount/?businessId=' + businessId + '&customerId=' + customerId)
+    .then(res => res.body)
+}
+
 export function updateStampCount (businessId, customerId) {
   return request
     .patch(customerServer + '/?businessId=' + businessId + '&customerId=' + customerId)

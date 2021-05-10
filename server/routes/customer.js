@@ -63,4 +63,15 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/stampCount/', (req, res) => {
+  console.log('test')
+  // const { businessId, customerId } = req.query
+  // db.getStampCount(businessId, customerId)
+  //   .then(count => {
+  //     return res.json(count)
+  //   }).catch(err => {
+  //     res.status(500).send('DATABASE ERROR: ' + err.message)
+  //   })
+})
+
 module.exports = router
