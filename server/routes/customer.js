@@ -38,13 +38,23 @@ router.get('/:id/addCard', (req, res) => {
     })
 })
 
+router.post('/addCard', (req, res) => {
+  const { businessId, customerId } = req.query
+  db.addCard(businessId, customerId)
+    .then(id => {
+      return res.json(id)
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
 router.get('/', (req, res) => {
   const { businessId, customerId } = req.query
   db.getStampCount(businessId, customerId)
     .then(customer => {
       db.updateStampCount(businessId, customerId, customer[0].stamp_count)
         .then(() => {
-          res.status(200).send()
+          return res.status(200).send()
         }).catch(err => {
           res.status(500).send('DATABASE ERROR: ' + err.message)
         })

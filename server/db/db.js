@@ -104,7 +104,7 @@ function deleteCard (businessId, customerId, db = connection) {
     .where('business_id', businessId)
 }
 function getAllCards (db = connection) {
-  return db('businesses').select('business')
+  return db('businesses').select('business', 'logo', 'id')
 }
 function getStampCount (businessId, customerId, db = connection) {
   return db('cards')

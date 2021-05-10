@@ -15,7 +15,7 @@ exports.seed = (knex) => {
         { id: 110, business: 'Riverside Cafe', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/riverside-cafe.png' },
         { id: 111, business: 'Milk & Honey Cafe', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/milk-honey.png' },
         { id: 112, business: 'Subway', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/subway.png' },
-        { id: 113, business: 'Jetstar', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/jetstar' },
+        { id: 113, business: 'Jetstar', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/jetstar.png' },
         { id: 114, business: 'Mitre 10', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/mitre10.png' },
         { id: 115, business: 'BP', userType: 'business', password: 'password', address: '2 Fun Lane', phoneNumber: 123, email: 'example@example.com', logo: './images/bp.png' }
       ])
