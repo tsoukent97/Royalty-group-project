@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require('../db/db')
 
 router.get('/:id', (req, res) => {
-  db.getCustomerProfile(req.params.id)
+  db.getCustomerById(req.params.id)
     .then(customer => {
       return res.json(customer)
     }).catch(err => {
