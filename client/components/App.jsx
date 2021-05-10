@@ -6,7 +6,7 @@ import BusinessHome from './business/BusinessHome'
 import CustomerHome from './customer/CustomerHome'
 import AddCard from './customer/AddCard'
 import AccountInfo from './business/AccountInfo'
-import QrCode from './customer/QrCode'
+import Card from './customer/Card'
 import Footer from './Footer'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
