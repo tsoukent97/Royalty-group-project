@@ -65,7 +65,7 @@ function SignUp (props) {
           </Form.Field>
           <Form.Field>
             <label>Password:</label>
-            <input type='text'
+            <input type='password'
               placeholder='Choose password'
               name='password'
               required
