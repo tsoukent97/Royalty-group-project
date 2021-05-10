@@ -1,6 +1,6 @@
 import React from 'react'
 import { screen, render } from '@testing-library/react'
-import Login from './Login'
+import SignUp from '../SignUp'
 
 describe('Customer sign up form', () => {
   it('Finds heading', () => {

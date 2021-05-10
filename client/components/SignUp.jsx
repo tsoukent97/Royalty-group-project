@@ -42,38 +42,81 @@ function SignUp (props) {
     props.history.push('/')
   }
 
+  function toggleBusiness (e) {
+    e.preventDefault()
+    props.history.push(props.isCustomer ? '/BusinessSignup' : '/CustomerSignup')
+  }
+
   return (
-    <>
-      <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Button onClick={homePath}>Home</Button>
-          <h1>Sign up: Customer</h1>
-          <Form className='signup' size='large'>
-            <Form.Field>
-              <label>Username</label>
-              <input type='text'
-                placeholder='Username'
-                name='username'
+    <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Button onClick={toggleBusiness}>{props.isCustomer ? 'Business Sign up' : 'Customer Sign up'}</Button>
+        <h1>{props.isCustomer ? 'Customer' : 'Business'} Sign up</h1>
+        <Form>
+          <Form.Field>
+            <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
+            <input type='text'
+              placeholder={props.isCustomer ? 'Choose username' : 'Choose business name'}
+              name='username'
+              required
+              value={customerForm.username}
+              onChange={handleChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Password:</label>
+            <input type='text'
+              placeholder='Choose password'
+              name='password'
+              required
+              value={customerForm.password}
+              onChange={handleChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>{props.isCustomer ? '' : 'Phone Number:'}</label>
+            {props.isCustomer
+              ? ''
+              : <input
+                type='text'
+                placeholder='Enter number'
+                name='number'
                 required
-                value={customerForm.username}
+                value={customerForm.phoneNumber}
                 onChange={handleChange}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label>Password</label>
-              <input type='text'
-                placeholder='Password'
-                name='password'
+              />}
+          </Form.Field>
+          <Form.Field>
+            <label>{props.isCustomer ? '' : 'Address:'}</label>
+            {props.isCustomer
+              ? ''
+              : <input
+                type='text'
+                placeholder='Enter Address'
+                name='Address'
                 required
-                value={customerForm.password}
+                value={customerForm.address}
                 onChange={handleChange}
-              />
-            </Form.Field>
-            <Button positive onClick={handleSubmit} type='submit'>Submit</Button>
-          </Form>
-        </Grid.Column>
-      </Grid>
-    </>
+              />}
+          </Form.Field>
+          <Form.Field>
+            <label>{props.isCustomer ? '' : 'Email:'}</label>
+            {props.isCustomer
+              ? ''
+              : <input
+                type='text'
+                placeholder='Enter email'
+                name='email'
+                required
+                value={customerForm.email}
+                onChange={handleChange}
+              />}
+          </Form.Field>
+          <Button primary onClick={homePath}>Home</Button>
+          <Button positive type='submit' onClick={handleSubmit}>Submit</Button>
+        </Form>
+      </Grid.Column>
+    </Grid>
   )
 }
 
