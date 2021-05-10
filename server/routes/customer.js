@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../db/db')
+const session = require('express-session')
 
 router.get('/:id', (req, res) => {
+  console.log()
   db.getCustomerById(req.params.id)
     .then(customer => {
       return res.json(customer)
@@ -48,7 +50,7 @@ router.post('/addCard', (req, res) => {
     })
 })
 
-router.get('/', (req, res) => {
+router.patch('/', (req, res) => {
   const { businessId, customerId } = req.query
   db.getStampCount(businessId, customerId)
     .then(customer => {
@@ -58,6 +60,16 @@ router.get('/', (req, res) => {
         }).catch(err => {
           res.status(500).send('DATABASE ERROR: ' + err.message)
         })
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
+router.get('/:id/query', (req, res) => {
+  const { businessId, customerId } = req.query
+  db.getStampCount(businessId, customerId)
+    .then(count => {
+      return res.json(count)
     }).catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
