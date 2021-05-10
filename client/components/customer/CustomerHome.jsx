@@ -4,23 +4,28 @@
 import React, { useState, useEffect } from 'react'
 // import NavCustomer from './NavCustomer'
 import { Container, Grid, Image } from 'semantic-ui-react'
+import { getCustomerCards } from '../../apiClient'
 import NavCustomer from './NavCustomer'
 
 function CustomerHome () {
   const [state, setState] = useState([{
-    business: 'Air New Zealand',
-    id: '109',
-    logo: './images/air-nz.jpg'
-  },
-  {
-    business: 'Starbucks',
-    id: '101',
-    logo: './images/starbucks.jpg'
-  }])
+    business: '',
+    id: '',
+    logo: ''
+  }
+  ])
 
   useEffect(() => {
-
+    getCustomerCards(902)
+      .then(cards => {
+        setState(cards)
+        return null
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }, [])
+
   return (
     <div>
       <NavCustomer />
