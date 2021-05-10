@@ -3,7 +3,6 @@ import request from 'superagent'
 const rootUrl = 'http://localhost:3000'
 
 export function loginCustomer (customer) {
-  console.log('6 ' + customer.username)
   return request.post(rootUrl + '/login')
     .send({
       username: customer.username,

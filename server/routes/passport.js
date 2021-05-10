@@ -31,7 +31,6 @@ router.use(passport.session())
 
 router.post('/login', async (req, res, next) => {
   await passport.authenticate('local', (e, customer, info) => {
-    console.log('34' + customer, e, info)
     if (e) throw e
     if (!customer) res.json(info.message)
     else {

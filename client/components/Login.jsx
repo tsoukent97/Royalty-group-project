@@ -20,20 +20,12 @@ function Login (props) {
     })
   }
 
-  // function handleSubmit (e) {
-  //   e.preventDefault()
-  //   userInfo = form
-  //   props.history.push(props.isCustomer ? '/Customerhome' : '/Businesshome')
-  //   return null
-  // }
-
   function handleSubmit (e) {
     e.preventDefault()
     loginCustomer(form)
       .then((auth) => {
         console.log(auth)
         if (auth === 'Login Succeeded') {
-          console.log('logged in')
           props.history.push('/Customerhome')
         } return null
       })
