@@ -25,6 +25,7 @@ export default function QrCode () {
     const customerId = 901
     updateStampCount(businessId, customerId)
     reloadStamps()
+    // alert('Congratulations! You are one stamp closer to your freebie!')
     return null
   }
 
