@@ -62,7 +62,7 @@ function addCustomer (customer, db = connection) {
       // eslint-disable-next-line promise/no-nesting
       return db('customers')
         .insert(customer)
-        .then((id) => getCustomerById(id[0]))
+        // .then((id) => getCustomerById(id[0]))
     })
     .catch(e =>
       console.log(e.message))

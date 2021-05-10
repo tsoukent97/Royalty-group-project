@@ -8,22 +8,24 @@ import AddCard from './customer/AddCard'
 import AccountInfo from './business/AccountInfo'
 import QrCode from './customer/QrCode'
 import Footer from './Footer'
-import { HashRouter as Router, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
 const App = () => {
   return (
     <>
       <Router>
-        <Route exact path={'/'} component={Home} />
-        <Route exact path={'/CustomerSignup'} component={(props) => <Signup {...props} isCustomer={true} />} />
-        <Route exact path={'/BusinessSignup'} component={(props) => <Signup {...props} isCustomer={false} />} />
-        <Route exact path={'/CustomerLogin'} component={(props) => <Login {...props} isCustomer={true} />} />
-        <Route exact path={'/BusinessLogin'} component={(props) => <Login {...props} isCustomer={false} />} />
-        <Route exact path={'/Customerhome'} component={CustomerHome} />
-        <Route exact path={'/Customerhome/addCard'} component={AddCard} />
-        <Route exact path={'/Customerhome/cardInfo'} component={QrCode} />
-        <Route exact path={'/Businesshome'} component={BusinessHome} />
-        <Route exact path={'/Businesshome/AccountInfo'} component={AccountInfo} />
+        <Switch>
+          <Route exact path={'/'} component={Home}/>
+          <Route path={'/CustomerSignup'} component={(props) => <Signup {...props} isCustomer={true} />} />
+          <Route path={'/BusinessSignup'} component={(props) => <Signup {...props} isCustomer={false} />} />
+          <Route path={'/CustomerLogin'} component={(props) => <Login {...props} isCustomer={true} />} />
+          <Route path={'/BusinessLogin'} component={(props) => <Login {...props} isCustomer={false} />} />
+          <Route exact path={'/Customerhome'} component={CustomerHome} />
+          <Route path={'/Customerhome/addCard'} component={AddCard} />
+          <Route path={'/Customerhome/cardInfo'} component={Card} />
+          <Route exact path={'/Businesshome'} component={BusinessHome} />
+          <Route path={'/Businesshome/AccountInfo'} component={AccountInfo} />
+        </Switch>
         <Route path={'/'} component={Footer} />
       </Router>
     </>
