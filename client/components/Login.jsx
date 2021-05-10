@@ -63,7 +63,7 @@ function Login (props) {
               required
             />
           </Form.Field>
-          <Button onClick={homePath}>Home</Button>
+          <Button primary onClick={homePath}>Home</Button>
           <Button positive type='button' onClick={handleSubmit}>Login</Button>
         </Form>
       </Grid.Column >

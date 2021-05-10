@@ -103,7 +103,7 @@ function SignUp (props) {
                 onChange={handleChange}
               />}
           </Form.Field>
-          <Button onClick={homePath}>Home</Button>
+          <Button primary onClick={homePath}>Home</Button>
           <Button positive type='submit' onSubmit={handleSubmit}>Submit</Button>
         </Form>
       </Grid.Column>
