@@ -13,7 +13,7 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 const App = () => {
   return (
     <>
-    <Router>
+      <Router>
         <Switch>
           <Route exact path={'/'} component={Home}/>
           <Route path={'/CustomerSignup'} component={(props) => <Signup {...props} isCustomer={true} />} />
@@ -26,9 +26,8 @@ const App = () => {
           <Route exact path={'/Businesshome'} component={BusinessHome} />
           <Route path={'/Businesshome/AccountInfo'} component={AccountInfo} />
         </Switch>
-          <Route path={'/'} component={Footer} />
+        <Route path={'/'} component={Footer} />
       </Router>
-        
     </>
   )
 }
