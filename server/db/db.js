@@ -12,7 +12,10 @@ module.exports = {
   addCard,
   deleteCustomer,
   deleteBusiness,
-  deleteCard
+  deleteCard,
+  getAllCards,
+  getStampCount,
+  updateStampCount
 }
 
 // returns an array of objects of customer_id signed up under the business. EX:
@@ -36,7 +39,7 @@ function getCustomerProfile (id, db = connection) {
 // route is http://localhost:3000/business/:id
 function getBusinessProfile (id, db = connection) {
   return db('businesses')
-    .select('id', 'name', 'address', 'phone_number', 'email')
+    .select('id', 'name', 'address', 'phoneNumber', 'email')
     .where('id', id)
     .first()
 }
@@ -50,7 +53,7 @@ function getCustomerCards (id, db = connection) {
     .join('cards', 'cards.customer_id', 'customers.id')
     .join('businesses', 'cards.business_id', 'businesses.id')
     .where('customers.id', id)
-    .select('businesses.name as name')
+    .select('businesses.business as business')
 }
 
 // returns customer profile, instead of ID. nested getCustomerProfile function in router
@@ -99,4 +102,20 @@ function deleteCard (businessId, customerId, db = connection) {
     .delete()
     .where('customer_id', customerId)
     .where('business_id', businessId)
+}
+function getAllCards (db = connection) {
+  return db('businesses').select('business', 'logo', 'id')
+}
+function getStampCount (businessId, customerId, db = connection) {
+  return db('cards')
+    .where('customer_id', customerId)
+    .where('business_id', businessId)
+    .select('stamp_count')
+}
+
+function updateStampCount (businessId, customerId, stampCount, db = connection) {
+  return db('cards')
+    .where('customer_id', customerId)
+    .where('business_id', businessId)
+    .update({ stamp_count: stampCount + 1 })
 }
