@@ -3,6 +3,9 @@ import request from 'superagent'
 const customerServer = 'http://localhost:3000/customer'
 const businessServer = 'http://localhost:3000/business'
 
+// this code needs tests, otherwise looks good
+// should be merged with api/passportAPI or those functions merged into here
+
 export function getCustomerCards (id) {
   return request.get(customerServer + '/' + id + '/cards')
     .then(res => res.body)

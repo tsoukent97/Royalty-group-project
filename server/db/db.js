@@ -22,6 +22,16 @@ module.exports = {
   updateStampCount
 }
 
+/*
+ * these comments will age as other parts of the code change
+ * e.g. if someone changes a migration all of these comments will be out of date and they will have to do a ton of work to make them correct, which probably won't happen
+ * much better to document this sort of thing in one spot (i.e. README.md)
+ * same with the links to routes, if someone changes a route they have to remember to come here to change the db function
+ * the other place for this documentation to live is in your tests - if someone wants to see what the code returns they can look at your test data
+ */
+
+// I'd suggest deleting all these comments and finding a permanent home for that documentation
+
 // returns an array of objects of customer_id signed up under the business. EX:
 // [{"customer_id":901},{"customer_id":902},{"customer_id":903},{"customer_id":904},{"customer_id":905}]
 // for {name: "Gong Cha", business_id: 102}
@@ -55,10 +65,11 @@ function getCustomerCards (id, db = connection) {
 
 // returns customer profile, instead of ID. nested getCustomerProfile function in router
 function addCustomer (customer, db = connection) {
-  console.log(customer)
+  console.log(customer) // remove all console logs when you've finished debugging
   bcrypt.hash(customer.password, saltRounds)
     .then(auth => {
       customer.password = auth
+      // instead of avoiding the nesting just move line 76 down one line
       // eslint-disable-next-line promise/no-nesting
       return db('customers')
         .insert(customer)
@@ -97,12 +108,15 @@ function addCard (businessId, customerId, db = connection) {
     })
 }
 
+// what happens to all of a customers cards when they are deleted?
+// should they be left in the db (like currently) or removed as well?
 function deleteCustomer (id, db = connection) {
   return db('customers')
     .delete()
     .where('id', id)
 }
 
+// what happens to all of a businesses cards when they are deleted?
 function deleteBusiness (id, db = connection) {
   return db('businesses')
     .delete()
@@ -136,6 +150,7 @@ function getStampCount (businessId, customerId, db = connection) {
     .select('stamp_count')
 }
 
+//perhaps this should be called incrementStampCount instead?
 function updateStampCount (businessId, customerId, stampCount, db = connection) {
   return db('cards')
     .where('customer_id', customerId)

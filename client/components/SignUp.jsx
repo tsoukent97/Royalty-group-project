@@ -5,6 +5,10 @@ import { registerUser } from '../api/passportAPI'
 // TODO
 // Stitch this form into api client, connect to DB
 // Style this in semantic ui
+//
+//
+// instead of { props.isCustomer ? '' : stuff }
+// just do { !props.isCustomer && stuff }
 
 const initialState = {
   username: '',

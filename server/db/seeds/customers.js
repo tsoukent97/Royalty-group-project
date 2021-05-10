@@ -3,6 +3,7 @@ exports.seed = (knex) => {
   return knex('customers').del()
     .then(function () {
       // Inserts seed entries
+      // this would be better if you actually set passwords and used bcrypt to hash them
       return knex('customers').insert([
         { id: 901, username: 'Aaron', userType: 'customer', password: '' },
         { id: 902, username: 'Kent', userType: 'customer', password: '' },

@@ -12,6 +12,8 @@ const customers = require('../db/db')
 
 initializePassport(passport)
 
+// these routes should be tested
+
 router.use(flash())
 router.use(session({
   secret: process.env.SESSION_SECRET,
@@ -47,6 +49,7 @@ router.post('/register', (req, res) => {
   customers.customerExists(newCustomer.username)
     .then(user => {
       if (!user) {
+        // you should probably call req.logIn like on line 37 to have them login when they register
         // eslint-disable-next-line promise/no-nesting
         customers.addCustomer(newCustomer)
           .then(() => {

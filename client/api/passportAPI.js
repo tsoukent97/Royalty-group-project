@@ -2,6 +2,8 @@ import request from 'superagent'
 
 const rootUrl = 'http://localhost:3000'
 
+// needs tests
+
 export function loginCustomer (customer) {
   return request.post(rootUrl + '/login')
     .send({

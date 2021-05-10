@@ -7,7 +7,7 @@ exports.up = (knex) => {
     table.string('address')
     table.integer('phoneNumber')
     table.string('email')
-    table.string('logo')
+    table.string('logo') // if this is going to be a link then I would call it logo_url
   })
 }
 

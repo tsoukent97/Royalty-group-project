@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
 import { loginCustomer } from '../api/passportAPI'
 
+// remove commented out code
 // let userInfo = {}
 
 function Login (props) {
@@ -24,6 +25,7 @@ function Login (props) {
     e.preventDefault()
     loginCustomer(form)
       .then((auth) => {
+        // remove console logs
         console.log(auth)
         if (auth === 'Login Succeeded') {
           props.history.push('/Customerhome')

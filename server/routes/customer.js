@@ -39,7 +39,7 @@ router.get('/:id/addCard', (req, res) => {
 })
 
 router.post('/addCard', (req, res) => {
-  const { businessId, customerId } = req.query
+  const { businessId, customerId } = req.query //I'd personally use params for these variables, but this is ok too
   db.addCard(businessId, customerId)
     .then(id => {
       return res.json(id)
@@ -52,6 +52,7 @@ router.get('/', (req, res) => {
   const { businessId, customerId } = req.query
   db.getStampCount(businessId, customerId)
     .then(customer => {
+      //this needs a return in front of it, then you can ditch the catch block and rely on the one on line 62
       db.updateStampCount(businessId, customerId, customer[0].stamp_count)
         .then(() => {
           return res.status(200).send()

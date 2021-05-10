@@ -10,6 +10,8 @@ jest.mock('../db/db', () => {
   }
 })
 
+// A good start, more tests needed though
+
 test('get customer profile', () => {
   db.getCustomerProfile.mockImplementation(() => {
     return Promise.resolve([

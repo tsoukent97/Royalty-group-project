@@ -10,6 +10,8 @@ import QrCode from './customer/QrCode'
 import Footer from './Footer'
 import { HashRouter as Router, Route } from 'react-router-dom'
 
+// If you have exact on everything then perhaps use a Switch from react-router-dom
+
 const App = () => {
   return (
     <>

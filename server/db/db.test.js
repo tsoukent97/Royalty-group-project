@@ -10,11 +10,13 @@ beforeEach(() => {
 
 afterEach(() => testEnv.cleanup(testDb))
 
-// Need to make these tests
+// Need to make these tests - yes you do, try running `npm run test -- --coverage` to see how much of the file is currently tested
 // getting all cards for one customer
 // getting all users for one bus for admin user only
 // adding new cards, customers, bus
 // deleting customer, cards, bus
+//
+// good start, don't forget to test for what happens when you pass in dodgy / incomplete arguments (i.e. a customerId that doesn't exist)
 
 test('deletes a card', () => {
   const businessId = 105
@@ -36,6 +38,7 @@ test('get a customer profile', () => {
     })
 })
 
+// what should the code do if the profile isn't found?
 test('get a business profile', () => {
   const testId = 101
   expect.assertions(1)

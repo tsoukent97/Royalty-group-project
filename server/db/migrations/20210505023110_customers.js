@@ -4,6 +4,7 @@ exports.up = (knex) => {
     table.string('username')
     table.string('userType')
     table.binary('password')
+    //I would have thought this should be a string, did the passport docs say to make it binary?
   })
 }
 
