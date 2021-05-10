@@ -28,7 +28,7 @@ function SignUp (props) {
     registerUser(customerForm)
       .then((auth) => {
         if (auth === 'Username created') {
-          props.history.push('/Customerhome')
+          props.history.push('/')
         }
         return null
       })
@@ -65,7 +65,7 @@ function SignUp (props) {
           </Form.Field>
           <Form.Field>
             <label>Password:</label>
-            <input type='text'
+            <input type='password'
               placeholder='Choose password'
               name='password'
               required
