@@ -27,20 +27,16 @@ export default class Graph extends Component {
   render () {
     return (
       <>
-        <Container>
-          <div className="app">
-            <div className="row">
-              <div className="mixed-chart">
-                <Chart
-                  options={this.state.options}
-                  series={this.state.series}
-                  type='bar'
-                  width='500'
-                />
-              </div>
-            </div>
+        <div className="row">
+          <div className="mixed-chart">
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type='bar'
+              width='500'
+            />
           </div>
-        </Container>
+        </div>
       </>
     )
   }

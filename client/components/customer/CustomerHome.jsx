@@ -31,9 +31,11 @@ function CustomerHome () {
   return (
     <div>
       <NavCustomer />
-      <Grid relaxed columns={3}>
-        {state.map((card) => <Grid.Column key={card.id}><Image href='#' src={card.logo} alt={card.business} /></Grid.Column>)}
-      </Grid>
+      <Container>
+        <Grid relaxed columns={3}>
+          {state.map((card) => <Grid.Column key={card.id}><Image href='#' src={card.logo} alt={card.business} /></Grid.Column>)}
+        </Grid>
+      </Container>
     </div>
   )
 }
