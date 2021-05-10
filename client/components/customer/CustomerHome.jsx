@@ -4,7 +4,7 @@
 
 import React from 'react'
 // import NavCustomer from './NavCustomer'
-import { Grid, Image } from 'semantic-ui-react'
+import { Container, Grid, Image } from 'semantic-ui-react'
 import NavCustomer from './NavCustomer'
 
 function CustomerHome () {
