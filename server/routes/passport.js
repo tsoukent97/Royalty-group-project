@@ -22,15 +22,16 @@ router.use(passport.initialize())
 router.use(passport.session())
 
 // can call before functions to check user is authenticated and redirects to login if not
-function checkAuthenticated (req, res, next) {
-  if (req.isAuthenticated()) {
-    return next()
-  }
-  res.redirect('/login')
-}
+// function checkAuthenticated (req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next()
+//   }
+//   res.redirect('/login')
+// }
 
 router.post('/login', async (req, res, next) => {
   await passport.authenticate('local', (e, customer, info) => {
+    console.log('34' + customer, e, info)
     if (e) throw e
     if (!customer) res.json(info.message)
     else {
@@ -47,9 +48,10 @@ router.post('/register', (req, res) => {
   customers.customerExists(newCustomer.username)
     .then(user => {
       if (!user) {
+        // eslint-disable-next-line promise/no-nesting
         customers.addCustomer(newCustomer)
           .then(() => {
-            res.json('Username created. Please log in something something here.')
+            res.json('Username created')
             return null
           })
           .catch(e => {

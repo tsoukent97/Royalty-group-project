@@ -6,12 +6,14 @@ import { registerUser } from '../api/passportAPI'
 // Stitch this form into api client, connect to DB
 // Style this in semantic ui
 
+const initialState = {
+  username: '',
+  password: '',
+  userType: 'Customer'
+}
+
 function SignUp (props) {
-  const [customerForm, setCustomerForm] = useState({
-    username: '',
-    password: '',
-    userType: 'Customer'
-  })
+  const [customerForm, setCustomerForm] = useState(initialState)
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -23,7 +25,16 @@ function SignUp (props) {
 
   function handleSubmit (e) {
     e.preventDefault()
-    console.log(setCustomerForm)
+    registerUser(customerForm)
+      .then((auth) => {
+        if (auth === 'Username created') {
+          props.history.push('/Customerhome')
+        }
+        return null
+      })
+      .catch(e => {
+        console.log(e.message)
+      })
   }
 
   function homePath (e) {
@@ -58,7 +69,7 @@ function SignUp (props) {
                 onChange={handleChange}
               />
             </Form.Field>
-            <Button positive onSubmit={handleSubmit} type='submit'>Submit</Button>
+            <Button positive onClick={handleSubmit} type='submit'>Submit</Button>
           </Form>
         </Grid.Column>
       </Grid>

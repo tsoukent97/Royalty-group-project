@@ -4,18 +4,23 @@ const bcrypt = require('bcryptjs')
 
 function initialize (passport) {
   passport.use(new LocalStrategy(async (username, password, done) => {
-    const customer = customers.customerExists(username)
-    if (customer == null) {
-      return done(null, false, { message: 'Username not found, please try again.' })
-    }
-
-    try {
-      if (await bcrypt.compare(password, customer.password)) {
-        return done(null, customer)
-      } else {
-        return done(null, false, { message: 'Incorrect password.' })
-      }
-    } catch (e) { return done(e) }
+    customers.getCustomerByUsername(username)
+      .then(customer => {
+        if (!customer) return done(null, false, { message: 'Invalid Username' })
+        bcrypt.compare(password, customer.password, (e, result) => {
+          if (e) throw e
+          if (result === true) {
+            return done(null,customer)
+          } else {
+            return done(null, false, { message: 'Invalid Password' })
+          }
+        })
+        return null
+      })
+      .catch(e => {
+        console.log(e.message)
+        return null
+      })
   }))
 
   passport.serializeUser((user, done) => done(null, user.id))

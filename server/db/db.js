@@ -1,6 +1,8 @@
 // const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile').development
 const connection = require('knex')(config)
+const bcrypt = require('bcryptjs')
+const saltRounds = 10
 
 module.exports = {
   getCustomers,
@@ -13,7 +15,8 @@ module.exports = {
   addCard,
   deleteCustomer,
   deleteBusiness,
-  deleteCard
+  deleteCard,
+  getCustomerByUsername
 }
 
 // returns an array of objects of customer_id signed up under the business. EX:
@@ -48,12 +51,18 @@ function getCustomerCards (id, db = connection) {
 }
 
 // returns customer profile, instead of ID. nested getCustomerProfile function in router
-function addCustomer (name, username, db = connection) {
-  return db('customers').insert(
-    {
-      name: name,
-      username: username
+function addCustomer (customer, db = connection) {
+  console.log(customer)
+  bcrypt.hash(customer.password, saltRounds)
+    .then(auth => {
+      customer.password = auth
+      // eslint-disable-next-line promise/no-nesting
+      return db('customers')
+        .insert(customer)
+        .then((id) => getCustomerById(id[0]))
     })
+    .catch(e =>
+      console.log(e.message))
 }
 
 // returns business profile, instead of ID. nested getCustomerProfile function in router
@@ -109,4 +118,8 @@ function deleteCard (businessId, customerId, db = connection) {
 
 function getCustomerById (id, db = connection) {
   return db('customers').where('id', id).select().first()
+}
+
+function getCustomerByUsername (username, db = connection) {
+  return db('customers').where('username', username).select().first()
 }
