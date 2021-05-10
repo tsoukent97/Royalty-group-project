@@ -7,9 +7,11 @@ import { Button, Form, Grid } from 'semantic-ui-react'
 
 function SignUp (props) {
   const [customerForm, setCustomerForm] = useState({
-    email: '',
     username: '',
     password: '',
+    address: '',
+    phoneNumber: '',
+    email: '',
     userType: 'Customer'
   })
 
@@ -31,7 +33,7 @@ function SignUp (props) {
     props.history.push('/')
   }
 
-  function toggleBusiness(e) {
+  function toggleBusiness (e) {
     e.preventDefault()
     props.history.push(props.isCustomer ? '/BusinessSignup' : '/CustomerSignup')
   }
@@ -42,16 +44,6 @@ function SignUp (props) {
         <Button onClick={toggleBusiness}>{props.isCustomer ? 'Business Sign up' : 'Customer Sign up'}</Button>
         <h1>{props.isCustomer ? 'Customer' : 'Business'} Sign up</h1>
         <Form>
-          <Form.Field>
-            <label>Email:</label>
-            <input type='text'
-              placeholder='Enter email'
-              name='email'
-              required
-              value={customerForm.email}
-              onChange={handleChange}
-            />
-          </Form.Field>
           <Form.Field>
             <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
             <input type='text'
@@ -71,6 +63,45 @@ function SignUp (props) {
               value={customerForm.password}
               onChange={handleChange}
             />
+          </Form.Field>
+          <Form.Field>
+            <label>{props.isCustomer ? '' : 'Phone Number:'}</label>
+            {props.isCustomer
+              ? ''
+              : <input
+                type='text'
+                placeholder='Enter number'
+                name='number'
+                required
+                value={customerForm.phoneNumber}
+                onChange={handleChange}
+              />}
+          </Form.Field>
+          <Form.Field>
+            <label>{props.isCustomer ? '' : 'Address:'}</label>
+            {props.isCustomer
+              ? ''
+              : <input
+                type='text'
+                placeholder='Enter Address'
+                name='Address'
+                required
+                value={customerForm.address}
+                onChange={handleChange}
+              />}
+          </Form.Field>
+          <Form.Field>
+            <label>{props.isCustomer ? '' : 'Email:'}</label>
+            {props.isCustomer
+              ? ''
+              : <input
+                type='text'
+                placeholder='Enter email'
+                name='email'
+                required
+                value={customerForm.email}
+                onChange={handleChange}
+              />}
           </Form.Field>
           <Button postive onSubmit={handleSubmit} type='submit'>Submit</Button>
         </Form>
