@@ -1,8 +1,12 @@
 import React from 'react'
 import { Container, Button, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { logOut } from '../../api/passportAPI'
 
 export default function NavCustomer () {
+  function handleSubmit () {
+    logOut()
+  }
   return (
     <Container>
       <Menu stackable widths={5}>
@@ -15,7 +19,7 @@ export default function NavCustomer () {
           <Link to={'/Customerhome/addCard'}><Button primary>Add a card</Button></Link>
         </Menu.Item>
         <Menu.Item position='right'>
-          <Button secondary>Logout</Button>
+          <Button secondary onClick={handleSubmit}>Logout</Button>
         </Menu.Item>
       </Menu>
     </Container>

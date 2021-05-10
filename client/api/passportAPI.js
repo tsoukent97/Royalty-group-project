@@ -21,3 +21,7 @@ export function getCustomer () {
   return request
     .get(rootUrl + '/user')
 }
+
+export function logOut () {
+  return request.get(rootUrl + '/logout')
+}

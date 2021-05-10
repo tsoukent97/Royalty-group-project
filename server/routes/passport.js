@@ -22,12 +22,12 @@ router.use(passport.initialize())
 router.use(passport.session())
 
 // can call before functions to check user is authenticated and redirects to login if not
-// function checkAuthenticated (req, res, next) {
-//   if (req.isAuthenticated()) {
-//     return next()
-//   }
-//   res.redirect('/login')
-// }
+function checkAuthenticated (req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  return res.redirect('/login')
+}
 
 router.post('/login', async (req, res, next) => {
   await passport.authenticate('local', (e, customer, info) => {
@@ -40,6 +40,11 @@ router.post('/login', async (req, res, next) => {
       })
     }
   })(req, res, next)
+})
+
+router.get('/logout', function (req, res) {
+  console.log('Logged out successfully')
+  req.logout()
 })
 
 router.post('/register', (req, res) => {

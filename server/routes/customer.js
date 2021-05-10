@@ -50,7 +50,7 @@ router.post('/addCard', (req, res) => {
     })
 })
 
-router.patch('/', (req, res) => {
+router.patch('/', checkNotAuthenticated, (req, res) => {
   const { businessId, customerId } = req.query
   db.getStampCount(businessId, customerId)
     .then(customer => {
@@ -74,5 +74,14 @@ router.get('/:id/query', (req, res) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
+
+function checkNotAuthenticated (req, res, next) {
+  if (req.isAuthenticated()) {
+    console.log('test')
+    // res.json('Account already logged in')
+    // return res.redirect('/')
+  }
+  next()
+}
 
 module.exports = router
