@@ -18,7 +18,7 @@ export default function BusinessHome () {
     <>
       <NavBusiness />
       <Graph />
-      <Container className="wrapper">
+      <Container textAlign='center' className="wrapper">
         <div className='app'>
           <Header>Total Customers: {customers.length}</Header>
           <table className='ui selectable table'>

@@ -55,12 +55,7 @@ table, tbody {
   bottom: 40%;
   margin: 0 auto;
   width: 100%;
-  position: fixed;
   text-align: center;
-}
-
-.ui.container {
-  margin: 0 auto;
 }
 
 .logo {
@@ -70,12 +65,12 @@ table, tbody {
   justify-content: center;
 }
 
-.footer-container {
-  bottom : 0;
-  padding: 2rem;
-  margin: 0 auto;
-  text-align: center;
+.footer {
+ bottom: 0;
+ position: absolute;
+}
+
+.ui.inverted.segment {
   width: 100%;
-  background-color: antiquewhite;
-  position: absolute;
+  margin: 0 auto;
 }
