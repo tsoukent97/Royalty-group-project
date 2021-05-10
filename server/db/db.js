@@ -1,10 +1,13 @@
 // const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile').development
 const connection = require('knex')(config)
+const bcrypt = require('bcryptjs')
+const saltRounds = 10
 
 module.exports = {
   getCustomers,
-  getCustomerProfile,
+  customerExists,
+  getCustomerById,
   getBusinessProfile,
   getCustomerCards,
   addCustomer,
@@ -13,6 +16,7 @@ module.exports = {
   deleteCustomer,
   deleteBusiness,
   deleteCard,
+  getCustomerByUsername,
   getAllCards,
   getStampCount,
   updateStampCount
@@ -26,14 +30,7 @@ function getCustomers (id, db = connection) {
   return db('cards').select('customer_id', 'stamp_count')
     .where('business_id', id)
 }
-// return an object of customer details. EX: {id: 901, name:"Aaron"}
-// route is http://localhost:3000/customer/:id
-function getCustomerProfile (id, db = connection) {
-  return db('customers')
-    .select('id', 'name')
-    .where('id', id)
-    .first()
-}
+
 // returns an object of business details EX:
 // {"id":102,"name":"Gong_Cha","address":"2 Fun Lane","phone_number":800838383,"email":"example@example.com"}
 // route is http://localhost:3000/business/:id
@@ -57,12 +54,18 @@ function getCustomerCards (id, db = connection) {
 }
 
 // returns customer profile, instead of ID. nested getCustomerProfile function in router
-function addCustomer (name, userName, db = connection) {
-  return db('customers').insert(
-    {
-      name: name,
-      user_name: userName
+function addCustomer (customer, db = connection) {
+  console.log(customer)
+  bcrypt.hash(customer.password, saltRounds)
+    .then(auth => {
+      customer.password = auth
+      // eslint-disable-next-line promise/no-nesting
+      return db('customers')
+        .insert(customer)
+        .then((id) => getCustomerById(id[0]))
     })
+    .catch(e =>
+      console.log(e.message))
 }
 
 // returns business profile, instead of ID. nested getCustomerProfile function in router
@@ -73,6 +76,15 @@ function addBusiness (name, address, phoneNumber, email, db = connection) {
       address: address,
       phone_number: phoneNumber,
       email: email
+    })
+}
+
+function customerExists (username, db = connection) {
+  return db('customers')
+    .count('id as n')
+    .where('username', username)
+    .then(count => {
+      return count[0].n > 0
     })
 }
 
@@ -102,6 +114,17 @@ function deleteCard (businessId, customerId, db = connection) {
     .delete()
     .where('customer_id', customerId)
     .where('business_id', businessId)
+}
+
+// return an object of customer details. {"id":901,"name":"Aaron","user_type":"customer","hash":null}
+// route is http://localhost:3000/customer/:id
+
+function getCustomerById (id, db = connection) {
+  return db('customers').where('id', id).select().first()
+}
+
+function getCustomerByUsername (username, db = connection) {
+  return db('customers').where('username', username).select().first()
 }
 function getAllCards (db = connection) {
   return db('businesses').select('business', 'logo', 'id')

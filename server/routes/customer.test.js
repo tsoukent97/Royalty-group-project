@@ -13,8 +13,8 @@ jest.mock('../db/db', () => {
 test('get customer profile', () => {
   db.getCustomerProfile.mockImplementation(() => {
     return Promise.resolve([
-      { id: 1, name: 'customer1', user_name: 'customer1', user_type: 'customer', hash: 'password' },
-      { id: 2, name: 'customer2', user_name: 'customer2', user_type: 'business', hash: 'password' }
+      { id: 1, name: 'customer1', username: 'customer1', user_type: 'customer', hash: 'password' },
+      { id: 2, name: 'customer2', username: 'customer2', user_type: 'business', hash: 'password' }
     ])
   })
   return request(server)
@@ -28,8 +28,8 @@ test('get customer profile', () => {
 test('deletes a customer profile', () => {
   db.deleteCustomer.mockImplementation(() => {
     return Promise.resolve([
-      { id: 1, name: 'customer1', user_name: 'customer1', user_type: 'customer', hash: 'password' },
-      { id: 2, name: 'customer2', user_name: 'customer2', user_type: 'business', hash: 'password' }
+      { id: 1, name: 'customer1', username: 'customer1', user_type: 'customer', hash: 'password' },
+      { id: 2, name: 'customer2', username: 'customer2', user_type: 'business', hash: 'password' }
     ])
   })
 
