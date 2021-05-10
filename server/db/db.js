@@ -12,7 +12,10 @@ module.exports = {
   addCard,
   deleteCustomer,
   deleteBusiness,
-  deleteCard
+  deleteCard,
+  getAllCards,
+  getStampCount,
+  updateStampCount
 }
 
 // returns an array of objects of customer_id signed up under the business. EX:
@@ -99,4 +102,20 @@ function deleteCard (businessId, customerId, db = connection) {
     .delete()
     .where('customer_id', customerId)
     .where('business_id', businessId)
+}
+function getAllCards (db = connection) {
+  return db('businesses').select('name')
+}
+function getStampCount (businessId, customerId, db = connection) {
+  return db('cards')
+    .where('customer_id', customerId)
+    .where('business_id', businessId)
+    .select('stamp_count')
+}
+
+function updateStampCount (businessId, customerId, stampCount, db = connection) {
+  return db('cards')
+    .where('customer_id', customerId)
+    .where('business_id', businessId)
+    .update({ stamp_count: stampCount + 1 })
 }

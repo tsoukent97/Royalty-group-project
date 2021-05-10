@@ -29,4 +29,28 @@ router.patch('/:id/delete', (req, res) => {
     })
 })
 
+router.get('/', (req, res) => {
+  const { businessId, customerId } = req.query
+  db.getStampCount(businessId, customerId)
+    .then(customer => {
+      db.updateStampCount(businessId, customerId, customer[0].stamp_count)
+        .then(() => {
+          res.status(200).send()
+        }).catch(err => {
+          res.status(500).send('DATABASE ERROR: ' + err.message)
+        })
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
+router.get('/:id/addCard', (req, res) => {
+  db.getAllCards()
+    .then(cards => {
+      return res.json(cards)
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
 module.exports = router
