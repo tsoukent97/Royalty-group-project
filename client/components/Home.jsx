@@ -15,7 +15,7 @@ function Home (props) {
   return (
     <>
       <div>
-        <Container>
+        <Container textAlign='center'>
           <img className='logo' src="./images/Royalty.png" alt="logo" />
         </Container>
       </div>
