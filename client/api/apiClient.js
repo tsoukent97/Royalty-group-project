@@ -1,7 +1,7 @@
 import request from 'superagent'
 
-const customerServer = 'http://localhost:3000/customer'
-const businessServer = 'http://localhost:3000/business'
+const customerServer = '/customer'
+const businessServer = '/business'
 
 export function getCustomerCards (id) {
   return request.get(customerServer + '/' + id + '/cards')
