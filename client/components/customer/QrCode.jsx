@@ -14,12 +14,14 @@ export default function QrCode () {
       .catch(e => console.error(e.message))
   }, [stamps])
 
-  // }
   function handleClick () {
     const customerId = 901
     updateStampCount(businessId, customerId)
-    alert('Congratulations! You are one stamp closer to your freebie!')
-    return null
+    if (stamps.stamp_count === 9) {
+      alert('Congratulations! You get a freebie!')
+    } else {
+      alert('You are one stamp closer to your freebie!')
+    } return null
   }
 
   return (
