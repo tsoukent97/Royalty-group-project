@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { getAllCards, addCard } from '../../api/apiClient'
+import Error from '../Error'
 
 export default function AddCard () {
   const [cards, setCards] = useState([])
+  const [error, setError] = useState('')
 
   useEffect(() => {
     getAllCards()
@@ -16,7 +18,7 @@ export default function AddCard () {
     addCard(businessId, customerId)
       .then(id => {
         if (!id) {
-          alert('Card not added Succesfully! Please try again.')
+          setError(error)
         } else {
           alert('Card added successfully!')
         }
@@ -26,6 +28,7 @@ export default function AddCard () {
   console.log(cards)
   return (
     <>
+      <Error errorMesage={error}/>
       {cards.map((card, i) => <div key={i}><li key={i}>{card.business}</li><img key={i} src={card.logo}></img><button key={i} onClick={() => handleClick(card.id)}>+ADD CARD</button></div>)}
     </>
   )
