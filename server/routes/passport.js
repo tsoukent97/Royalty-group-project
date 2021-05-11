@@ -64,16 +64,6 @@ router.post('/register', (req, res) => {
         if (!user) {
         // eslint-disable-next-line promise/no-nesting
           customers.addCustomer(newCustomer)
-          // .then((result) => {
-          //   res.json('Username created')
-          //   console.log(result, 'line54')
-          //   return null
-          // })
-          // .catch(e => {
-          //   res.json(e.message)
-          //   console.log(e.message)
-          //   return null
-          // })
           return res.json('User created')
         } else {
           res.json('Username already taken.')

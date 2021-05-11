@@ -3,6 +3,7 @@ import { Container, Button, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { logOut } from '../../api/passportAPI'
 import { getCustomers, getCustomerById } from '../../api/apiClient'
+import { userInfo } from '../Login'
 
 export default function NavCustomer () {
   function handleClick () {
@@ -30,13 +31,14 @@ export default function NavCustomer () {
       .catch(err => console.log(err))
   }, [])
 
+export default function NavCustomer () {
   return (
     <Container>
       <Menu className='customer-nav' stackable widths={5}>
         <Menu.Item>
           <img className='logo-small' src='images/royalty.jpg' alt='logo' />
         </Menu.Item>
-        <Menu.Item>Welcome, {state.username}</Menu.Item>
+        <Menu.Item>Welcome, {userInfo}</Menu.Item>
         <Menu.Item>Your Royalty Cards</Menu.Item>
         <Menu.Item position='right'>
           <Link to={'/Customerhome/addCard'}><Button primary>Add a card</Button></Link>

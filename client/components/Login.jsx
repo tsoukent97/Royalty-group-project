@@ -3,7 +3,7 @@ import { Button, Form, Grid } from 'semantic-ui-react'
 import { loginCustomer } from '../api/passportAPI'
 import Error from './Error'
 
-// let userInfo = {}
+let userInfo = ''
 
 function Login (props) {
   const initialState = {
@@ -36,6 +36,7 @@ function Login (props) {
       .catch(e => {
         console.log(e.message)
       })
+    userInfo = form.username
   }
 
   function toggleBusiness (e) {
@@ -85,4 +86,4 @@ function Login (props) {
   )
 }
 
-export default Login
+export { Login, userInfo }

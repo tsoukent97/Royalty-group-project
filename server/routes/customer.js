@@ -31,6 +31,16 @@ router.patch('/:id/delete', (req, res) => {
     })
 })
 
+router.patch('/deleteCard', (req, res) => {
+  const { businessId, customerId } = req.query
+  db.deleteCard(businessId, customerId)
+    .then(() => {
+      return res.status(200).send()
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
 router.get('/:id/addCard', (req, res) => {
   db.getAllCards()
     .then(cards => {
@@ -59,12 +69,11 @@ router.post('/addCard', (req, res) => {
     })
 })
 
-router.get('/:id/checkCard', (req, res) => {
-  const { businessId, customerId } = req.query
-  db.cardExists(businessId, customerId)
-    .then((exists) => {
-      console.log(exists)
-      return res.json(exists)
+router.get('/customerInfo', (req, res) => {
+  const { name } = req.query
+  db.getCustomerByUsername(name)
+    .then((name) => {
+      return res.json(name)
     }).catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
@@ -100,6 +109,16 @@ router.patch('/reset', (req, res) => {
   db.resetStampCount(businessId, customerId)
     .then(() => {
       return res.status(200).send()
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
+router.get('/:id', (req, res) => {
+  console.log()
+  db.getCustomerById(req.params.id)
+    .then(customer => {
+      return res.json(customer)
     }).catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })

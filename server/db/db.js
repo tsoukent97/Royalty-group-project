@@ -108,7 +108,7 @@ function addCard (businessId, customerId, db = connection) {
 
 function deleteCustomer (id, db = connection) {
   return db('customers')
-    .delete()
+    .del()
     .where('id', id)
 }
 
@@ -120,7 +120,7 @@ function deleteBusiness (id, db = connection) {
 
 function deleteCard (businessId, customerId, db = connection) {
   return db('cards')
-    .delete()
+    .del()
     .where('customer_id', customerId)
     .where('business_id', businessId)
 }
