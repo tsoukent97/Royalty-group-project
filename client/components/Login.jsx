@@ -37,6 +37,7 @@ function Login (props) {
         console.log(e.message)
       })
     userInfo = form.username
+    console.log(userInfo)
   }
 
   function toggleBusiness (e) {
