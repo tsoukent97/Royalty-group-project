@@ -75,4 +75,14 @@ router.get('/:id/query', (req, res) => {
     })
 })
 
+router.patch('/reset', (req, res) => {
+  const { businessId, customerId } = req.query
+  db.resetStampCount(businessId, customerId)
+    .then(() => {
+      return res.status(200).send()
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
 module.exports = router
