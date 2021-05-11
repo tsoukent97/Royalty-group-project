@@ -26,19 +26,21 @@ export default function AddCard () {
   }
   console.log(cards)
   return (
-    <h1 className="addcard-header">New Cards</h1>
-    <h3 className="addcard-info">Click an image to add it</h3>
-    <Container className='card-grid'>
-      <Grid relaxed columns={2}>
-        {cards.map((card) => <Grid.Column key={card.id}>
-          <div className='overlay ui fluid card'>
-            <img className='image' src={card.logo} onClick={() => handleClick(card.id)}></img>
-            <div className='content'>
-              <p className='header'>{card.business}</p>
+    <>
+      <h1 className="addcard-header">New Cards</h1>
+      <h3 className="addcard-info">Click an image to add it</h3>
+      <Container className='card-grid'>
+        <Grid relaxed columns={2}>
+          {cards.map((card) => <Grid.Column key={card.id}>
+            <div className='overlay ui fluid card'>
+              <img className='image' src={card.logo} onClick={() => handleClick(card.id)}></img>
+              <div className='content'>
+                <p className='header'>{card.business}</p>
+              </div>
             </div>
-          </div>
-        </Grid.Column>)}
-      </Grid>
-    </Container>
+          </Grid.Column>)}
+        </Grid>
+      </Container>
+    </>
   )
 }
