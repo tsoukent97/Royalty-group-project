@@ -11,6 +11,13 @@ export function loginCustomer (customer) {
     .then(res => res.body)
 }
 
+export function loginBusiness (business) {
+  return request.post(rootUrl + '/loginBusiness')
+    .send({
+      business: business.business,
+      password: business.password
+    })
+}
 export function registerUser (user) {
   return request.post(rootUrl + '/register')
     .send(user)

@@ -10,7 +10,7 @@ function initialize (passport) {
         bcrypt.compare(password, customer.password, (e, result) => {
           if (e) throw e
           if (result === true) {
-            return done(null,customer)
+            return done(null, customer)
           } else {
             return done(null, false, { message: 'Invalid Password' })
           }

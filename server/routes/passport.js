@@ -23,12 +23,12 @@ router.use(passport.initialize())
 router.use(passport.session())
 
 // can call before functions to check user is authenticated and redirects to login if not
-function checkAuthenticated (req, res, next) {
-  if (req.isAuthenticated()) {
-    return next()
-  }
-  return res.redirect('/')
-}
+// function checkAuthenticated (req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next()
+//   }
+//   return res.redirect('/')
+// }
 
 // function checkNotAuthenticated (req, res, next) {
 //   if (req.isAuthenticated()) {
@@ -45,6 +45,19 @@ router.post('/login', async (req, res, next) => {
     if (!customer) res.json(info.message)
     else {
       req.logIn(customer, e => {
+        if (e) throw e
+        res.json('Login Succeeded')
+      })
+    }
+  })(req, res, next)
+})
+
+router.post('/loginBusiness', async (req, res, next) => {
+  await passport.authenticate('local', (e, business, info) => {
+    if (e) throw e
+    if (!business) res.json(info.message)
+    else {
+      req.logIn(business, e => {
         if (e) throw e
         res.json('Login Succeeded')
       })
@@ -101,6 +114,7 @@ router.post('/registerBusiness', (req, res) => {
     return res.json('Business and password required')
   }
 })
+
 // idk lmao don't look at this
 // router.post('/Customerhome', checkAuthenticated, async (req, res) => {
 //   await passport.authenticate('local', (e, customer, info) => {
