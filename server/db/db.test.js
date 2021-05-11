@@ -10,11 +10,20 @@ beforeEach(() => {
 
 afterEach(() => testEnv.cleanup(testDb))
 
-// Need to make these tests
-// getting all cards for one customer
-// getting all users for one bus for admin user only
-// adding new cards, customers, bus
-// deleting customer, cards, bus
+// getCustomers,
+// customerExists,
+// getCustomerById,
+// getBusinessProfile,
+// getCustomerCards,
+// addCustomer,
+// addBusiness,
+// addCard,
+// getCustomerByUsername,
+// getAllCards,
+// getStampCount,
+// updateStampCount,
+// resetStampCount,
+// cardExists
 
 test('deletes a card', () => {
   const businessId = 105
@@ -40,6 +49,16 @@ test('deletes a business', () => {
   return db.deleteBusiness(id, testDb)
     .then(result => {
       expect(result).toEqual(1)
+      return null
+    })
+})
+
+test('card exists', () => {
+  const customerId = 901
+  const businessId = 105
+  return db.cardExists(businessId, customerId, testDb)
+    .then(result => {
+      expect(result).toEqual()
       return null
     })
 })
