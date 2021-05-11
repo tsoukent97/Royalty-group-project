@@ -11,7 +11,7 @@ import NavCustomer from './NavCustomer'
 const id = 902
 let businessId = 0
 
-function CustomerHome () {
+function CustomerHome (props) {
   const [state, setState] = useState([{
     business: '',
     id: '',
@@ -32,7 +32,7 @@ function CustomerHome () {
 
   function handleClick (id) {
     businessId = id
-    // props.history.push('/Customerhome/cardInfo')
+    props.history.push('/Customerhome/cardInfo')
     return null
   }
 
@@ -40,7 +40,7 @@ function CustomerHome () {
     <div>
       <NavCustomer />
       <Grid relaxed columns={3}>
-        {state.map((card) => <Grid.Column key={card.id}><Link to={'Customerhome/cardInfo'}><Image src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/></Link></Grid.Column>)}
+        {state.map((card) => <Grid.Column key={card.id}><Image src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/></Grid.Column>)}
       </Grid>
     </div>
   )

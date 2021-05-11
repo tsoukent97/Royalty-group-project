@@ -46,8 +46,8 @@ router.post('/addCard', (req, res) => {
     .then((cardList) => {
       if (cardList.length === 0) {
         db.addCard(businessId, customerId)
-          .then(id => {
-            return res.json(id)
+          .then(() => {
+            return res.json('Card added successfully!')
           }).catch(err => {
             res.status(500).send('DATABASE ERROR: ' + err.message)
           })

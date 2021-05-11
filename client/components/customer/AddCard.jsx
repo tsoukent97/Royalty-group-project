@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { getAllCards, addCard } from '../../api/apiClient'
-import Error from '../Error'
 
-export default function AddCard () {
+export default function AddCard (props) {
   const [cards, setCards] = useState([])
-  const [error, setError] = useState('')
 
   useEffect(() => {
     getAllCards()
@@ -16,19 +14,18 @@ export default function AddCard () {
   function handleClick (businessId) {
     const customerId = 901
     addCard(businessId, customerId)
-      .then(id => {
-        if (!id) {
-          setError(error)
+      .then(result => {
+        if (result === 'Card added successfully!') {
+          alert(result)
+          props.history.push('/Customerhome')
         } else {
-          alert('Card added successfully!')
-        }
-        return null
+          alert(result)
+        } return null
       }).catch(e => console.error(e.message))
   }
-  console.log(cards)
+
   return (
     <>
-      <Error errorMesage={error}/>
       {cards.map((card, i) => <div key={i}><li key={i}>{card.business}</li><img key={i} src={card.logo}></img><button key={i} onClick={() => handleClick(card.id)}>+ADD CARD</button></div>)}
     </>
   )
