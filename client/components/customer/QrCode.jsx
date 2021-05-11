@@ -13,12 +13,12 @@ export default function QrCode (props) {
     getCustomerByUsername(userInfo)
       .then((customer) => {
         setCustomerId(customer.id)
-        getStampCount(businessId, customer.id)
-          .then(currentCount =>
-            setStamps(currentCount[0]))
-          .catch(e => console.error(e.message))
-        return null
-      }).catch(err => {
+        return getStampCount(businessId, customer.id)
+      })
+      .then(currentCount =>
+        setStamps(currentCount[0])
+      )
+      .catch(err => {
         console.log(err)
       })
   }, [stamps])

@@ -23,7 +23,7 @@ export default function NavCustomer () {
   }])
 
   useEffect(() => {
-    getCustomerById(id)
+    getCustomerById()
       .then(user => {
         setState(user)
         return null
