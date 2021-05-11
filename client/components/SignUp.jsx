@@ -64,7 +64,7 @@ function SignUp (props) {
     registerUser(customerForm)
       .then((auth) => {
         if (auth === 'User created') {
-          props.history.push('/Customerhome')
+          props.history.push('/Customerlogin')
         } else {
           setError(auth)
         }
