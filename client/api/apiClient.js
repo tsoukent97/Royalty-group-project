@@ -55,3 +55,16 @@ export function deleteBusiness (id) {
     .patch(businessServer + '/' + id + '/delete')
     .then(res => res.body)
 }
+
+export function addBusiness (business) {
+  return request
+    .post(businessServer + '/addBusiness')
+    .send({
+      business: business.business,
+      password: business.password,
+      phone_number: business.phone_number,
+      address: business.address,
+      email: business.email
+    })
+    .then(res => res.body)
+}

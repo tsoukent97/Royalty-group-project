@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
+import { addBusiness } from '../api/apiClient'
 import { registerUser } from '../api/passportAPI'
 import Error from './Error'
 
@@ -7,15 +8,39 @@ import Error from './Error'
 // Stitch this form into api client, connect to DB
 // Style this in semantic ui
 
-const initialState = {
+const initialState = ([{
   username: '',
   password: '',
   userType: 'Customer'
 }
+])
+
+const initialBusinessState = ([{
+  business: '',
+  password: '',
+  address: '',
+  phone_number: '',
+  email: '',
+  userType: 'Business'
+}
+])
 
 function SignUp (props) {
   const [customerForm, setCustomerForm] = useState(initialState)
   const [error, setError] = useState('')
+  const [businessForm, setBusinessForm] = useState(initialBusinessState)
+
+  function handleBusinessSubmit (e) {
+    // e.preventDefault()
+    // addBusiness()
+    //   .then(add => {
+    //     setBusinessForm(add)
+    //     return null
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
+  }
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -30,7 +55,7 @@ function SignUp (props) {
     registerUser(customerForm)
       .then((auth) => {
         if (auth === 'User created') {
-          props.history.push('/Customerhome')
+          props.history.push('/CustomerLogin')
         } else {
           setError(auth)
         }
@@ -118,7 +143,9 @@ function SignUp (props) {
           </Form.Field>
           <Error errorMessage={error}/>
           <Button primary onClick={homePath}>Home</Button>
-          <Button positive type='submit' onClick={handleSubmit}>Submit</Button>
+          {props.isCustomer 
+          ? <Button positive type='submit' onClick={handleSubmit}>Submit</Button> 
+          : <Button positive type='submit' onClick={handleBusinessSubmit}>Submit</Button>} 
         </Form>
       </Grid.Column>
     </Grid>

@@ -20,6 +20,15 @@ router.get('/:id/customers', (req, res) => {
     })
 })
 
+router.get('./:id/business', (req, res) => {
+  db.addBusiness(req.params.id)
+    .then(business => {
+      return res.json(business)
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
 router.patch('/:id/delete', (req, res) => {
   db.deleteBusiness(req.params.id)
     .then(() => {

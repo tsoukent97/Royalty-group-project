@@ -69,10 +69,11 @@ function addCustomer (customer, db = connection) {
 }
 
 // returns business profile, instead of ID. nested getCustomerProfile function in router
-function addBusiness (name, address, phoneNumber, email, db = connection) {
+function addBusiness (business, address, password, phoneNumber, email, db = connection) {
   return db('businesses').insert(
     {
-      name: name,
+      business: business,
+      password: password,
       address: address,
       phone_number: phoneNumber,
       email: email
