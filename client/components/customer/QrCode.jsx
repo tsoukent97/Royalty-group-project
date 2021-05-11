@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import QRCode from 'qrcode.react'
 import { businessId } from './CustomerHome'
-import { updateStampCount, getStampCount, resetStampCount } from '../../api/apiClient'
+import { updateStampCount, getStampCount, resetStampCount, getCustomerByUsername } from '../../api/apiClient'
+import { userInfo } from '../Login'
 
 export default function QrCode () {
+  const [customerId, setCustomerId] = useState(0)
   const [stamps, setStamps] = useState({})
 
   useEffect(() => {
-    const customerId = 901
-    getStampCount(businessId, customerId)
-      .then(currentCount =>
-        setStamps(currentCount[0]))
-      .catch(e => console.error(e.message))
+    getCustomerByUsername(userInfo)
+      .then((customer) => {
+        setCustomerId(customer.id)
+        getStampCount(businessId, customer.id)
+          .then(currentCount =>
+            setStamps(currentCount[0]))
+          .catch(e => console.error(e.message))
+        return null
+      }).catch(err => {
+        console.log(err)
+      })
   }, [stamps])
 
   function handleClick () {
-    const customerId = 901
     if (stamps.stamp_count === 9) {
       resetStampCount(businessId, customerId)
       alert('Congratulations! You get a freebie!')

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Grid } from 'semantic-ui-react'
-import { getCustomerCards } from '../../api/apiClient'
+import { getCustomerCards, getCustomerByUsername } from '../../api/apiClient'
 import NavCustomer from './NavCustomer'
+import { userInfo } from '../Login'
 
-const id = 902
 let businessId = 0
 
 function CustomerHome (props) {
@@ -15,12 +15,14 @@ function CustomerHome (props) {
   ])
 
   useEffect(() => {
-    getCustomerCards(id)
-      .then(cards => {
-        setState(cards)
+    getCustomerByUsername(userInfo)
+      .then((customer) => {
+        getCustomerCards(customer.id)
+          .then(cards =>
+            setState(cards))
+          .catch(e => console.error(e.message))
         return null
-      })
-      .catch(err => {
+      }).catch(err => {
         console.log(err)
       })
   }, [])
@@ -37,8 +39,8 @@ function CustomerHome (props) {
       <Container className='card-grid'>
         <Grid relaxed columns={2}>
           {state.map((card) => <Grid.Column key={card.id}>
-            <div className='overlay ui fluid card'>
-              <img className='image' src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/>
+            <div className='overlay ui fluid card' onClick={() => handleClick(card.id)}>
+              <img className='image' src={card.logo} alt={card.business} />
               <div className='content'>
                 <p className='header'>{card.business}</p>
               </div>

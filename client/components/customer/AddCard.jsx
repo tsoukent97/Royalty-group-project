@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Grid } from 'semantic-ui-react'
-import { getAllCards, addCard } from '../../api/apiClient'
+import { getAllCards, addCard, getCustomerByUsername } from '../../api/apiClient'
+import { userInfo } from '../Login'
 
 export default function AddCard (props) {
+  const [customer, setCustomerId] = useState(0)
   const [cards, setCards] = useState([])
+
+  useEffect(() => {
+    getCustomerByUsername(userInfo)
+      .then((id) => {
+        setCustomerId(id)
+        return null
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
 
   useEffect(() => {
     getAllCards()
@@ -13,8 +25,7 @@ export default function AddCard (props) {
   }, [])
 
   function handleClick (businessId) {
-    const customerId = 901
-    addCard(businessId, customerId)
+    addCard(businessId, customer.id)
       .then(result => {
         if (result === 'Card added successfully!') {
           alert(result)
