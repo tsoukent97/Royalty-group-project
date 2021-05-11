@@ -29,11 +29,11 @@ export default function AddCard () {
     <>
       <h1 className="addcard-header">New Cards</h1>
       <h3 className="addcard-info">Click an image to add it</h3>
-      <Container>
+      <Container textAlign='center'>
         <Grid relaxed columns={3}>
           {cards.map((card, i) =>
             <div key={i}>
-              <Grid.Row >
+              <Grid.Row>
                 <img key={i} src={card.logo} onClick={() => handleClick(card.id)}></img>
                 {/* <Button positive key={i} onClick={() => handleClick(card.id)}>Add Card</Button> */}
               </Grid.Row>
