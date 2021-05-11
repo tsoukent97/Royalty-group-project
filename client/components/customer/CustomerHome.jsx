@@ -3,9 +3,8 @@
 // replace placeholder with company logos
 import React, { useState, useEffect } from 'react'
 // import NavCustomer from './NavCustomer'
-import { Container, Grid, Image } from 'semantic-ui-react'
+import { Grid, Image } from 'semantic-ui-react'
 import { getCustomerCards } from '../../api/apiClient'
-import { Link } from 'react-router-dom'
 import NavCustomer from './NavCustomer'
 
 const id = 902
