@@ -98,3 +98,47 @@ table, tbody {
   width: 100%;
   margin: 0 auto;
 }
+
+/* Cardinfo page styles */
+
+.card-title {
+  text-align: center;
+}
+
+.card-logo {
+  margin: 0 auto;
+  display: flex;
+}
+
+.card-wrapper {
+  display:flex;
+  text-align: center;
+}
+
+/* AddCard page styles */
+
+.addcard-header {
+  text-align: center;
+  border: 1px solid rgba(236, 240, 241, 1);
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.addcard-info {
+  text-align: center;
+}
+
+.add-card-grid {
+  padding-top: 5rem;
+}
+
+.column {
+  max-width: 1000px;
+  max-height: 1000px;
+  text-align: center;
+  display: flex;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

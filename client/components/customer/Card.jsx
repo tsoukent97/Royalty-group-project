@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import QrCode from './QrCode'
 import { getBusinessProfile } from '../../api/apiClient'
 import { businessId } from './CustomerHome'
+import { Container } from 'semantic-ui-react'
 
 export default function Card () {
   const [business, setBusiness] = useState([])
@@ -15,9 +16,11 @@ export default function Card () {
 
   return (
     <>
-      <h1>{business.business}</h1>
-      <img src={business.logo} />
-      <QrCode />
+      <h1 className="card-title">{business.business}</h1>
+      <img className="card-logo" src={business.logo} />
+      <Container className="card-wrapper">
+        <QrCode />
+      </Container>
     </>
   )
 }
