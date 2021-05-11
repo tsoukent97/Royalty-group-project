@@ -9,7 +9,7 @@ import NavCustomer from './NavCustomer'
 import { Link } from 'react-router-dom'
 
 const id = 902
-let businessId = 
+let businessId = 0
 
 function CustomerHome () {
   const [state, setState] = useState([{
@@ -40,10 +40,10 @@ function CustomerHome () {
     <div>
       <NavCustomer />
       <Grid relaxed columns={3}>
-        {state.map((card) => <Grid.Column key={card.id}><Link to={'/Customerhome/cardInfo'}><Image href='#' src={card.logo} alt={card.business} /></Link></Grid.Column>)}
+        {state.map((card) => <Grid.Column key={card.id}><Link to={'/Customerhome/cardInfo'}><Image href='#' src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/></Link></Grid.Column>)}
       </Grid>
     </div>
   )
 }
 
-export default CustomerHome
+export { CustomerHome, businessId }
