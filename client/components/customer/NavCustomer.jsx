@@ -18,19 +18,6 @@ export default function NavCustomer () {
       })
   }
 
-  const [state, setState] = useState([{
-    username: ''
-  }])
-
-  useEffect(() => {
-    getCustomerById()
-      .then(user => {
-        setState(user)
-        return null
-      })
-      .catch(err => console.log(err))
-  }, [])
-
   return (
     <Container>
       <Menu className='customer-nav' stackable widths={5}>
