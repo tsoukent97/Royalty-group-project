@@ -29,8 +29,8 @@ export default function AddCard (props) {
   return (
     <>
       <NavCustomer />
-      <h1 className="addcard-header">New Cards</h1>
-      <h3 className="addcard-info">Click an image to add it</h3>
+      <h1 className="addcard-header">Select a new card</h1>
+      <h3 className="addcard-info">Click an image below to add it</h3>
       <Container className='add-card-grid'>
         <Grid relaxed columns={2}>
           {cards.map((card) => <Grid.Column key={card.id}>

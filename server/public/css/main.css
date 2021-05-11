@@ -119,6 +119,13 @@ table, tbody {
 
 .addcard-header {
   text-align: center;
+  border: 1px solid rgba(236, 240, 241, 1);
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+
+  
 }
 
 .addcard-info {
