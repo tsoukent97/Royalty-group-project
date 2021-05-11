@@ -29,7 +29,7 @@ export default function AddCard () {
     <>
       <h1 className="addcard-header">New Cards</h1>
       <h3 className="addcard-info">Click an image to add it</h3>
-      <Container className='card-grid'>
+      <Container className='add-card-grid'>
         <Grid relaxed columns={2}>
           {cards.map((card) => <Grid.Column key={card.id}>
             <div className='overlay ui fluid card'>

@@ -101,6 +101,15 @@ table, tbody {
   text-align: center;
 }
 
-.card-grid {
+.add-card-grid {
   padding-top: 5rem;
+}
+
+.column {
+  max-width: 650px;
+  max-height: 650px;
+  text-align: center;
+  display: flex;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
