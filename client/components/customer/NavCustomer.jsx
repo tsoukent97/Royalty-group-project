@@ -5,18 +5,16 @@ import { logOut } from '../../api/passportAPI'
 import { getCustomers, getCustomerById } from '../../api/apiClient'
 
 export default function NavCustomer () {
-// please dont make me rewrite this function
   function handleClick () {
     logOut()
       .then(auth => {
-        console.log(auth.text)
-        if (auth.text === '"Logged out successfully"') {
+        if (auth === 'Logged out successfully') {
+          console.log('logged out')
           // props.history.push('/')
         } return null
       }).catch(e => {
         console.log(e.message)
       })
-    // window.location.reload()
   }
 
   function showUser () {

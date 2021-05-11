@@ -18,5 +18,8 @@ export function registerUser (user) {
 }
 
 export function logOut () {
-  return request.post(rootUrl + '/logout')
+  console.log('api logout')
+  return request
+    .post(rootUrl + '/logout')
+    .then(res => res.body)
 }
