@@ -17,12 +17,6 @@ export function registerUser (user) {
     .then(res => res.body)
 }
 
-export function getCustomer () {
-  return request
-    .get(rootUrl + '/user')
-}
-
 export function logOut () {
-  console.log('api logout')
   return request.post(rootUrl + '/logout')
 }

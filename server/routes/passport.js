@@ -52,8 +52,8 @@ router.post('/login', async (req, res, next) => {
 })
 
 router.post('/logout', (req, res) => {
-  console.log('Logged out successfully')
   req.logout()
+  res.json('Logged out successfully')
 })
 
 router.post('/register', (req, res) => {

@@ -2,19 +2,25 @@ import React from 'react'
 import { Container, Button, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { logOut } from '../../api/passportAPI'
+import { getCustomers } from '../../api/apiClient'
 
-export default function NavCustomer (props) {
-  function handleClick (e) {
-    e.preventDefault()
+export default function NavCustomer () {
+// please dont make me rewrite this function
+  function handleClick () {
     logOut()
-      .then(msg => {
-        if (msg === 'Logged out successfully') {
-          props.history.push('/')
+      .then(auth => {
+        console.log(auth.text)
+        if (auth.text === '"Logged out successfully"') {
+          // props.history.push('/')
         } return null
       }).catch(e => {
         console.log(e.message)
       })
     // window.location.reload()
+  }
+
+  function showUser () {
+
   }
 
   return (
@@ -29,7 +35,7 @@ export default function NavCustomer (props) {
           <Link to={'/Customerhome/addCard'}><Button primary>Add a card</Button></Link>
         </Menu.Item>
         <Menu.Item position='right'>
-          <Button secondary onClick={handleClick}>Logout</Button>
+          <Link to={'/'}><Button secondary onClick={handleClick}>Logout</Button></Link>
         </Menu.Item>
       </Menu>
     </Container>
