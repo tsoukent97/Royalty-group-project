@@ -90,8 +90,9 @@ table, tbody {
 }
 
 .footer {
- bottom: 0;
- position: absolute;
+  margin-top: 50vh;
+  position: relative;
+  width: 100%;
 }
 
 .ui.inverted.segment {
