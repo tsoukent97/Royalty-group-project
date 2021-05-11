@@ -14,7 +14,6 @@ export default function QrCode () {
       .catch(e => console.error(e.message))
   }, [stamps])
 
-  // }
   function handleClick () {
     const customerId = 901
     updateStampCount(businessId, customerId)
