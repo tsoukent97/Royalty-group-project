@@ -23,7 +23,7 @@ export default function NavCustomer () {
     <Container>
       <Menu className='customer-nav' stackable widths={5}>
         <Menu.Item>
-          <img src='images/royalty.jpg' alt='logo' />
+          <img className='logo-small' src='images/royalty.jpg' alt='logo' />
         </Menu.Item>
         <Menu.Item>Welcome, {state.username}</Menu.Item>
         <Menu.Item>Your Royalty Cards</Menu.Item>
