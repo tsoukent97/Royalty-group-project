@@ -26,6 +26,12 @@ export function updateStampCount (businessId, customerId) {
     .then(res => res.body)
 }
 
+export function resetStampCount (businessId, customerId) {
+  return request
+    .patch(customerServer + '/reset?businessId=' + businessId + '&customerId=' + customerId)
+    .then(res => res.body)
+}
+
 export function getAllCards (id) {
   return request
     .get(customerServer + '/' + id + '/addCard')
