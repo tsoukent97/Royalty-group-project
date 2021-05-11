@@ -4,6 +4,11 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Nav styles */
+.ui.menu {
+  background-color: #F9F8DC;
+}
+
 /* Business Home/chart */
 #apexchartsbasicxbar, .row {
   padding-top: 5rem;

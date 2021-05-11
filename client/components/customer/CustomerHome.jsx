@@ -1,8 +1,4 @@
-// grid of images, 3 columns
-// uncomment navCustomer once ready
-// replace placeholder with company logos
 import React, { useState, useEffect } from 'react'
-// import NavCustomer from './NavCustomer'
 import { Grid, Image } from 'semantic-ui-react'
 import { getCustomerCards } from '../../api/apiClient'
 import NavCustomer from './NavCustomer'
@@ -32,7 +28,6 @@ function CustomerHome () {
 
   function handleClick (id) {
     businessId = id
-    // props.history.push('/Customerhome/cardInfo')
     return null
   }
 
@@ -40,7 +35,8 @@ function CustomerHome () {
     <div>
       <NavCustomer />
       <Grid relaxed columns={3}>
-        {state.map((card) => <Grid.Column key={card.id}><Link to={'/Customerhome/cardInfo'}><Image href='#' src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/></Link></Grid.Column>)}
+        {state.map((card) => <Grid.Column key={card.id}><Link to={'/Customerhome/cardInfo'}>
+          <Image src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/></Link></Grid.Column>)}
       </Grid>
     </div>
   )

@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 export default function NavCustomer () {
   return (
     <Container>
-      <Menu stackable widths={5}>
+      <Menu className='customer-nav' stackable widths={5}>
         <Menu.Item>
-          <img src='/logo.png' alt='logo' />
+          <img src='images/royalty.jpg' alt='logo' />
         </Menu.Item>
         <Menu.Item>Welcome, username here</Menu.Item>
         <Menu.Item>Your Royalty Cards</Menu.Item>
