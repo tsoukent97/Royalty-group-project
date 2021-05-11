@@ -9,6 +9,7 @@ const router = express.Router()
 const flash = require('express-flash')
 const session = require('express-session')
 const customers = require('../db/db')
+const business = require('../db/db')
 
 initializePassport(passport)
 
@@ -75,4 +76,25 @@ router.post('/register', (req, res) => {
   }
 })
 
+router.post('/registerBusiness', (req, res) => {
+  const newBusiness = req.body
+  if (newBusiness.username && newBusiness.password) {
+    business.businessExists(newBusiness.username)
+      .then(user => {
+        if (!user) {
+          business.addBusiness(newBusiness)
+          return res.json('Business created')
+        } else {
+          res.json('Business already taken.')
+          return null
+        }
+      })
+      .catch(err => {
+        console.log(err.message)
+        return null
+      })
+  } else {
+    return res.json('Business and password required')
+  }
+})
 module.exports = router

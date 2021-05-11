@@ -16,3 +16,9 @@ export function registerUser (user) {
     .send(user)
     .then(res => res.body)
 }
+
+export function registerBusiness (business) {
+  return request.post(rootUrl + '/registerBusiness')
+    .send(business)
+    .then(res => res.body)
+}

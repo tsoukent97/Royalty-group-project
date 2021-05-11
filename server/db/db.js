@@ -21,7 +21,8 @@ module.exports = {
   getStampCount,
   updateStampCount,
   resetStampCount,
-  cardExists
+  cardExists,
+  businessExists
 }
 
 // returns an array of objects of customer_id signed up under the business. EX:
@@ -71,13 +72,22 @@ function addCustomer (customer, db = connection) {
 }
 
 // returns business profile, instead of ID. nested getCustomerProfile function in router
-function addBusiness (name, address, phoneNumber, email, db = connection) {
+function addBusiness (business, address, phoneNumber, email, db = connection) {
   return db('businesses').insert(
     {
-      name: name,
+      business: business,
       address: address,
       phone_number: phoneNumber,
       email: email
+    })
+}
+
+function businessExists (business, db = connection) {
+  return db('business')
+    .count('id as n')
+    .where('business', business)
+    .then(count => {
+      return count[0].n > 0
     })
 }
 
