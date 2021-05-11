@@ -22,7 +22,6 @@ afterEach(() => testEnv.cleanup(testDb))
 // getStampCount,
 // updateStampCount,
 // resetStampCount,
-// cardExists
 
 test('deletes a card', () => {
   const businessId = 105
@@ -52,19 +51,27 @@ test('deletes a business', () => {
     })
 })
 
-// test('card exists', () => {
-//   const customerId = 901
-//   const businessId = 105
-//   return db.cardExists(businessId, customerId, testDb)
-//     .then(result => {
-//       expect(result).toEqual()
-//       return null
-//     })
-// })
+test('card exists', () => {
+  const customerId = 901
+  const businessId = 105
+  return db.cardExists(businessId, customerId, testDb)
+    .then(result => {
+      expect(result).toHaveLength(1)
+      return null
+    })
+})
 
-// test('addBusiness', () => {
-//   return db.addBusiness('name', 'address', 'phone_number', 'email', testDb)
-// })
+test('addBusiness', () => {
+  const business = 'Bunnings'
+  const address = '2 Fun Lane'
+  const phoneNumber = '123'
+  const email = 'example@example.com'
+  return db.addBusiness(business, address, phoneNumber, email, testDb)
+    .then(result => {
+      expect(result).toEqual([116])
+      return null
+    })
+})
 
 test('get all cards', () => {
   return db.getAllCards(testDb)
