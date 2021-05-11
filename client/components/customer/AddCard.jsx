@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Container, Grid } from 'semantic-ui-react'
 import { getAllCards, addCard } from '../../api/apiClient'
+import NavCustomer from './NavCustomer'
 
 export default function AddCard (props) {
   const [cards, setCards] = useState([])
@@ -27,6 +28,7 @@ export default function AddCard (props) {
 
   return (
     <>
+      <NavCustomer />
       <h1 className="addcard-header">New Cards</h1>
       <h3 className="addcard-info">Click an image to add it</h3>
       <Container className='add-card-grid'>
