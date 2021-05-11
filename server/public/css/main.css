@@ -74,3 +74,35 @@ table, tbody {
   width: 100%;
   margin: 0 auto;
 }
+
+/* Cardinfo page styles */
+
+.card-title {
+  text-align: center;
+}
+
+.card-logo {
+  margin: 0 auto;
+  display: flex;
+}
+
+.card-wrapper {
+  display:flex;
+  text-align: center;
+}
+
+/* AddCard page styles */
+
+.addcard-header {
+  text-align: center;
+}
+
+.addcard-info {
+  text-align: center;
+}
+
+.ui.relaxe.three.column.grid {
+  display:flex;
+  text-align: center;
+  padding-left: 50rem;
+}

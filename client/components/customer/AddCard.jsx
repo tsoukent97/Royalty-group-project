@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Grid } from 'semantic-ui-react'
+import { Button, Container, Grid } from 'semantic-ui-react'
 import { getAllCards, addCard } from '../../api/apiClient'
 
 export default function AddCard () {
@@ -27,12 +27,14 @@ export default function AddCard () {
   console.log(cards)
   return (
     <>
+      <h1 className="addcard-header">New Cards</h1>
+      <h3 className="addcard-info">Click an image to add it</h3>
       <Grid relaxed columns={3}>
         {cards.map((card, i) =>
           <div key={i}>
             <Grid.Row>
-              <img key={i} src={card.logo}></img>
-              <Button positive key={i} onClick={() => handleClick(card.id)}>Add Card</Button>
+              <img key={i} src={card.logo} onClick={() => handleClick(card.id)}></img>
+              {/* <Button positive key={i} onClick={() => handleClick(card.id)}>Add Card</Button> */}
             </Grid.Row>
           </div>)}
       </Grid>
