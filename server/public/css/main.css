@@ -44,11 +44,39 @@ table, tbody {
 
 .card {
   margin: 0 auto;
-  height: auto;
-  max-width: 50%;
   background-color: #F9F8DC;
 }
 
+.image {
+  margin: 0 auto;
+  height: auto;
+  width: 50%;
+}
+
+.overlay > .image {
+  vertical-align: middle;
+}
+
+.overlay::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+.overlay:hover::before {
+  opacity: 0.23;
+}
+
+.content {
+  margin: 0 auto;
+  text-align: center;
+}
 
 /* Home page styles */
 .home {

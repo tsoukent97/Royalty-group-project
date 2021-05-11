@@ -36,11 +36,16 @@ function CustomerHome () {
       <NavCustomer />
       <Container className='card-grid'>
         <Grid relaxed columns={2}>
-          {state.map((card) => <Grid.Column key={card.id}><Link to={'/Customerhome/cardInfo'}>
-            <div className='ui fluid card'>
-              <Image className='image' src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/>
-              <div className='content'><p className='header'>{card.business}</p></div>
-            </div></Link></Grid.Column>)}
+          {state.map((card) => <Grid.Column key={card.id}>
+            <Link to={'/Customerhome/cardInfo'}>
+              <div className='overlay ui fluid card'>
+                <img className='image' src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/>
+                <div className='content'>
+                  <p className='header'>{card.business}</p>
+                </div>
+              </div>
+            </Link>
+          </Grid.Column>)}
         </Grid>
       </Container>
     </>
