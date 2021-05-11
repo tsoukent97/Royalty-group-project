@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import QRCode from 'qrcode.react'
 import { businessId } from './CustomerHome'
-import { updateStampCount, getStampCount } from '../../api/apiClient'
+import { updateStampCount, getStampCount, resetStampCount } from '../../api/apiClient'
 
 export default function QrCode () {
   const [stamps, setStamps] = useState({})
@@ -16,10 +16,11 @@ export default function QrCode () {
 
   function handleClick () {
     const customerId = 901
-    updateStampCount(businessId, customerId)
     if (stamps.stamp_count === 9) {
+      resetStampCount(businessId, customerId)
       alert('Congratulations! You get a freebie!')
     } else {
+      updateStampCount(businessId, customerId)
       alert('You are one stamp closer to your freebie!')
     } return null
   }
