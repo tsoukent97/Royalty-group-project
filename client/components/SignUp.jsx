@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
 import { registerUser } from '../api/passportAPI'
+import Error from './Error'
 
 // TODO
 // Stitch this form into api client, connect to DB
@@ -14,6 +15,7 @@ const initialState = {
 
 function SignUp (props) {
   const [customerForm, setCustomerForm] = useState(initialState)
+  const [error, setError] = useState('')
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -27,8 +29,10 @@ function SignUp (props) {
     e.preventDefault()
     registerUser(customerForm)
       .then((auth) => {
-        if (auth === 'Username created') {
+        if (auth === 'User created') {
           props.history.push('/Customerhome')
+        } else {
+          setError(auth)
         }
         return null
       })
@@ -65,7 +69,7 @@ function SignUp (props) {
           </Form.Field>
           <Form.Field>
             <label>Password:</label>
-            <input type='text'
+            <input type='password'
               placeholder='Choose password'
               name='password'
               required
@@ -112,6 +116,7 @@ function SignUp (props) {
                 onChange={handleChange}
               />}
           </Form.Field>
+          <Error errorMessage={error}/>
           <Button primary onClick={homePath}>Home</Button>
           <Button positive type='submit' onClick={handleSubmit}>Submit</Button>
         </Form>

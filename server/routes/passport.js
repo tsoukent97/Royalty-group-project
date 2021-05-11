@@ -49,29 +49,35 @@ router.get('/logout', function (req, res) {
 
 router.post('/register', (req, res) => {
   const newCustomer = req.body
-  customers.customerExists(newCustomer.username)
-    .then(user => {
-      if (!user) {
+  if (newCustomer.username && newCustomer.password) {
+    customers.customerExists(newCustomer.username)
+      .then(user => {
+        if (!user) {
         // eslint-disable-next-line promise/no-nesting
-        customers.addCustomer(newCustomer)
-          .then(() => {
-            res.json('Username created')
-            return null
-          })
-          .catch(e => {
-            console.log(e.message)
-            return null
-          })
+          customers.addCustomer(newCustomer)
+          // .then((result) => {
+          //   res.json('Username created')
+          //   console.log(result, 'line54')
+          //   return null
+          // })
+          // .catch(e => {
+          //   res.json(e.message)
+          //   console.log(e.message)
+          //   return null
+          // })
+          return res.json('User created')
+        } else {
+          res.json('Username already taken.')
+          return null
+        }
+      })
+      .catch(err => {
+        console.log(err.message)
         return null
-      } else {
-        res.json('Username already taken.')
-        return null
-      }
-    })
-    .catch(err => {
-      console.log(err.message)
-      return null
-    })
+      })
+  } else {
+    return res.json('Username and password required')
+  }
 })
 
 module.exports = router

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
 import { loginCustomer } from '../api/passportAPI'
+import Error from './Error'
 
 // let userInfo = {}
 
@@ -11,6 +12,7 @@ function Login (props) {
   }
 
   const [form, setForm] = useState(initialState)
+  const [error, setError] = useState('')
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -27,6 +29,8 @@ function Login (props) {
         console.log(auth)
         if (auth === 'Login Succeeded') {
           props.history.push('/Customerhome')
+        } else {
+          setError(auth)
         } return null
       })
       .catch(e => {
@@ -66,12 +70,13 @@ function Login (props) {
             <input
               placeholder='Enter password...'
               name='password'
-              type='text'
+              type='password'
               onChange={handleChange}
               value={form.password}
               required
             />
           </Form.Field>
+          <Error errorMessage={error} />
           <Button primary onClick={homePath}>Home</Button>
           <Button positive type='button' onClick={handleSubmit}>Login</Button>
         </Form>

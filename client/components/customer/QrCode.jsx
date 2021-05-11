@@ -12,19 +12,13 @@ export default function QrCode () {
       .then(currentCount =>
         setStamps(currentCount[0]))
       .catch(e => console.error(e.message))
-  }, [])
+  }, [stamps])
 
-  function reloadStamps () {
-    const customerId = 901
-    getStampCount(businessId, customerId)
-      .then(currentCount =>
-        setStamps(currentCount[0]))
-      .catch(e => console.error(e.message))
-  }
+  // }
   function handleClick () {
     const customerId = 901
     updateStampCount(businessId, customerId)
-    reloadStamps()
+    alert('Congratulations! You are one stamp closer to your freebie!')
     return null
   }
 
