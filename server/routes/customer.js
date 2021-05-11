@@ -20,6 +20,16 @@ router.patch('/:id/delete', (req, res) => {
     })
 })
 
+router.patch('/deleteCard', (req, res) => {
+  const { businessId, customerId } = req.query
+  db.deleteCard(businessId, customerId)
+    .then(() => {
+      return res.status(200).send()
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
 router.get('/:id/addCard', (req, res) => {
   db.getAllCards()
     .then(cards => {

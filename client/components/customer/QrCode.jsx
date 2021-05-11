@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import QRCode from 'qrcode.react'
 import { businessId } from './CustomerHome'
-import { updateStampCount, getStampCount, resetStampCount, getCustomerByUsername } from '../../api/apiClient'
+import { updateStampCount, getStampCount, resetStampCount, getCustomerByUsername, deleteCard } from '../../api/apiClient'
 import { userInfo } from '../Login'
+import { Link } from 'react-router-dom'
 
-export default function QrCode () {
+export default function QrCode (props) {
   const [customerId, setCustomerId] = useState(0)
   const [stamps, setStamps] = useState({})
 
@@ -32,6 +33,11 @@ export default function QrCode () {
     } return null
   }
 
+  function handleDelete () {
+    deleteCard(businessId, customerId)
+    // props.history.push('/Customerhome')
+  }
+
   return (
     <div>
       <QRCode
@@ -43,6 +49,7 @@ export default function QrCode () {
       />
       <button onClick={() => handleClick()}>Click to add stamp</button>
       <h3>Current stamps: {stamps.stamp_count} /10 </h3>
+      <Link to={'/Customerhome'}><button onClick={handleDelete}>Delete Card</button></Link>
     </div>
   )
 }
