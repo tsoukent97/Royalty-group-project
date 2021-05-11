@@ -18,6 +18,7 @@ const initialBusinessState = {
   password: '',
   address: '',
   phoneNumber: '',
+  email: '',
   userType: 'Business'
 }
 
@@ -44,19 +45,18 @@ function SignUp (props) {
 
   function handleBusinessSubmit (e) {
     e.preventDefault()
-    console.log('handlebusinesssubmit', businessForm)
-    // registerBusiness(businessForm)
-    //   .then((auth) => {
-    //     if (auth === 'Business created') {
-    //       props.history.push('/Businesshome')
-    //     } else {
-    //       setError(auth)
-    //     }
-    //     return null
-    //   })
-    //   .catch(e => {
-    //     console.log(e.message)
-    //   })
+    registerBusiness(businessForm)
+      .then((auth) => {
+        if (auth === 'Business created') {
+          props.history.push('/Businesshome')
+        } else {
+          setError(auth)
+        }
+        return null
+      })
+      .catch(e => {
+        console.log(e.message)
+      })
   }
 
   function handleSubmit (e) {
