@@ -38,10 +38,6 @@ table, tbody {
   margin: 0 auto;
 }
 
-.alert-info {
-  margin: 0 auto;
-}
-
 .card-grid {
   padding-top: 5rem;
 }
@@ -50,6 +46,7 @@ table, tbody {
   margin: 0 auto;
   height: auto;
   max-width: 50%;
+  background-color: #F9F8DC;
 }
 
 

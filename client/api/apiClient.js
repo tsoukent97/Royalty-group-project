@@ -50,6 +50,11 @@ export function getCustomers (id) {
     .then(res => res.body)
 }
 
+export function getCustomerById (id) {
+  return request.get(customerServer + '/' + id)
+    .then(res => res.body)
+}
+
 export function deleteBusiness (id) {
   return request
     .patch(businessServer + '/' + id + '/delete')
