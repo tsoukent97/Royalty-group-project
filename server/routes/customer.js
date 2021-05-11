@@ -1,6 +1,17 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../db/db')
+// const session = require('express-session')
+
+router.get('/:id', (req, res) => {
+  console.log()
+  db.getCustomerById(req.params.id)
+    .then(customer => {
+      return res.json(customer)
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
 
 router.get('/:id/cards', (req, res) => {
   db.getCustomerCards(req.params.id)
