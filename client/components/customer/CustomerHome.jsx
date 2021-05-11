@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Grid, Image } from 'semantic-ui-react'
+import { Container, Grid, Image } from 'semantic-ui-react'
 import { getCustomerCards } from '../../api/apiClient'
 import NavCustomer from './NavCustomer'
 import { Link } from 'react-router-dom'
@@ -32,13 +32,18 @@ function CustomerHome () {
   }
 
   return (
-    <div>
+    <>
       <NavCustomer />
-      <Grid relaxed columns={3}>
-        {state.map((card) => <Grid.Column key={card.id}><Link to={'/Customerhome/cardInfo'}>
-          <Image src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/></Link></Grid.Column>)}
-      </Grid>
-    </div>
+      <Container className='card-grid'>
+        <Grid relaxed columns={2}>
+          {state.map((card) => <Grid.Column key={card.id}><Link to={'/Customerhome/cardInfo'}>
+            <div className='ui fluid card'>
+              <Image className='image' src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/>
+              <div className='content'><p className='header'>{card.business}</p></div>
+            </div></Link></Grid.Column>)}
+        </Grid>
+      </Container>
+    </>
   )
 }
 
