@@ -130,8 +130,8 @@ table, tbody {
 }
 
 .column {
-  max-width: 650px;
-  max-height: 650px;
+  max-width: 1000px;
+  max-height: 1000px;
   text-align: center;
   display: flex;
   margin-left: auto !important;
