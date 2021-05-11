@@ -1,17 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../db/db')
-const session = require('express-session')
-
-router.get('/:id', (req, res) => {
-  console.log()
-  db.getCustomerById(req.params.id)
-    .then(customer => {
-      return res.json(customer)
-    }).catch(err => {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
-    })
-})
 
 router.get('/:id/cards', (req, res) => {
   db.getCustomerCards(req.params.id)
@@ -24,6 +13,16 @@ router.get('/:id/cards', (req, res) => {
 
 router.patch('/:id/delete', (req, res) => {
   db.deleteCustomer(req.params.id)
+    .then(() => {
+      return res.status(200).send()
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
+router.patch('/deleteCard', (req, res) => {
+  const { businessId, customerId } = req.query
+  db.deleteCard(businessId, customerId)
     .then(() => {
       return res.status(200).send()
     }).catch(err => {
@@ -59,12 +58,11 @@ router.post('/addCard', (req, res) => {
     })
 })
 
-router.get('/:id/checkCard', (req, res) => {
-  const { businessId, customerId } = req.query
-  db.cardExists(businessId, customerId)
-    .then((exists) => {
-      console.log(exists)
-      return res.json(exists)
+router.get('/customerInfo', (req, res) => {
+  const { name } = req.query
+  db.getCustomerByUsername(name)
+    .then((name) => {
+      return res.json(name)
     }).catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
@@ -100,6 +98,16 @@ router.patch('/reset', (req, res) => {
   db.resetStampCount(businessId, customerId)
     .then(() => {
       return res.status(200).send()
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
+router.get('/:id', (req, res) => {
+  console.log()
+  db.getCustomerById(req.params.id)
+    .then(customer => {
+      return res.json(customer)
     }).catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
