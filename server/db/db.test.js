@@ -26,33 +26,20 @@ test('deletes a card', () => {
     })
 })
 
-test('get a customer profile', () => {
-  const testId = 901
-  expect.assertions(1)
-  return db.getCustomerProfile(testId, testDb)
+test('deletes a customer', () => {
+  const id = 901
+  return db.deleteCustomer(id, testDb)
     .then(result => {
-      expect(result).toEqual({ id: 901, name: 'Aaron' })
+      expect(result).toEqual(1)
       return null
     })
 })
 
-test('get a business profile', () => {
-  const testId = 101
-  expect.assertions(1)
-  return db.getBusinessProfile(testId, testDb)
+test('deletes a business', () => {
+  const id = 105
+  return db.deleteBusiness(id, testDb)
     .then(result => {
-      expect(result).toEqual({ id: 101, name: 'Starbucks', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' })
-      return null
-    })
-})
-
-test('add a new customer', () => {
-  const testName = 'bob'
-  const testUserName = 'bobby123'
-  expect.assertions(1)
-  return db.addCustomer(testName, testUserName, testDb)
-    .then(result => {
-      expect(result).toEqual([906])
+      expect(result).toEqual(1)
       return null
     })
 })
