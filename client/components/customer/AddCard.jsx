@@ -44,7 +44,7 @@ export default function AddCard (props) {
       <h1 className="addcard-header">Select a new card</h1>
       <h3 className="addcard-info">Click an image below to add it</h3>
       <Container className='add-card-grid'>
-        <Grid relaxed columns={2}>
+        <Grid relaxed columns={3}>
           {cards.map((card) => <Grid.Column key={card.id}>
             <div className='overlay ui fluid card'>
               <img className='image' src={card.logo} onClick={() => handleClick(card.id)}></img>
