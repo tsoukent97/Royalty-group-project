@@ -101,3 +101,6 @@ table, tbody {
   text-align: center;
 }
 
+.card-grid {
+  padding-top: 5rem;
+}
