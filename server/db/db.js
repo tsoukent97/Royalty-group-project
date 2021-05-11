@@ -19,7 +19,9 @@ module.exports = {
   getCustomerByUsername,
   getAllCards,
   getStampCount,
-  updateStampCount
+  updateStampCount,
+  resetStampCount,
+  cardExists
 }
 
 // returns an array of objects of customer_id signed up under the business. EX:
@@ -88,6 +90,13 @@ function customerExists (username, db = connection) {
     })
 }
 
+function cardExists (businessId, customerId, db = connection) {
+  return db('cards')
+    .select()
+    .where('customer_id', customerId)
+    .where('business_id', businessId)
+}
+
 function addCard (businessId, customerId, db = connection) {
   return db('cards').insert(
     {
@@ -141,4 +150,11 @@ function updateStampCount (businessId, customerId, stampCount, db = connection) 
     .where('customer_id', customerId)
     .where('business_id', businessId)
     .update({ stamp_count: stampCount + 1 })
+}
+
+function resetStampCount (businessId, customerId, db = connection) {
+  return db('cards')
+    .where('customer_id', customerId)
+    .where('business_id', businessId)
+    .update({ stamp_count: 0 })
 }

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Grid, Image } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react'
 import { getCustomerCards } from '../../api/apiClient'
 import NavCustomer from './NavCustomer'
-import { Link } from 'react-router-dom'
 
 const id = 902
 let businessId = 0
 
-function CustomerHome () {
+function CustomerHome (props) {
   const [state, setState] = useState([{
     business: '',
     id: '',
@@ -28,6 +27,7 @@ function CustomerHome () {
 
   function handleClick (id) {
     businessId = id
+    props.history.push('/Customerhome/cardInfo')
     return null
   }
 
@@ -37,14 +37,12 @@ function CustomerHome () {
       <Container className='card-grid'>
         <Grid relaxed columns={2}>
           {state.map((card) => <Grid.Column key={card.id}>
-            <Link to={'/Customerhome/cardInfo'}>
-              <div className='overlay ui fluid card'>
-                <img className='image' src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/>
-                <div className='content'>
-                  <p className='header'>{card.business}</p>
-                </div>
+            <div className='overlay ui fluid card'>
+              <img className='image' src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/>
+              <div className='content'>
+                <p className='header'>{card.business}</p>
               </div>
-            </Link>
+            </div>
           </Grid.Column>)}
         </Grid>
       </Container>
