@@ -3,11 +3,17 @@ import { Container, Button, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { logOut } from '../../api/passportAPI'
 
-export default function NavCustomer () {
-  function handleClick () {
-    logOut().then(() => {
-
-    })
+export default function NavCustomer (props) {
+  function handleClick (e) {
+    e.preventDefault()
+    logOut()
+      .then(msg => {
+        if (msg === 'Logged out successfully') {
+          props.history.push('/')
+        } return null
+      }).catch(e => {
+        console.log(e.message)
+      })
     // window.location.reload()
   }
 

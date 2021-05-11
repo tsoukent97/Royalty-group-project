@@ -40,7 +40,7 @@ function CustomerHome () {
     <div>
       <NavCustomer />
       <Grid relaxed columns={3}>
-        {state.map((card) => <Grid.Column key={card.id}><Link to={'/Customerhome/cardInfo'}><Image href='#' src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/></Link></Grid.Column>)}
+        {state.map((card) => <Grid.Column key={card.id}><Link to={'/Customerhome/cardInfo'}><Image src={card.logo} alt={card.business} onClick={() => handleClick(card.id)}/></Link></Grid.Column>)}
       </Grid>
     </div>
   )
