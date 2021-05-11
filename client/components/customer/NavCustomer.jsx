@@ -16,13 +16,7 @@ export default function NavCustomer () {
         console.log(e.message)
       })
   }
-
-  function showUser () {
-
-  }
-
-  const id = 902
-
+  
   const [state, setState] = useState([{
     username: ''
   }])
