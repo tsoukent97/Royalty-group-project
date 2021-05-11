@@ -1,5 +1,5 @@
-// const environment = process.env.NODE_ENV || 'development'
-const config = require('./knexfile').development
+const environment = process.env.NODE_ENV || 'development'
+const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 const bcrypt = require('bcryptjs')
 const saltRounds = 10
@@ -63,7 +63,7 @@ function addCustomer (customer, db = connection) {
       customer.password = auth
       // eslint-disable-next-line promise/no-nesting
       return db('customers')
-        .insert(customer)
+        .insert(customer, 'id')
         // .then((id) => getCustomerById(id[0]))
     })
     .catch(e =>
@@ -78,7 +78,7 @@ function addBusiness (name, address, phoneNumber, email, db = connection) {
       address: address,
       phone_number: phoneNumber,
       email: email
-    })
+    }, 'id')
 }
 
 function customerExists (username, db = connection) {
@@ -103,7 +103,7 @@ function addCard (businessId, customerId, db = connection) {
       business_id: businessId,
       customer_id: customerId,
       stamp_count: 0
-    })
+    }, 'id')
 }
 
 function deleteCustomer (id, db = connection) {
