@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Grid } from 'semantic-ui-react'
-import { getAllCards, addCard } from '../../api/apiClient'
+import { Button, Container, Grid } from 'semantic-ui-react'
+import { getAllCards, addCard, getCustomerByUsername } from '../../api/apiClient'
+import { userInfo } from '../Login'
+import NavCustomer from './NavCustomer'
+
 
 export default function AddCard (props) {
+  const [customer, setCustomerId] = useState(0)
   const [cards, setCards] = useState([])
+
+  useEffect(() => {
+    getCustomerByUsername(userInfo)
+      .then((id) => {
+        setCustomerId(id)
+        return null
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
 
   useEffect(() => {
     getAllCards()
@@ -13,8 +27,7 @@ export default function AddCard (props) {
   }, [])
 
   function handleClick (businessId) {
-    const customerId = 901
-    addCard(businessId, customerId)
+    addCard(businessId, customer.id)
       .then(result => {
         if (result === 'Card added successfully!') {
           alert(result)
@@ -27,15 +40,21 @@ export default function AddCard (props) {
 
   return (
     <>
-      <Grid relaxed columns={3}>
-        {cards.map((card, i) =>
-          <div key={i}>
-            <Grid.Row>
-              <img key={i} src={card.logo}></img>
-              <Button positive key={i} onClick={() => handleClick(card.id)}>Add Card</Button>
-            </Grid.Row>
-          </div>)}
-      </Grid>
+      <NavCustomer />
+      <h1 className="addcard-header">Select a new card</h1>
+      <h3 className="addcard-info">Click an image below to add it</h3>
+      <Container className='add-card-grid'>
+        <Grid relaxed columns={2}>
+          {cards.map((card) => <Grid.Column key={card.id}>
+            <div className='overlay ui fluid card'>
+              <img className='image' src={card.logo} onClick={() => handleClick(card.id)}></img>
+              <div className='content'>
+                <p className='header'>{card.business}</p>
+              </div>
+            </div>
+          </Grid.Column>)}
+        </Grid>
+      </Container>
     </>
   )
 }

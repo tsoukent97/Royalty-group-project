@@ -8,9 +8,20 @@ export function getCustomerCards (id) {
     .then(res => res.body)
 }
 
+export function getCustomerByUsername (name) {
+  return request.get(customerServer + '/customerInfo?name=' + name)
+    .then(res => res.body)
+}
+
 export function deleteCustomer (id) {
   return request
     .patch(customerServer + '/' + id + '/delete')
+    .then(res => res.body)
+}
+
+export function deleteCard (businessId, customerId) {
+  return request
+    .patch(customerServer + '/deleteCard?businessId=' + businessId + '&customerId=' + customerId)
     .then(res => res.body)
 }
 

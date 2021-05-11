@@ -22,3 +22,10 @@ export function registerBusiness (business) {
     .send(business)
     .then(res => res.body)
 }
+
+export function logOut () {
+  console.log('api logout')
+  return request
+    .post(rootUrl + '/logout')
+    .then(res => res.body)
+}

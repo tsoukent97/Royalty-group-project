@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
-import { registerUser } from '../api/passportAPI'
+import { registerUser, registerBusiness } from '../api/passportAPI'
 import Error from './Error'
 
 // TODO

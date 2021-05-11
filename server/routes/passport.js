@@ -23,11 +23,20 @@ router.use(passport.initialize())
 router.use(passport.session())
 
 // can call before functions to check user is authenticated and redirects to login if not
-// function checkAuthenticated (req, res, next) {
+function checkAuthenticated (req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  return res.redirect('/')
+}
+
+// function checkNotAuthenticated (req, res, next) {
 //   if (req.isAuthenticated()) {
-//     return next()
+//     console.log('test')
+//     // res.json('Account already logged in')
+//     // return res.redirect('/')
 //   }
-//   res.redirect('/login')
+//   next()
 // }
 
 router.post('/login', async (req, res, next) => {
@@ -43,6 +52,11 @@ router.post('/login', async (req, res, next) => {
   })(req, res, next)
 })
 
+router.post('/logout', (req, res) => {
+  req.logout()
+  res.json('Logged out successfully')
+})
+
 router.post('/register', (req, res) => {
   const newCustomer = req.body
   if (newCustomer.username && newCustomer.password) {
@@ -51,16 +65,6 @@ router.post('/register', (req, res) => {
         if (!user) {
         // eslint-disable-next-line promise/no-nesting
           customers.addCustomer(newCustomer)
-          // .then((result) => {
-          //   res.json('Username created')
-          //   console.log(result, 'line54')
-          //   return null
-          // })
-          // .catch(e => {
-          //   res.json(e.message)
-          //   console.log(e.message)
-          //   return null
-          // })
           return res.json('User created')
         } else {
           res.json('Username already taken.')
@@ -97,4 +101,15 @@ router.post('/registerBusiness', (req, res) => {
     return res.json('Business and password required')
   }
 })
+// idk lmao don't look at this
+// router.post('/Customerhome', checkAuthenticated, async (req, res) => {
+//   await passport.authenticate('local', (e, customer, info) => {
+//     if (e) throw e
+//     if (!customer) res.json(info.message)
+//     else {
+//       res.json('User is logged in accessing customer home')
+//     }
+//   })
+// })
+
 module.exports = router
