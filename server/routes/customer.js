@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../db/db')
-const session = require('express-session')
+// const session = require('express-session')
 
 router.get('/:id', (req, res) => {
   console.log()
@@ -50,7 +50,7 @@ router.post('/addCard', (req, res) => {
     })
 })
 
-router.patch('/', checkNotAuthenticated, (req, res) => {
+router.patch('/', (req, res) => {
   const { businessId, customerId } = req.query
   db.getStampCount(businessId, customerId)
     .then(customer => {
@@ -75,13 +75,6 @@ router.get('/:id/query', (req, res) => {
     })
 })
 
-function checkNotAuthenticated (req, res, next) {
-  if (req.isAuthenticated()) {
-    console.log('test')
-    // res.json('Account already logged in')
-    // return res.redirect('/')
-  }
-  next()
-}
+
 
 module.exports = router

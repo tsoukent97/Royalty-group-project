@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom'
 import { logOut } from '../../api/passportAPI'
 
 export default function NavCustomer () {
-  function handleSubmit () {
-    logOut()
+  function handleClick () {
+    logOut().then(() => {
+
+    })
+    // window.location.reload()
   }
+
   return (
     <Container>
       <Menu stackable widths={5}>
@@ -19,7 +23,7 @@ export default function NavCustomer () {
           <Link to={'/Customerhome/addCard'}><Button primary>Add a card</Button></Link>
         </Menu.Item>
         <Menu.Item position='right'>
-          <Button secondary onClick={handleSubmit}>Logout</Button>
+          <Button secondary onClick={handleClick}>Logout</Button>
         </Menu.Item>
       </Menu>
     </Container>

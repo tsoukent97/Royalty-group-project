@@ -23,5 +23,6 @@ export function getCustomer () {
 }
 
 export function logOut () {
-  return request.get(rootUrl + '/logout')
+  console.log('api logout')
+  return request.post(rootUrl + '/logout')
 }
