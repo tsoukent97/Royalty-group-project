@@ -27,36 +27,17 @@ function SignUp (props) {
   const [businessForm, setBusinessForm] = useState(initialBusinessState)
   const [error, setError] = useState('')
 
+  function homePath (e) {
+    e.preventDefault()
+    props.history.push('/')
+  }
+
   function handleChange (e) {
     const { name, value } = e.target
     setCustomerForm({
       ...customerForm,
       [name]: value
     })
-  }
-
-  function handleBusinessChange (e) {
-    const { name, value } = e.target
-    setBusinessForm({
-      ...businessForm,
-      [name]: value
-    })
-  }
-
-  function handleBusinessSubmit (e) {
-    e.preventDefault()
-    registerBusiness(businessForm)
-      .then((auth) => {
-        if (auth === 'Business created') {
-          props.history.push('/Businesshome')
-        } else {
-          setError(auth)
-        }
-        return null
-      })
-      .catch(e => {
-        console.log(e.message)
-      })
   }
 
   function handleSubmit (e) {
@@ -75,9 +56,29 @@ function SignUp (props) {
       })
   }
 
-  function homePath (e) {
+  function handleBusinessChange (e) {
+    const { name, value } = e.target
+    setBusinessForm({
+      ...businessForm,
+      [name]: value
+    })
+  }
+
+  function handleBusinessSubmit (e) {
     e.preventDefault()
-    props.history.push('/')
+    registerBusiness(businessForm)
+      .then((auth) => {
+        if (auth === 'Business created') {
+          // change to login
+          props.history.push('/Businesshome')
+        } else {
+          setError(auth)
+        }
+        return null
+      })
+      .catch(e => {
+        console.log(e.message)
+      })
   }
 
   function toggleBusiness (e) {

@@ -95,8 +95,8 @@ router.post('/register', (req, res) => {
 
 router.post('/registerBusiness', (req, res) => {
   const newBusiness = req.body
-  if (newBusiness.username && newBusiness.password) {
-    business.businessExists(newBusiness.username)
+  if (newBusiness.business && newBusiness.password) {
+    business.businessExists(newBusiness.business)
       .then(user => {
         if (!user) {
           business.addBusiness(newBusiness)
