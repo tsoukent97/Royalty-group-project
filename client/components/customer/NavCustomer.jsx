@@ -17,7 +17,7 @@ export default function NavCustomer () {
         console.log(e.message)
       })
   }
-  
+
   const [state, setState] = useState([{
     username: ''
   }])
@@ -31,7 +31,6 @@ export default function NavCustomer () {
       .catch(err => console.log(err))
   }, [])
 
-export default function NavCustomer () {
   return (
     <Container>
       <Menu className='customer-nav' stackable widths={5}>
