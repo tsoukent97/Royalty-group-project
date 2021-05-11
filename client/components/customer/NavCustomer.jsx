@@ -18,18 +18,18 @@ export default function NavCustomer () {
       })
   }
 
-  const [state, setState] = useState([{
-    username: ''
-  }])
+  // const [state, setState] = useState([{
+  //   username: ''
+  // }])
 
-  useEffect(() => {
-    getCustomerById(id)
-      .then(user => {
-        setState(user)
-        return null
-      })
-      .catch(err => console.log(err))
-  }, [])
+  // useEffect(() => {
+  //   getCustomerById(userInfo)
+  //     .then(user => {
+  //       setState(user)
+  //       return null
+  //     })
+  //     .catch(err => console.log(err))
+  // }, [])
 
   return (
     <Container>
