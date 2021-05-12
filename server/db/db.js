@@ -24,7 +24,10 @@ module.exports = {
   getCustomerByUsername,
   getStampCount,
   updateStampCount,
-  resetStampCount
+  resetStampCount,
+  businessExists,
+  getBusinessByName,
+  getBusinessById
 }
 
 // returns an array of objects of customer_id signed up under the business. EX:
@@ -74,13 +77,31 @@ function addCustomer (customer, db = connection) {
 }
 
 // returns business profile, instead of ID. nested getCustomerProfile function in router
-function addBusiness (business, address, phoneNumber, email, db = connection) {
-  return db('businesses').insert(
-    {
-      business: business,
-      address: address,
-      phoneNumber: phoneNumber,
-      email: email
+function addBusiness (business, db = connection) {
+  console.log(business)
+  bcrypt.hash(business.password, saltRounds)
+    .then(auth => {
+      business.password = auth
+      return db('businesses')
+        .insert(business)
+    })
+    .catch(e =>
+      console.log(e.message))
+    // {
+    //   business: business,
+    //   password: password,
+    //   address: address,
+    //   phone_number: phoneNumber,
+    //   email: email
+    // }
+}
+
+function businessExists (business, db = connection) {
+  return db('businesses')
+    .count('id as n')
+    .where('business', business)
+    .then(count => {
+      return count[0].n > 0
     })
 }
 
@@ -135,12 +156,18 @@ function getCustomerById (id, db = connection) {
   return db('customers').where('id', id).select().first()
 }
 
+function getBusinessById (id, db = connection) {
+  return db('businesses').where('id', id).select().first()
+}
+
 function getCustomerByUsername (username, db = connection) {
   return db('customers').where('username', username).select().first()
 }
+
 function getAllCards (db = connection) {
   return db('businesses').select('business', 'logo', 'id')
 }
+
 function getStampCount (businessId, customerId, db = connection) {
   return db('cards')
     .where('customer_id', customerId)
@@ -160,4 +187,8 @@ function resetStampCount (businessId, customerId, db = connection) {
     .where('customer_id', customerId)
     .where('business_id', businessId)
     .update({ stamp_count: 0 })
+}
+
+function getBusinessByName (business, db = connection) {
+  return db('businesses').where('business', business).select().first()
 }

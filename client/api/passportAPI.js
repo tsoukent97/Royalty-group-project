@@ -9,9 +9,22 @@ export function loginCustomer (customer) {
     .then(res => res.body)
 }
 
+export function loginBusiness (business) {
+  return request.post('/loginBusiness')
+    .send({
+      business: business.business,
+      password: business.password
+    })
+}
 export function registerUser (user) {
   return request.post('/register')
     .send(user)
+    .then(res => res.body)
+}
+
+export function registerBusiness (business) {
+  return request.post('/registerBusiness')
+    .send(business)
     .then(res => res.body)
 }
 
