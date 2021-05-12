@@ -41,13 +41,15 @@ router.get('/:id/addCard', (req, res) => {
 })
 
 router.post('/addCard', (req, res) => {
-  const { businessId, customerId } = req.query
+  // const { businessId, customerId } = req.query
+  const businessId = Number(req.query.businessId)
+  const customerId = Number(req.query.customerId)
   db.cardExists(businessId, customerId)
     .then((cardList) => {
       if (cardList.length === 0) {
         db.addCard(businessId, customerId)
           .then((id) => {
-            return res.json(id)
+            return res.json('Card successfully added!')
           }).catch(err => {
             res.status(500).send('DATABASE ERROR: ' + err.message)
           })
