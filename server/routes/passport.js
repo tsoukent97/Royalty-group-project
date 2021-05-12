@@ -22,23 +22,6 @@ router.use(session({
 router.use(passport.initialize())
 router.use(passport.session())
 
-// can call before functions to check user is authenticated and redirects to login if not
-// function checkAuthenticated (req, res, next) {
-//   if (req.isAuthenticated()) {
-//     return next()
-//   }
-//   return res.redirect('/')
-// }
-
-// function checkNotAuthenticated (req, res, next) {
-//   if (req.isAuthenticated()) {
-//     console.log('test')
-//     // res.json('Account already logged in')
-//     // return res.redirect('/')
-//   }
-//   next()
-// }
-
 router.post('/login', async (req, res, next) => {
   await passport.authenticate('user', (e, customer, info) => {
     if (e) throw e

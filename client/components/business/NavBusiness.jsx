@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Button, Menu } from 'semantic-ui-react'
-import { logOut } from '../../api/passportAPI'
+import { logOut } from '../../api/apiClient'
 import { Link } from 'react-router-dom'
 import { businessInfo } from '../Login'
 
@@ -10,7 +10,6 @@ export default function NavBusiness () {
       .then(auth => {
         if (auth === 'Logged out successfully') {
           console.log('logged out')
-          // props.history.push('/')
         } return null
       }).catch(e => {
         console.log(e.message)

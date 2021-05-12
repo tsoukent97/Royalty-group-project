@@ -36,6 +36,7 @@ router.post('/addCard', (req, res) => {
   db.cardExists(businessId, customerId)
     .then((cardList) => {
       if (cardList.length === 0) {
+        // eslint-disable-next-line promise/no-nesting
         db.addCard(businessId, customerId)
           .then(() => {
             return res.json('Card added successfully!')

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
-import { registerUser, registerBusiness } from '../api/passportAPI'
+import { registerUser, registerBusiness } from '../api/apiClient'
 import Error from './Error'
 
 const initialState = {

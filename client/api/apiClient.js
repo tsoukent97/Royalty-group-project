@@ -65,3 +65,47 @@ export function getCustomerById (id) {
   return request.get(customerServer + '/' + id)
     .then(res => res.body)
 }
+<<<<<<< HEAD
+=======
+
+export function deleteBusiness (id) {
+  return request
+    .patch(businessServer + '/' + id + '/delete')
+    .then(res => res.body)
+}
+
+export function loginCustomer (customer) {
+  return request.post('/login')
+    .send({
+      username: customer.username,
+      password: customer.password
+    })
+    .then(res => res.body)
+}
+
+export function loginBusiness (business) {
+  return request.post('/loginBusiness')
+    .send({
+      business: business.business,
+      password: business.password
+    })
+}
+export function registerUser (user) {
+  return request.post('/register')
+    .send(user)
+    .then(res => res.body)
+}
+
+export function registerBusiness (business) {
+  return request.post('/registerBusiness')
+    .send(business)
+    .then(res => res.body)
+}
+
+export function logOut () {
+  console.log('api logout')
+  return request
+    .post('/logout')
+    .then(res => res.body)
+}
+>>>>>>> 81341a1bf5e4e7c7c50c9cbb0ffaeed9409492e6
