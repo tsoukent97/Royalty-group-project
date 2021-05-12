@@ -13,11 +13,11 @@ export function getCustomerByUsername (name) {
     .then(res => res.body)
 }
 
-export function deleteCustomer (id) {
-  return request
-    .patch(customerServer + '/' + id + '/delete')
-    .then(res => res.body)
-}
+// export function deleteCustomer (id) {
+//   return request
+//     .patch(customerServer + '/' + id + '/delete')
+//     .then(res => res.body)
+// }
 
 export function deleteCard (businessId, customerId) {
   return request
@@ -72,8 +72,8 @@ export function getCustomerById (id) {
     .then(res => res.body)
 }
 
-export function deleteBusiness (id) {
-  return request
-    .patch(businessServer + '/' + id + '/delete')
-    .then(res => res.body)
-}
+// export function deleteBusiness (id) {
+//   return request
+//     .patch(businessServer + '/' + id + '/delete')
+//     .then(res => res.body)
+// }
