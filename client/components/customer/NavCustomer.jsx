@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Container, Button, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { logOut } from '../../api/passportAPI'
-import { getCustomers, getCustomerById } from '../../api/apiClient'
 import { userInfo } from '../Login'
 
 export default function NavCustomer () {
@@ -17,19 +16,6 @@ export default function NavCustomer () {
         console.log(e.message)
       })
   }
-
-  const [state, setState] = useState([{
-    username: ''
-  }])
-
-  useEffect(() => {
-    getCustomerById(id)
-      .then(user => {
-        setState(user)
-        return null
-      })
-      .catch(err => console.log(err))
-  }, [])
 
   return (
     <Container>

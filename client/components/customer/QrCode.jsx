@@ -4,6 +4,7 @@ import { businessId } from './CustomerHome'
 import { updateStampCount, getStampCount, resetStampCount, getCustomerByUsername, deleteCard } from '../../api/apiClient'
 import { userInfo } from '../Login'
 import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
 
 export default function QrCode (props) {
   const [customerId, setCustomerId] = useState(0)
@@ -13,12 +14,12 @@ export default function QrCode (props) {
     getCustomerByUsername(userInfo)
       .then((customer) => {
         setCustomerId(customer.id)
-        getStampCount(businessId, customer.id)
-          .then(currentCount =>
-            setStamps(currentCount[0]))
-          .catch(e => console.error(e.message))
-        return null
-      }).catch(err => {
+        return getStampCount(businessId, customer.id)
+      })
+      .then(currentCount =>
+        setStamps(currentCount[0])
+      )
+      .catch(err => {
         console.log(err)
       })
   }, [stamps])
@@ -47,9 +48,9 @@ export default function QrCode (props) {
         level={'H'}
         includeMargin={true}
       />
-      <button onClick={() => handleClick()}>Click to add stamp</button>
       <h3>Current stamps: {stamps.stamp_count} /10 </h3>
-      <Link to={'/Customerhome'}><button onClick={handleDelete}>Delete Card</button></Link>
+      <Button positive onClick={() => handleClick()}>Add stamp</Button>
+      <Link to={'/Customerhome'}><Button negative onClick={handleDelete}>Remove Card</Button></Link>
     </div>
   )
 }
