@@ -53,6 +53,7 @@ export default function Card (props) {
   return (
     <>
       <NavCustomer />
+      <Error errorMessage={error} />
       <div className='ui single fluid card'>
         <Image size='medium' src={business.logo} alt={business.business} />
         <div className='content'>
