@@ -1,8 +1,7 @@
 const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
-const bcrypt = require('bcryptjs')
-const saltRounds = 10
+// const bcrypt = require('bcrypt-nodejs')
 
 module.exports = {
   getCustomers,
@@ -57,17 +56,23 @@ function getCustomerCards (id, db = connection) {
 
 // returns customer profile, instead of ID. nested getCustomerProfile function in router
 function addCustomer (customer, db = connection) {
+  // bcrypt.genSalt(10, salt => {
+  //   bcrypt.hash(customer.password, salt)
+  //     .then(hashedPassword => {
+  //       customer.password = hashedPassword
+  //       return db('customers')
+  //         .insert(customer, 'id')
+  //     })
+  //     .catch(e =>
+  //       console.log(e.message))
   console.log(customer)
-  bcrypt.hash(customer.password, saltRounds)
-    .then(auth => {
-      customer.password = auth
-      // eslint-disable-next-line promise/no-nesting
-      return db('customers')
-        .insert(customer, 'id')
-        // .then((id) => getCustomerById(id[0]))
+  // })}
+  return db('customers').insert(
+    {
+      username: customer.username,
+      password: customer.password,
+      userType: 'Customer'
     })
-    .catch(e =>
-      console.log(e.message))
 }
 
 // returns business profile, instead of ID. nested getCustomerProfile function in router
