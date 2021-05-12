@@ -10,7 +10,6 @@ export default function NavBusiness () {
       .then(auth => {
         if (auth === 'Logged out successfully') {
           console.log('logged out')
-          // props.history.push('/')
         } return null
       }).catch(e => {
         console.log(e.message)
