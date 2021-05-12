@@ -78,6 +78,16 @@ test('addBusiness', () => {
     })
 })
 
+test('add card', () => {
+  const businessId = '107'
+  const customerId = '903'
+  return db.addCard(businessId, customerId, testDb)
+    .then(result => {
+      expect(result).toEqual([26])
+      return null
+    })
+})
+
 test('get all cards', () => {
   return db.getAllCards(testDb)
     .then((businesses) => {
