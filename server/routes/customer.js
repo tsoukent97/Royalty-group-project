@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../db/db')
-// const session = require('express-session')
 
 router.get('/:id/cards', (req, res) => {
   db.getCustomerCards(req.params.id)
@@ -45,6 +44,7 @@ router.post('/addCard', (req, res) => {
   db.cardExists(businessId, customerId)
     .then((cardList) => {
       if (cardList.length === 0) {
+        // eslint-disable-next-line promise/no-nesting
         db.addCard(businessId, customerId)
           .then(() => {
             return res.json('Card added successfully!')
