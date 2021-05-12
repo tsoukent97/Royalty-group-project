@@ -4,11 +4,9 @@ const connection = require('knex')(config)
 const bcrypt = require('bcryptjs')
 const saltRounds = 10
 
-// getBusinessProfile,
 // getCustomerCards,
 // getCustomerByUsername,
 // getStampCount,
-// resetStampCount,
 
 module.exports = {
   deleteCard,
