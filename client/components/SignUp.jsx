@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
-import { registerUser } from '../api/passportAPI'
+import { registerUser, registerBusiness } from '../api/passportAPI'
 import Error from './Error'
 
 // TODO
@@ -13,9 +13,24 @@ const initialState = {
   userType: 'Customer'
 }
 
+const initialBusinessState = {
+  business: '',
+  password: '',
+  address: '',
+  phoneNumber: '',
+  email: '',
+  userType: 'Business'
+}
+
 function SignUp (props) {
   const [customerForm, setCustomerForm] = useState(initialState)
+  const [businessForm, setBusinessForm] = useState(initialBusinessState)
   const [error, setError] = useState('')
+
+  function homePath (e) {
+    e.preventDefault()
+    props.history.push('/')
+  }
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -41,9 +56,28 @@ function SignUp (props) {
       })
   }
 
-  function homePath (e) {
+  function handleBusinessChange (e) {
+    const { name, value } = e.target
+    setBusinessForm({
+      ...businessForm,
+      [name]: value
+    })
+  }
+
+  function handleBusinessSubmit (e) {
     e.preventDefault()
-    props.history.push('/')
+    registerBusiness(businessForm)
+      .then((auth) => {
+        if (auth === 'Business created') {
+          props.history.push('/Businesshome')
+        } else {
+          setError(auth)
+        }
+        return null
+      })
+      .catch(e => {
+        console.log(e.message)
+      })
   }
 
   function toggleBusiness (e) {
@@ -61,10 +95,10 @@ function SignUp (props) {
             <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
             <input type='text'
               placeholder={props.isCustomer ? 'Choose username' : 'Choose business name'}
-              name='username'
+              name={props.isCustomer ? 'username' : 'business'}
               required
-              value={customerForm.username}
-              onChange={handleChange}
+              value={props.isCustomer ? customerForm.username : businessForm.business}
+              onChange={props.isCustomer ? handleChange : handleBusinessChange}
             />
           </Form.Field>
           <Form.Field>
@@ -73,8 +107,8 @@ function SignUp (props) {
               placeholder='Choose password'
               name='password'
               required
-              value={customerForm.password}
-              onChange={handleChange}
+              value={props.isCustomer ? customerForm.password : businessForm.password}
+              onChange={props.isCustomer ? handleChange : handleBusinessChange}
             />
           </Form.Field>
           <Form.Field>
@@ -84,10 +118,10 @@ function SignUp (props) {
               : <input
                 type='text'
                 placeholder='Enter number'
-                name='number'
+                name='phoneNumber'
                 required
-                value={customerForm.phoneNumber}
-                onChange={handleChange}
+                value={businessForm.phoneNumber}
+                onChange={props.isCustomer ? handleChange : handleBusinessChange}
               />}
           </Form.Field>
           <Form.Field>
@@ -97,10 +131,10 @@ function SignUp (props) {
               : <input
                 type='text'
                 placeholder='Enter Address'
-                name='Address'
+                name='address'
                 required
-                value={customerForm.address}
-                onChange={handleChange}
+                value={businessForm.address}
+                onChange={props.isCustomer ? handleChange : handleBusinessChange}
               />}
           </Form.Field>
           <Form.Field>
@@ -112,14 +146,16 @@ function SignUp (props) {
                 placeholder='Enter email'
                 name='email'
                 required
-                value={customerForm.email}
-                onChange={handleChange}
+                value={businessForm.email}
+                onChange={props.isCustomer ? handleChange : handleBusinessChange}
               />}
           </Form.Field>
           <Error errorMessage={error}/>
           <br></br>
           <Button primary onClick={homePath}>Home</Button>
-          <Button positive type='submit' onClick={handleSubmit}>Submit</Button>
+          {props.isCustomer
+            ? <Button positive type='submit' onClick={handleSubmit}>Submit</Button>
+            : <Button positive type='submit' onClick={handleBusinessSubmit}>Submit</Button>}
         </Form>
       </Grid.Column>
     </Grid>

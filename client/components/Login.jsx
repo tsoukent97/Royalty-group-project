@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
-import { loginCustomer } from '../api/passportAPI'
+import { loginCustomer, loginBusiness } from '../api/passportAPI'
 import Error from './Error'
 
 let userInfo = ''
+let businessInfo = ''
 
 function Login (props) {
   const initialState = {
@@ -11,20 +12,52 @@ function Login (props) {
     password: ''
   }
 
-  const [form, setForm] = useState(initialState)
+  const initialBusinessState = {
+    business: '',
+    password: ''
+  }
+
+  const [customerForm, setCustomerForm] = useState(initialState)
+  const [businessForm, setBusinessForm] = useState(initialBusinessState)
   const [error, setError] = useState('')
+
+  function handleBusinessChange (e) {
+    const { name, value } = e.target
+    setBusinessForm({
+      ...businessForm,
+      [name]: value
+    })
+  }
+
+  function handleBusinessSubmit (e) {
+    e.preventDefault()
+    loginBusiness(businessForm)
+      .then((auth) => {
+        console.log(auth)
+        if (auth === 'Login Succeeded') {
+          props.history.push('/Businesshome')
+        } else {
+          setError(auth)
+        } return null
+      })
+      .catch(e => {
+        console.log(e.message)
+      })
+    businessInfo = businessForm.business
+    console.log(businessInfo)
+  }
 
   function handleChange (e) {
     const { name, value } = e.target
-    setForm({
-      ...form,
+    setCustomerForm({
+      ...customerForm,
       [name]: value
     })
   }
 
   function handleSubmit (e) {
     e.preventDefault()
-    loginCustomer(form)
+    loginCustomer(customerForm)
       .then((auth) => {
         console.log(auth)
         if (auth === 'Login Succeeded') {
@@ -36,7 +69,7 @@ function Login (props) {
       .catch(e => {
         console.log(e.message)
       })
-    userInfo = form.username
+    userInfo = customerForm.username
     console.log(userInfo)
   }
 
@@ -60,9 +93,9 @@ function Login (props) {
             <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
             <input
               placeholder={props.isCustomer ? 'Enter username...' : 'Enter business...'}
-              name='username'
-              onChange={handleChange}
-              value={form.username}
+              name={props.isCustomer ? 'username' : 'business'}
+              onChange={props.isCustomer ? handleChange : handleBusinessChange}
+              value={props.isCustomer ? customerForm.username : businessForm.business}
               type='text'
               required
             />
@@ -73,19 +106,21 @@ function Login (props) {
               placeholder='Enter password...'
               name='password'
               type='password'
-              onChange={handleChange}
-              value={form.password}
+              onChange={props.isCustomer ? handleChange : handleBusinessChange}
+              value={props.isCustomer ? customerForm.password : businessForm.passowrd}
               required
             />
           </Form.Field>
           <Error errorMessage={error} />
           <br></br>
           <Button primary onClick={homePath}>Home</Button>
-          <Button positive type='button' onClick={handleSubmit}>Login</Button>
+          {props.isCustomer
+            ? <Button positive type='button' onClick={handleSubmit}>Login</Button>
+            : <Button positive type='button' onClick={handleBusinessSubmit}>Login</Button>}
         </Form>
       </Grid.Column >
     </Grid >
   )
 }
 
-export { Login, userInfo }
+export { Login, userInfo, businessInfo }
