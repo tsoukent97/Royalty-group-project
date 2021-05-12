@@ -87,7 +87,7 @@ test('get all cards', () => {
     })
 })
 
-test.only('gets all customers', () => {
+test('gets all customers', () => {
   const businessId = 115
   return db.getCustomers(businessId, testDb)
     .then((id) => {
@@ -97,19 +97,32 @@ test.only('gets all customers', () => {
 })
 
 test('addCustomer', () => {
-  const customer = 'Billy'
+  const customer = {
+    username: 'Billy',
+    userType: 'customer',
+    password: ' '
+  }
   return db.addCustomer(customer, testDb)
-    .then(result => {
+    .then((result) => {
       expect(result).toEqual(6)
       return null
     })
 })
 
-test('gets business profile', () => {
-  const id = '110'
-  return db.getBusinessProfile(id, testDb)
+test.only('gets business profile', () => {
+  const businessId = 110
+  const riversideCafe = {
+    id: 110,
+    business: 'Riverside Cafe',
+    address: '2 Fun Lane',
+    phoneNumber: 123,
+    email: 'example@example.com',
+    logo: './images/riverside-cafe.jpg'
+  }
+  return db.getBusinessProfile(businessId, testDb)
     .then(result => {
-      expect(result).toEqual({})
+      expect(result).toEqual(riversideCafe)
       return null
     })
 })
+
