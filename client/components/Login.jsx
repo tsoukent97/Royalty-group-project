@@ -6,7 +6,7 @@ import Error from './Error'
 let userInfo = ''
 let businessInfo = ''
 
-export default function Login (props) {
+function Login (props) {
   const initialState = {
     username: '',
     password: ''
@@ -123,4 +123,5 @@ export default function Login (props) {
   )
 }
 
-export { Login, userInfo, businessInfo }
+export { userInfo, businessInfo }
+export default Login
