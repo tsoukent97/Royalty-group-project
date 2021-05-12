@@ -108,7 +108,7 @@ function addCard (businessId, customerId, db = connection) {
       business_id: businessId,
       customer_id: customerId,
       stamp_count: 0
-    }, 'id')
+    }, 'business_id')
 }
 
 function deleteCustomer (id, db = connection) {
