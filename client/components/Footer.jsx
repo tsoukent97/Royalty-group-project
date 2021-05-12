@@ -1,18 +1,15 @@
 import React from 'react'
-import { Icon } from 'semantic-ui-react'
+import { Header, Icon } from 'semantic-ui-react'
 
 function Footer () {
   return (
     <>
       <br></br>
-      <div className='footer'>
-        <div className="ui segment">
-          <h4>Contact us</h4>
-          <div className="ui divider"></div>
-          <p><Icon name='envelope' />loyaltea@post.com</p>
-          <h4 className="ui horizontal divider">
-          </h4>
-        </div>
+      <div className="ui segment">
+        <Header as='h2' block>Contact us</Header>
+        <Header as='h4'>
+          <Icon name='envelope' />loyaltea@post.com
+        </Header>
       </div>
     </>
   )
