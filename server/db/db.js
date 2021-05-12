@@ -8,7 +8,6 @@ const saltRounds = 10
 // getCustomerCards,
 // getCustomerByUsername,
 // getStampCount,
-// updateStampCount,
 // resetStampCount,
 
 module.exports = {

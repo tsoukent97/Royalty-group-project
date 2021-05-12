@@ -141,7 +141,7 @@ test('get customer by id', () => {
     })
 })
 
-test.only('update stamp count', () => {
+test('update stamp count', () => {
   const businessId = 115
   const customerId = 905
   const stampCount = 5
@@ -151,6 +151,19 @@ test.only('update stamp count', () => {
     })
     .then(result => {
       expect(result).toEqual([{ stamp_count: 6 }])
+      return null
+    })
+})
+
+test.only('reset stamp count', () => {
+  const businessId = 102
+  const customerId = 902
+  return db.resetStampCount(businessId, customerId, testDb)
+    .then(() => {
+      return db.getStampCount(businessId, customerId, testDb)
+    })
+    .then(result => {
+      expect(result).toEqual([{ stamp_count: 0 }])
       return null
     })
 })
