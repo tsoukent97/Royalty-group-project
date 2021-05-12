@@ -57,18 +57,6 @@ test('customer exists', () => {
     })
 })
 
-test('addBusiness', () => {
-  const business = 'Bunnings'
-  const address = '2 Fun Lane'
-  const phoneNumber = '123'
-  const email = 'example@example.com'
-  return db.addBusiness(business, address, phoneNumber, email, testDb)
-    .then(result => {
-      expect(result).toEqual([116])
-      return null
-    })
-})
-
 test('add card', () => {
   const businessId = '107'
   const customerId = '903'
@@ -92,19 +80,6 @@ test('gets all customers', () => {
   return db.getCustomers(businessId, testDb)
     .then((id) => {
       expect(id).toHaveLength(5)
-      return null
-    })
-})
-
-test('addCustomer', () => {
-  const customer = {
-    username: 'Billy',
-    userType: 'customer',
-    password: ' '
-  }
-  return db.addCustomer(customer, testDb)
-    .then((result) => {
-      expect(result).toEqual(6)
       return null
     })
 })
@@ -174,15 +149,6 @@ test('get stamp count', () => {
   return db.getStampCount(businessId, customerId, testDb)
     .then(result => {
       expect(result).toEqual([{ stamp_count: 9 }])
-      return null
-    })
-})
-
-test('get customer cards', () => {
-  const customerId = 902
-  return db.getCustomerCards(customerId, testDb)
-    .then(result => {
-      expect(result).toBe()
       return null
     })
 })
