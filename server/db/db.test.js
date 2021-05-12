@@ -177,3 +177,7 @@ test('get stamp count', () => {
       return null
     })
 })
+
+test('get customer cards', () => {
+  const customerId = 902
+})
