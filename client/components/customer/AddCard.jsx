@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Grid } from 'semantic-ui-react'
+import { Button, Container, Grid, Header, Icon } from 'semantic-ui-react'
 import { getAllCards, addCard, getCustomerByUsername } from '../../api/apiClient'
 import { userInfo } from '../Login'
 import NavCustomer from './NavCustomer'
-
+import Error from '../Error'
 
 export default function AddCard (props) {
   const [customer, setCustomerId] = useState(0)
   const [cards, setCards] = useState([])
+  const [error, setError] = useState('')
 
   useEffect(() => {
     getCustomerByUsername(userInfo)
@@ -29,22 +30,22 @@ export default function AddCard (props) {
   function handleClick (businessId) {
     addCard(businessId, customer.id)
       .then(result => {
-        if (result === 'Card added successfully!') {
-          alert(result)
-          props.history.push('/Customerhome')
-        } else {
-          alert(result)
-        } return null
+        setError(result)
+        return null
       }).catch(e => console.error(e.message))
   }
 
   return (
     <>
       <NavCustomer />
-      <h1 className="addcard-header">Select a new card</h1>
-      <h3 className="addcard-info">Click an image below to add it</h3>
+      <br></br>
+      <Error errorMessage={error} />
+      <Container className='card-content' textAlign='center'>
+        <Header as='h1'><Icon name='add square'/>Add a new card</Header>
+        <Header as='h3'>Click a card below to add it to your wallet!</Header>
+      </Container>
       <Container className='add-card-grid'>
-        <Grid relaxed columns={2}>
+        <Grid relaxed columns={3}>
           {cards.map((card) => <Grid.Column key={card.id}>
             <div className='overlay ui fluid card'>
               <img className='image' src={card.logo} onClick={() => handleClick(card.id)}></img>

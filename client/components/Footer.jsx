@@ -1,17 +1,17 @@
 import React from 'react'
-import { Container } from 'semantic-ui-react'
+import { Header, Icon } from 'semantic-ui-react'
 
 function Footer () {
   return (
-    <Container textAlign='center' className='footer'>
-      <div className="ui inverted segment">
-        <h4>Contact us</h4>
-        <div className="ui inverted divider"></div>
-        <p>loyaltea@post.com</p>
-        <h4 className="ui horizontal inverted divider">
-        </h4>
+    <>
+      <br></br>
+      <div className="ui segment">
+        <Header as='h2' block>Contact us</Header>
+        <Header as='h4'>
+          <Icon name='envelope' />loyaltea@post.com
+        </Header>
       </div>
-    </Container>
+    </>
   )
 }
 

@@ -1,9 +1,7 @@
 import request from 'superagent'
 
-const rootUrl = 'http://localhost:3000'
-
 export function loginCustomer (customer) {
-  return request.post(rootUrl + '/login')
+  return request.post('/login')
     .send({
       username: customer.username,
       password: customer.password
@@ -19,7 +17,7 @@ export function loginBusiness (business) {
     })
 }
 export function registerUser (user) {
-  return request.post(rootUrl + '/register')
+  return request.post('/register')
     .send(user)
     .then(res => res.body)
 }
@@ -33,6 +31,6 @@ export function registerBusiness (business) {
 export function logOut () {
   console.log('api logout')
   return request
-    .post(rootUrl + '/logout')
+    .post('/logout')
     .then(res => res.body)
 }

@@ -112,6 +112,7 @@ function Login (props) {
             />
           </Form.Field>
           <Error errorMessage={error} />
+          <br></br>
           <Button primary onClick={homePath}>Home</Button>
           {props.isCustomer
             ? <Button positive type='button' onClick={handleSubmit}>Login</Button>

@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Business Home/chart */
@@ -37,15 +37,13 @@ table, tbody {
   padding-top: 5rem;
 }
 
-.card {
+.ui.single.fluid.card {
+  width: 50%;
   margin: 0 auto;
-  background-color: #F9F8DC;
 }
 
 .image {
   margin: 0 auto;
-  height: auto;
-  width: 50%;
 }
 
 .overlay > .image {
@@ -75,7 +73,6 @@ table, tbody {
 
 /* Home page styles */
 .home {
-  display: block;
   bottom: 40%;
   margin: 0 auto;
   width: 100%;
@@ -90,13 +87,17 @@ table, tbody {
 }
 
 .footer {
- bottom: 0;
- position: absolute;
+  min-height: 100vh;
+  width: 100%;
 }
 
-.ui.inverted.segment {
-  width: 100%;
+.ui.segment {
+  display: block;
+  bottom: 0;
   margin: 0 auto;
+  text-align: center;
+  position: fixed;
+  width: 100%;
 }
 
 /* Cardinfo page styles */
@@ -117,17 +118,16 @@ table, tbody {
 
 /* AddCard page styles */
 
-.addcard-header {
-  text-align: center;
-  border: 1px solid rgba(236, 240, 241, 1);
-  width: 300px;
+.card-content {
+  padding-top: 3rem;
   margin: 0 auto;
-  margin-top: 50px;
-  padding: 20px;
+  text-align: center;
 }
 
-.addcard-info {
+.ui.info.message, .ui.negative.message {
+  margin: 0 auto;
   text-align: center;
+  width: 100%;
 }
 
 .add-card-grid {
