@@ -5,10 +5,12 @@ import { updateStampCount, getStampCount, resetStampCount, getCustomerByUsername
 import { userInfo } from '../Login'
 import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
+import Error from '../Error'
 
 export default function QrCode (props) {
   const [customerId, setCustomerId] = useState(0)
   const [stamps, setStamps] = useState({})
+  const [error, setError] = useState('')
 
   useEffect(() => {
     getCustomerByUsername(userInfo)
@@ -27,10 +29,10 @@ export default function QrCode (props) {
   function handleClick () {
     if (stamps.stamp_count === 9) {
       resetStampCount(businessId, customerId)
-      alert('Congratulations! You get a freebie!')
+      setError('Congratulations! You get a freebie!')
     } else {
       updateStampCount(businessId, customerId)
-      alert('You are one stamp closer to your freebie!')
+      setError('You are one stamp closer to your freebie!')
     } return null
   }
 
@@ -41,6 +43,7 @@ export default function QrCode (props) {
 
   return (
     <div>
+      <Error errorMessage={error} />
       <QRCode
         id="123456"
         value="123456"
