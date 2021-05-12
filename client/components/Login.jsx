@@ -6,7 +6,7 @@ import Error from './Error'
 let userInfo = ''
 let businessInfo = ''
 
-function Login (props) {
+export default function Login (props) {
   const initialState = {
     username: '',
     password: ''

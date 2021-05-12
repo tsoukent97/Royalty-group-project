@@ -4,8 +4,9 @@ import Login from '../Login'
 
 describe('Customer sign up form', () => {
   it('Finds heading', () => {
-    render(<SignUp />)
+    render(<Login />)
     const heading = screen.getByText('Sign up: Customer')
+    // eslint-disable-next-line jest/prefer-to-be-undefined
     expect(heading).not.toBe(undefined)
   })
 })
