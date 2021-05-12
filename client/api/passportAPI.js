@@ -10,7 +10,7 @@ export function loginCustomer (customer) {
 }
 
 export function loginBusiness (business) {
-  return request.post(rootUrl + '/loginBusiness')
+  return request.post('/loginBusiness')
     .send({
       business: business.business,
       password: business.password
@@ -23,7 +23,7 @@ export function registerUser (user) {
 }
 
 export function registerBusiness (business) {
-  return request.post(rootUrl + '/registerBusiness')
+  return request.post('/registerBusiness')
     .send(business)
     .then(res => res.body)
 }
