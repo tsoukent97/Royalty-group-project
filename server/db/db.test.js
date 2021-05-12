@@ -180,4 +180,24 @@ test('get stamp count', () => {
 
 test('get customer cards', () => {
   const customerId = 902
+  return db.getCustomerCards(customerId, testDb)
+    .then(result => {
+      expect(result).toBe()
+      return null
+    })
+})
+
+test('get customer by username', () => {
+  const username = 'Kent'
+  const kent = {
+    id: 902,
+    username: 'Kent',
+    userType: 'customer',
+    password: ''
+  }
+  return db.getCustomerByUsername(username, testDb)
+    .then(result => {
+      expect(result).toEqual(kent)
+      return null
+    })
 })
