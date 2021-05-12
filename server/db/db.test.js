@@ -16,7 +16,6 @@ afterEach(() => testEnv.cleanup(testDb))
 // getBusinessProfile,
 // getCustomerCards,
 // addCustomer,
-// addBusiness,
 // addCard,
 // getCustomerByUsername,
 // getStampCount,
@@ -84,7 +83,7 @@ test('get all cards', () => {
 test('gets all customers', () => {
   return db.getCustomers(testDb)
     .then((customers) => {
-      expect(customers).toHaveLength(5)
+      expect(customers).toEqual(5)
       return null
     })
 })
