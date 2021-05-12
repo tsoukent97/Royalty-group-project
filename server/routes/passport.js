@@ -115,15 +115,4 @@ router.post('/registerBusiness', (req, res) => {
   }
 })
 
-// idk lmao don't look at this
-// router.post('/Customerhome', checkAuthenticated, async (req, res) => {
-//   await passport.authenticate('local', (e, customer, info) => {
-//     if (e) throw e
-//     if (!customer) res.json(info.message)
-//     else {
-//       res.json('User is logged in accessing customer home')
-//     }
-//   })
-// })
-
 module.exports = router

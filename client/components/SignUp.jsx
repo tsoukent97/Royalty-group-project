@@ -69,8 +69,7 @@ function SignUp (props) {
     registerBusiness(businessForm)
       .then((auth) => {
         if (auth === 'Business created') {
-          // change to login
-          props.history.push('/Businesshome')
+          props.history.push('/Businesslogin')
         } else {
           setError(auth)
         }

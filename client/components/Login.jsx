@@ -17,7 +17,7 @@ function Login (props) {
     password: ''
   }
 
-  const [form, setForm] = useState(initialState)
+  const [customerForm, setCustomerForm] = useState(initialState)
   const [businessForm, setBusinessForm] = useState(initialBusinessState)
   const [error, setError] = useState('')
 
@@ -44,20 +44,20 @@ function Login (props) {
         console.log(e.message)
       })
     businessInfo = businessForm.business
-    console.log(userInfo)
+    console.log(businessInfo)
   }
 
   function handleChange (e) {
     const { name, value } = e.target
-    setForm({
-      ...form,
+    setCustomerForm({
+      ...customerForm,
       [name]: value
     })
   }
 
   function handleSubmit (e) {
     e.preventDefault()
-    loginCustomer(form)
+    loginCustomer(customerForm)
       .then((auth) => {
         console.log(auth)
         if (auth === 'Login Succeeded') {
@@ -69,7 +69,7 @@ function Login (props) {
       .catch(e => {
         console.log(e.message)
       })
-    userInfo = form.username
+    userInfo = customerForm.username
     console.log(userInfo)
   }
 
@@ -93,9 +93,9 @@ function Login (props) {
             <label>{props.isCustomer ? 'Username:' : 'Business:'}</label>
             <input
               placeholder={props.isCustomer ? 'Enter username...' : 'Enter business...'}
-              name='username'
+              name={props.isCustomer ? 'username' : 'business'}
               onChange={props.isCustomer ? handleChange : handleBusinessChange}
-              value={form.username}
+              value={props.isCustomer ? customerForm.username : businessForm.business}
               type='text'
               required
             />
@@ -107,7 +107,7 @@ function Login (props) {
               name='password'
               type='password'
               onChange={props.isCustomer ? handleChange : handleBusinessChange}
-              value={form.password}
+              value={props.isCustomer ? customerForm.password : businessForm.passowrd}
               required
             />
           </Form.Field>
