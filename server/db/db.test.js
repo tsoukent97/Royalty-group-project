@@ -13,7 +13,6 @@ afterEach(() => testEnv.cleanup(testDb))
 // getCustomerById,
 // getBusinessProfile,
 // getCustomerCards,
-// addCard,
 // getCustomerByUsername,
 // getStampCount,
 // updateStampCount,
@@ -99,7 +98,7 @@ test('get all cards', () => {
 test('gets all customers', () => {
   return db.getCustomers(testDb)
     .then(id => {
-      expect(id).toBe(5)
+      expect(id).toEqual(5)
       return null
     })
 })
@@ -108,7 +107,16 @@ test('addCustomer', () => {
   const customer = 'Billy'
   return db.addCustomer(customer, testDb)
     .then(result => {
-      expect(result).toBe(6)
+      expect(result).toEqual(6)
+      return null
+    })
+})
+
+test('gets business profile', () => {
+  const id = 110
+  return db.getBusinessProfile(id, testDb)
+    .then(result => {
+      expect(result).toHaveLength([110])
       return null
     })
 })

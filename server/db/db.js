@@ -6,22 +6,14 @@ const saltRounds = 10
 
 module.exports = {
   getCustomers,
-  customerExists,
   getCustomerById,
   getBusinessProfile,
   getCustomerCards,
   addCustomer,
-  addBusiness,
-  addCard,
-  deleteCustomer,
-  deleteBusiness,
-  deleteCard,
   getCustomerByUsername,
-  getAllCards,
   getStampCount,
   updateStampCount,
   resetStampCount,
-  cardExists
 }
 
 // returns an array of objects of customer_id signed up under the business. EX:
