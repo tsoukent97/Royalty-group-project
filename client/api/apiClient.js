@@ -52,7 +52,7 @@ export function getAllCards (id) {
 
 export function addCard (businessId, customerId) {
   return request
-    .post(customerServer + '/addCard/?businessId=' + businessId + '&customerId=' + customerId)
+    .post(customerServer + '/addCard?businessId=' + businessId + '&customerId=' + customerId)
     .send(businessId, customerId)
     .then(res => res.body)
 }
