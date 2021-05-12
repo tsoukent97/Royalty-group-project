@@ -3,11 +3,12 @@ import { Button, Container, Grid } from 'semantic-ui-react'
 import { getAllCards, addCard, getCustomerByUsername } from '../../api/apiClient'
 import { userInfo } from '../Login'
 import NavCustomer from './NavCustomer'
-
+import Error from '../Error'
 
 export default function AddCard (props) {
   const [customer, setCustomerId] = useState(0)
   const [cards, setCards] = useState([])
+  const [error, setError] = useState('')
 
   useEffect(() => {
     getCustomerByUsername(userInfo)
@@ -29,18 +30,15 @@ export default function AddCard (props) {
   function handleClick (businessId) {
     addCard(businessId, customer.id)
       .then(result => {
-        if (result === 'Card added successfully!') {
-          alert(result)
-          props.history.push('/Customerhome')
-        } else {
-          alert(result)
-        } return null
+        setError(result)
+        return null
       }).catch(e => console.error(e.message))
   }
 
   return (
     <>
       <NavCustomer />
+      <Error errorMessage={error} />
       <h1 className="addcard-header">Select a new card</h1>
       <h3 className="addcard-info">Click an image below to add it</h3>
       <Container className='add-card-grid'>
