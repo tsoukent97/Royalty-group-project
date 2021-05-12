@@ -5,6 +5,14 @@ const bcrypt = require('bcryptjs')
 const saltRounds = 10
 
 module.exports = {
+  deleteCard,
+  deleteCustomer,
+  deleteBusiness,
+  cardExists,
+  customerExists,
+  addBusiness,
+  addCard,
+  getAllCards,
   getCustomers,
   getCustomerById,
   getBusinessProfile,
