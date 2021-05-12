@@ -3,6 +3,7 @@ import QrCode from './QrCode'
 import { getBusinessProfile } from '../../api/apiClient'
 import { businessId } from './CustomerHome'
 import { Container } from 'semantic-ui-react'
+import NavCustomer from './NavCustomer'
 
 export default function Card () {
   const [business, setBusiness] = useState([])
@@ -16,8 +17,14 @@ export default function Card () {
 
   return (
     <>
+      <NavCustomer />
       <h1 className="card-title">{business.business}</h1>
-      <img className="card-logo" src={business.logo} />
+      <div className='overlay ui fluid card'>
+        <img className='image' src={business.logo} alt={business.business} />
+        <div className='content'>
+          <p className='header'>{business.business}</p>
+        </div>
+      </div>
       <Container className="card-wrapper">
         <QrCode />
       </Container>
