@@ -53,7 +53,7 @@ router.post('/login', async (req, res, next) => {
 })
 
 router.post('/loginBusiness', async (req, res, next) => {
-  await passport.authenticate('local', (e, business, info) => {
+  await passport.authenticate('business', (e, business, info) => {
     if (e) throw e
     if (!business) res.json(info.message)
     else {

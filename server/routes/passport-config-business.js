@@ -3,7 +3,7 @@ const businesses = require('../db/db')
 const bcrypt = require('bcryptjs')
 
 function initialize (passport) {
-  passport.use(new LocalStrategy(async (business, password, done) => {
+  passport.use('business', new LocalStrategy(async (business, password, done) => {
     businesses.getBusinessByName(business)
       .then(business => {
         if (!business) return done(null, false, { message: 'Invalid Username' })
