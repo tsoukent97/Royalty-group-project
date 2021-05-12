@@ -168,7 +168,7 @@ test('reset stamp count', () => {
     })
 })
 
-test.only('get stamp count', () => {
+test('get stamp count', () => {
   const businessId = 102
   const customerId = 902
   return db.getStampCount(businessId, customerId, testDb)

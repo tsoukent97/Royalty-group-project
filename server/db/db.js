@@ -6,7 +6,6 @@ const saltRounds = 10
 
 // getCustomerCards,
 // getCustomerByUsername,
-// getStampCount,
 
 module.exports = {
   deleteCard,
