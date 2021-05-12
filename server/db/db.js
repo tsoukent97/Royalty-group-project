@@ -72,7 +72,7 @@ function addCustomer (customer, db = connection) {
       username: customer.username,
       password: customer.password,
       userType: 'Customer'
-    })
+    }, 'id')
 }
 
 // returns business profile, instead of ID. nested getCustomerProfile function in router
