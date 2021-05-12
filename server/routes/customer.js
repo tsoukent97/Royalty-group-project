@@ -40,6 +40,25 @@ router.get('/:id/addCard', (req, res) => {
     })
 })
 
+router.post('/addCard', (req, res) => {
+  const { businessId, customerId } = req.query
+  db.cardExists(businessId, customerId)
+    .then((cardList) => {
+      if (cardList.length === 0) {
+        db.addCard(businessId, customerId)
+          .then((id) => {
+            return res.json(id)
+          }).catch(err => {
+            res.status(500).send('DATABASE ERROR: ' + err.message)
+          })
+      } else {
+        return res.json('You already have this card')
+      } return null
+    }).catch(err => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+
 // router.post('/addCard', (req, res) => {
 //   const { businessId, customerId } = req.query
 //   db.cardExists(businessId, customerId)
@@ -58,21 +77,6 @@ router.get('/:id/addCard', (req, res) => {
 //       res.status(500).send('DATABASE ERROR: ' + err.message)
 //     })
 // })
-
-router.post('/addCard', (req, res) => {
-  const { businessId, customerId } = req.query
-  db.cardExists(businessId, customerId)
-    .then((cardList) => {
-      if (cardList.length === 0) {
-        db.addCard(businessId, customerId)
-        return res.json('Card added successfully!')
-      } else {
-        return res.json('You already have this card')
-      }
-    }).catch(err => {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
-    })
-})
 
 router.get('/customerInfo', (req, res) => {
   const { name } = req.query
