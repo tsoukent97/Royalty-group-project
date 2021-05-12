@@ -60,6 +60,15 @@ test('card exists', () => {
     })
 })
 
+test('customer exists', () => {
+  const username = 'Knet'
+  return db.customerExists(username, testDb)
+    .then(result => {
+      expect(result).toEqual(false)
+      return null
+    })
+})
+
 test('addBusiness', () => {
   const business = 'Bunnings'
   const address = '2 Fun Lane'
@@ -82,8 +91,17 @@ test('get all cards', () => {
 
 test('gets all customers', () => {
   return db.getCustomers(testDb)
-    .then((customers) => {
-      expect(customers).toEqual(5)
+    .then(id => {
+      expect(id).toHaveLength(5)
+      return null
+    })
+})
+
+test('addCustomer', () => {
+  const customer = 'Billy'
+  return db.addCustomer(customer, testDb)
+    .then(result => {
+      expect(result).toBe(6)
       return null
     })
 })
