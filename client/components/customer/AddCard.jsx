@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Grid, Header, Icon } from 'semantic-ui-react'
+import { Container, Grid, Header, Icon } from 'semantic-ui-react'
 import { getAllCards, addCard, getCustomerByUsername } from '../../api/apiClient'
 import { userInfo } from '../Login'
 import NavCustomer from './NavCustomer'
 import Error from '../Error'
 
-export default function AddCard (props) {
+export default function AddCard () {
   const [customer, setCustomerId] = useState(0)
   const [cards, setCards] = useState([])
   const [error, setError] = useState('')

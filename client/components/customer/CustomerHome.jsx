@@ -17,12 +17,11 @@ function CustomerHome (props) {
   useEffect(() => {
     getCustomerByUsername(userInfo)
       .then((customer) => {
-        getCustomerCards(customer.id)
-          .then(cards =>
-            setState(cards))
-          .catch(e => console.error(e.message))
-        return null
-      }).catch(err => {
+        return getCustomerCards(customer.id)
+      })
+      .then(cards =>
+        setState(cards))
+      .catch(err => {
         console.log(err)
       })
   }, [])
@@ -39,8 +38,8 @@ function CustomerHome (props) {
       <br></br>
       {state.length === 0 ? <Message negative>
         <Message.Header><Icon name='exclamation triangle'/>You have no cards at the moment. Please add cards.</Message.Header>
-      </Message> :
-        <Container className='card-grid'>
+      </Message>
+        : <Container className='card-grid'>
           <Grid relaxed columns={2}>
             {state.map((card) => <Grid.Column key={card.id}>
               <div className='overlay ui fluid card' onClick={() => handleClick(card.id)}>

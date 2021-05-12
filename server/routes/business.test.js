@@ -13,38 +13,28 @@ jest.mock('../db/db', () => {
 test('get business profile', () => {
   db.getBusinessProfile.mockImplementation(() => {
     return Promise.resolve([
-      { id: 1, name: 'business1', user_type: 'business', hash: 'password', address: 'address1', phone_number: 123, email: 'test1@test.com' },
-      { id: 2, name: 'business2', user_type: 'business', hash: 'password', address: 'address2', phone_number: 1234, email: 'test2@test.com' }
+      { id: 2, business: 'business2', userType: 'business', password: 'password', address: 'address2', phoneNumber: 1234, email: 'test2@test.com' }
     ])
   })
   return request(server)
     .get('/business/1')
     .then((res) => {
-      expect(res.body[0].name).toBe('business1')
+      expect(res.body).toHaveLength(1)
       return null
     })
 })
 
-test('deletes a business profile', () => {
-  db.deleteBusiness.mockImplementation(() => {
+test('get all customers of a business', () => {
+  db.getCustomers.mockImplementation(() => {
     return Promise.resolve([
-      { id: 1, name: 'business1', user_type: 'business', hash: 'password', address: 'address1', phone_number: 123, email: 'test1@test.com' },
-      { id: 2, name: 'business2', user_type: 'business', hash: 'password', address: 'address2', phone_number: 1234, email: 'test2@test.com' }
+      { business_id: 1, customer_id: 1, stamp_count: 1},
+      { business_id: 1, customer_id: 2, stamp_count: 2}
     ])
   })
-
   return request(server)
-    .patch('/business/1/delete')
+    .get('/business/1/customers')
     .then((res) => {
-      expect(res.status).toEqual(200)
+      expect(res.body).toHaveLength(2)
       return null
     })
 })
-// test('get all customers of a business', () => {
-//     db.getCustomers.mockImplementation(() => {
-//       return Promise.resolve([
-//         {}
-//       ])
-
-//     })
-// })

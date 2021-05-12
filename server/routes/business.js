@@ -20,13 +20,4 @@ router.get('/:id/customers', (req, res) => {
     })
 })
 
-router.patch('/:id/delete', (req, res) => {
-  db.deleteBusiness(req.params.id)
-    .then(() => {
-      return res.status(200).send()
-    }).catch(err => {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
-    })
-})
-
 module.exports = router

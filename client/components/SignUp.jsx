@@ -3,10 +3,6 @@ import { Button, Form, Grid } from 'semantic-ui-react'
 import { registerUser, registerBusiness } from '../api/passportAPI'
 import Error from './Error'
 
-// TODO
-// Stitch this form into api client, connect to DB
-// Style this in semantic ui
-
 const initialState = {
   username: '',
   password: '',

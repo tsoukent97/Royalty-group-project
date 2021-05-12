@@ -13,12 +13,6 @@ export function getCustomerByUsername (name) {
     .then(res => res.body)
 }
 
-export function deleteCustomer (id) {
-  return request
-    .patch(customerServer + '/' + id + '/delete')
-    .then(res => res.body)
-}
-
 export function deleteCard (businessId, customerId) {
   return request
     .patch(customerServer + '/deleteCard?businessId=' + businessId + '&customerId=' + customerId)
@@ -27,7 +21,7 @@ export function deleteCard (businessId, customerId) {
 
 export function getStampCount (businessId, customerId) {
   return request
-    .get(customerServer + '/' + customerId + '/query?businessId=' + businessId + '&customerId=' + customerId)
+    .get(customerServer + '/stampCount?businessId=' + businessId + '&customerId=' + customerId)
     .then(res => res.body)
 }
 
@@ -43,9 +37,9 @@ export function resetStampCount (businessId, customerId) {
     .then(res => res.body)
 }
 
-export function getAllCards (id) {
+export function getAllCards () {
   return request
-    .get(customerServer + '/' + id + '/addCard')
+    .get(customerServer + '/allCards')
     .then(res => res.body)
     .catch(err => console.log(err))
 }
@@ -69,11 +63,5 @@ export function getCustomers (id) {
 
 export function getCustomerById (id) {
   return request.get(customerServer + '/' + id)
-    .then(res => res.body)
-}
-
-export function deleteBusiness (id) {
-  return request
-    .patch(businessServer + '/' + id + '/delete')
     .then(res => res.body)
 }

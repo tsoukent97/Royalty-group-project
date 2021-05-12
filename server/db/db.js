@@ -1,4 +1,3 @@
-// const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile').development
 const connection = require('knex')(config)
 const bcrypt = require('bcryptjs')
@@ -27,18 +26,11 @@ module.exports = {
   getBusinessById
 }
 
-// returns an array of objects of customer_id signed up under the business. EX:
-// [{"customer_id":901},{"customer_id":902},{"customer_id":903},{"customer_id":904},{"customer_id":905}]
-// for {name: "Gong Cha", business_id: 102}
-// route is http://localhost:3000/business/:id/customers
 function getCustomers (id, db = connection) {
   return db('cards').select('customer_id', 'stamp_count')
     .where('business_id', id)
 }
 
-// returns an object of business details EX:
-// {"id":102,"name":"Gong_Cha","address":"2 Fun Lane","phone_number":800838383,"email":"example@example.com"}
-// route is http://localhost:3000/business/:id
 function getBusinessProfile (id, db = connection) {
   return db('businesses')
     .select('id', 'business', 'address', 'phoneNumber', 'email', 'logo')
@@ -46,10 +38,6 @@ function getBusinessProfile (id, db = connection) {
     .first()
 }
 
-// returns an array of objects with the business name under a customer's profile EX:
-// [{"name":"Robert_Harris"},{"name":"Kent_Two"},{"name":"Milk_&_Honey_Cafe"},{"name":"Gong_Cha"},{"name":"Sam_Three"}]
-// for customer {id : 901, name:"Aaron"}
-// route is http://localhost:3000/customer/:id/cards
 function getCustomerCards (id, db = connection) {
   return db('customers')
     .join('cards', 'cards.customer_id', 'customers.id')
@@ -58,24 +46,18 @@ function getCustomerCards (id, db = connection) {
     .select('businesses.business as business', 'businesses.id as id', 'businesses.logo as logo')
 }
 
-// returns customer profile, instead of ID. nested getCustomerProfile function in router
 function addCustomer (customer, db = connection) {
-  console.log(customer)
   bcrypt.hash(customer.password, saltRounds)
     .then(auth => {
       customer.password = auth
-      // eslint-disable-next-line promise/no-nesting
       return db('customers')
         .insert(customer)
-        // .then((id) => getCustomerById(id[0]))
     })
     .catch(e =>
       console.log(e.message))
 }
 
-// returns business profile, instead of ID. nested getCustomerProfile function in router
 function addBusiness (business, db = connection) {
-  console.log(business)
   bcrypt.hash(business.password, saltRounds)
     .then(auth => {
       business.password = auth
@@ -84,13 +66,6 @@ function addBusiness (business, db = connection) {
     })
     .catch(e =>
       console.log(e.message))
-    // {
-    //   business: business,
-    //   password: password,
-    //   address: address,
-    //   phone_number: phoneNumber,
-    //   email: email
-    // }
 }
 
 function businessExists (business, db = connection) {
@@ -145,9 +120,6 @@ function deleteCard (businessId, customerId, db = connection) {
     .where('customer_id', customerId)
     .where('business_id', businessId)
 }
-
-// return an object of customer details. {"id":901,"name":"Aaron","user_type":"customer","hash":null}
-// route is http://localhost:3000/customer/:id
 
 function getCustomerById (id, db = connection) {
   return db('customers').where('id', id).select().first()
