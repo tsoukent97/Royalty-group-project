@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Grid, Message } from 'semantic-ui-react'
+import { Container, Grid, Message, Icon } from 'semantic-ui-react'
 import { getCustomerCards, getCustomerByUsername } from '../../api/apiClient'
 import NavCustomer from './NavCustomer'
 import { userInfo } from '../Login'
@@ -36,7 +36,9 @@ function CustomerHome (props) {
   return (
     <>
       <NavCustomer />
-      {state.length === 0 ? <Message negative><Message.Header>You have no cards at the moment. Please add cards.</Message.Header></Message> :
+      {state.length === 0 ? <Message negative>
+        <Message.Header><Icon name='exclamation triangle'/>You have no cards at the moment. Please add cards.</Message.Header>
+      </Message> :
         <Container className='card-grid'>
           <Grid relaxed columns={2}>
             {state.map((card) => <Grid.Column key={card.id}>
