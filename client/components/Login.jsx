@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
-import { loginCustomer } from '../api/passportAPI'
+import { loginCustomer, loginBusiness } from '../api/passportAPI'
 import Error from './Error'
 
 let userInfo = ''
+let businessInfo = ''
 
 function Login (props) {
   const initialState = {
@@ -11,8 +12,40 @@ function Login (props) {
     password: ''
   }
 
+  const initialBusinessState = {
+    business: '',
+    password: ''
+  }
+
   const [form, setForm] = useState(initialState)
+  const [businessForm, setBusinessForm] = useState(initialBusinessState)
   const [error, setError] = useState('')
+
+  function handleBusinessChange (e) {
+    const { name, value } = e.target
+    setBusinessForm({
+      ...businessForm,
+      [name]: value
+    })
+  }
+
+  function handleBusinessSubmit (e) {
+    e.preventDefault()
+    loginBusiness(businessForm)
+      .then((auth) => {
+        console.log(auth)
+        if (auth === 'Login Succeeded') {
+          props.history.push('/Businesshome')
+        } else {
+          setError(auth)
+        } return null
+      })
+      .catch(e => {
+        console.log(e.message)
+      })
+    businessInfo = businessForm.business
+    console.log(userInfo)
+  }
 
   function handleChange (e) {
     const { name, value } = e.target
@@ -61,7 +94,7 @@ function Login (props) {
             <input
               placeholder={props.isCustomer ? 'Enter username...' : 'Enter business...'}
               name='username'
-              onChange={handleChange}
+              onChange={props.isCustomer ? handleChange : handleBusinessChange}
               value={form.username}
               type='text'
               required
@@ -73,18 +106,20 @@ function Login (props) {
               placeholder='Enter password...'
               name='password'
               type='password'
-              onChange={handleChange}
+              onChange={props.isCustomer ? handleChange : handleBusinessChange}
               value={form.password}
               required
             />
           </Form.Field>
           <Error errorMessage={error} />
           <Button primary onClick={homePath}>Home</Button>
-          <Button positive type='button' onClick={handleSubmit}>Login</Button>
+          {props.isCustomer
+            ? <Button positive type='button' onClick={handleSubmit}>Login</Button>
+            : <Button positive type='button' onClick={handleBusinessSubmit}>Login</Button>}
         </Form>
       </Grid.Column >
     </Grid >
   )
 }
 
-export { Login, userInfo }
+export { Login, userInfo, businessInfo }

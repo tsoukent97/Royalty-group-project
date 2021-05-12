@@ -23,7 +23,8 @@ module.exports = {
   resetStampCount,
   cardExists,
   businessExists,
-  getBusinessByName
+  getBusinessByName,
+  getBusinessById
 }
 
 // returns an array of objects of customer_id signed up under the business. EX:
@@ -78,7 +79,7 @@ function addBusiness (business, db = connection) {
   bcrypt.hash(business.password, saltRounds)
     .then(auth => {
       business.password = auth
-      return db ('businesses')
+      return db('businesses')
         .insert(business)
     })
     .catch(e =>
@@ -150,6 +151,10 @@ function deleteCard (businessId, customerId, db = connection) {
 
 function getCustomerById (id, db = connection) {
   return db('customers').where('id', id).select().first()
+}
+
+function getBusinessById (id, db = connection) {
+  return db('businesses').where('id', id).select().first()
 }
 
 function getCustomerByUsername (username, db = connection) {

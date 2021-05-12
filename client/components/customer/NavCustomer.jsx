@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Container, Button, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { logOut } from '../../api/passportAPI'
-import { getCustomers, getCustomerById } from '../../api/apiClient'
+// import { getCustomers, getCustomerById } from '../../api/apiClient'
 import { userInfo } from '../Login'
 
 export default function NavCustomer () {
