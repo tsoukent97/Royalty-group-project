@@ -117,6 +117,7 @@ function SignUp (props) {
               />}
           </Form.Field>
           <Error errorMessage={error}/>
+          <br></br>
           <Button primary onClick={homePath}>Home</Button>
           <Button positive type='submit' onClick={handleSubmit}>Submit</Button>
         </Form>

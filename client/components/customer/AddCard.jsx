@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Grid } from 'semantic-ui-react'
+import { Button, Container, Grid, Header, Icon } from 'semantic-ui-react'
 import { getAllCards, addCard, getCustomerByUsername } from '../../api/apiClient'
 import { userInfo } from '../Login'
 import NavCustomer from './NavCustomer'
@@ -38,9 +38,12 @@ export default function AddCard (props) {
   return (
     <>
       <NavCustomer />
+      <br></br>
       <Error errorMessage={error} />
-      <h1 className="addcard-header">Select a new card</h1>
-      <h3 className="addcard-info">Click an image below to add it</h3>
+      <Container className='card-content' textAlign='center'>
+        <Header as='h1'><Icon name='add square'/>Add a new card</Header>
+        <Header as='h3'>Click a card below to add it to your wallet!</Header>
+      </Container>
       <Container className='add-card-grid'>
         <Grid relaxed columns={3}>
           {cards.map((card) => <Grid.Column key={card.id}>

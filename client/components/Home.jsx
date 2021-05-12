@@ -21,7 +21,7 @@ function Home (props) {
       </div>
       <div className='home'>
         <Button.Group size='large'>
-          <Button primary onClick={signupPath}>Signup</Button>
+          <Button primary onClick={signupPath}>Sign up</Button>
           <Button.Or />
           <Button positive onClick={loginPath}>Login</Button>
         </Button.Group>
