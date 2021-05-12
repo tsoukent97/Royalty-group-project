@@ -4,7 +4,6 @@ const connection = require('knex')(config)
 const bcrypt = require('bcryptjs')
 const saltRounds = 10
 
-// getCustomerById,
 // getBusinessProfile,
 // getCustomerCards,
 // getCustomerByUsername,

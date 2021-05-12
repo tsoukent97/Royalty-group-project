@@ -109,7 +109,7 @@ test('addCustomer', () => {
     })
 })
 
-test.only('gets business profile', () => {
+test('gets business profile', () => {
   const businessId = 110
   const riversideCafe = {
     id: 110,
@@ -126,3 +126,31 @@ test.only('gets business profile', () => {
     })
 })
 
+test('get customer by id', () => {
+  const customerId = 905
+  const sam = {
+    id: 905,
+    username: 'Sam',
+    userType: 'customer',
+    password: ''
+  }
+  return db.getCustomerById(customerId, testDb)
+    .then(result => {
+      expect(result).toEqual(sam)
+      return null
+    })
+})
+
+test.only('update stamp count', () => {
+  const businessId = 115
+  const customerId = 905
+  const stampCount = 5
+  return db.updateStampCount(businessId, customerId, stampCount, testDb)
+    .then(() => {
+      return db.getStampCount(businessId, customerId, testDb)
+    })
+    .then(result => {
+      expect(result).toEqual([{ stamp_count: 6 }])
+      return null
+    })
+})
