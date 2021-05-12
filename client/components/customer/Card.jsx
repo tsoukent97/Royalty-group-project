@@ -3,7 +3,7 @@ import QRCode from 'qrcode.react'
 import { getBusinessProfile, updateStampCount, getStampCount, resetStampCount, getCustomerByUsername, deleteCard } from '../../api/apiClient'
 import { businessId } from './CustomerHome'
 import { userInfo } from '../Login'
-import { Container, Button } from 'semantic-ui-react'
+import { Container, Button, Image } from 'semantic-ui-react'
 import NavCustomer from './NavCustomer'
 import Error from '../Error'
 
@@ -54,9 +54,8 @@ export default function Card (props) {
     <>
       <NavCustomer />
       <Error errorMessage={error} />
-      <h1 className="card-title">{business.business}</h1>
-      <div className='overlay ui fluid card'>
-        <img className='image' src={business.logo} alt={business.business} />
+      <div className='ui single fluid card'>
+        <Image size='medium' src={business.logo} alt={business.business} />
         <div className='content'>
           <p className='header'>{business.business}</p>
         </div>
