@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Business Home/chart */
+#apexchartsbasicxbar, .row {
+  padding-top: 5rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+table, tbody {
+  border: solid 2px black;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.app {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.wrapper {
+  padding-top: 5rem;
+}
+
+/* Customer home styles */
+.g-3 {
+  margin: 0 auto;
+}
+
+.card-grid {
+  padding-top: 5rem;
+}
+
+.card {
+  margin: 0 auto;
+  background-color: #F9F8DC;
+}
+
+.image {
+  margin: 0 auto;
+  height: auto;
+  width: 50%;
+}
+
+.overlay > .image {
+  vertical-align: middle;
+}
+
+.overlay::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  transition: .5s ease;
+}
+
+.overlay:hover::before {
+  opacity: 0.23;
+}
+
+.content {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Home page styles */
+.home {
+  bottom: 40%;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+.logo {
+  height: auto;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.footer {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.ui.segment {
+  bottom: 0;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+/* Cardinfo page styles */
+
+.card-title {
+  text-align: center;
+}
+
+.card-logo {
+  margin: 0 auto;
+  display: flex;
+}
+
+.card-wrapper {
+  display:flex;
+  text-align: center;
+}
+
+/* AddCard page styles */
+
+.addcard-header {
+  text-align: center;
+  border: 1px solid rgba(236, 240, 241, 1);
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.addcard-info {
+  text-align: center;
+}
+
+.add-card-grid {
+  padding-top: 5rem;
+}
+
+.column {
+  max-width: 1000px;
+  max-height: 1000px;
+  text-align: center;
+  display: flex;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
