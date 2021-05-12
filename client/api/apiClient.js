@@ -65,8 +65,6 @@ export function getCustomerById (id) {
   return request.get(customerServer + '/' + id)
     .then(res => res.body)
 }
-<<<<<<< HEAD
-=======
 
 export function deleteBusiness (id) {
   return request
@@ -108,4 +106,3 @@ export function logOut () {
     .post('/logout')
     .then(res => res.body)
 }
->>>>>>> 81341a1bf5e4e7c7c50c9cbb0ffaeed9409492e6

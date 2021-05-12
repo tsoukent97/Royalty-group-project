@@ -123,5 +123,4 @@ function Login (props) {
   )
 }
 
-export { userInfo, businessInfo }
-export default Login
+export { Login, userInfo, businessInfo }

@@ -41,10 +41,6 @@
     ]
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "apexcharts": "^3.26.1",
->>>>>>> 81341a1bf5e4e7c7c50c9cbb0ffaeed9409492e6
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^9.0.0",

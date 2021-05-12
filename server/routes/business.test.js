@@ -37,8 +37,4 @@ test('get all customers of a business', () => {
       expect(res.body).toHaveLength(2)
       return null
     })
-<<<<<<< HEAD
 })
-=======
-})
->>>>>>> 81341a1bf5e4e7c7c50c9cbb0ffaeed9409492e6
