@@ -5,23 +5,23 @@ const bcrypt = require('bcryptjs')
 const saltRounds = 10
 
 module.exports = {
-  getCustomers,
+  deleteCard,
+  deleteCustomer,
+  deleteBusiness,
+  cardExists,
   customerExists,
+  addBusiness,
+  addCard,
+  getAllCards,
+  getCustomers,
   getCustomerById,
   getBusinessProfile,
   getCustomerCards,
   addCustomer,
-  addBusiness,
-  addCard,
-  deleteCustomer,
-  deleteBusiness,
-  deleteCard,
   getCustomerByUsername,
-  getAllCards,
   getStampCount,
   updateStampCount,
   resetStampCount,
-  cardExists
 }
 
 // returns an array of objects of customer_id signed up under the business. EX:
@@ -71,12 +71,12 @@ function addCustomer (customer, db = connection) {
 }
 
 // returns business profile, instead of ID. nested getCustomerProfile function in router
-function addBusiness (name, address, phoneNumber, email, db = connection) {
+function addBusiness (business, address, phoneNumber, email, db = connection) {
   return db('businesses').insert(
     {
-      name: name,
+      business: business,
       address: address,
-      phone_number: phoneNumber,
+      phoneNumber: phoneNumber,
       email: email
     })
 }
