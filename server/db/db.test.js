@@ -10,14 +10,6 @@ beforeEach(() => {
 
 afterEach(() => testEnv.cleanup(testDb))
 
-// getCustomerById,
-// getBusinessProfile,
-// getCustomerCards,
-// getCustomerByUsername,
-// getStampCount,
-// updateStampCount,
-// resetStampCount,
-
 test('deletes a card', () => {
   const businessId = 105
   const customerId = 901
@@ -95,10 +87,11 @@ test('get all cards', () => {
     })
 })
 
-test('gets all customers', () => {
-  return db.getCustomers(testDb)
-    .then(id => {
-      expect(id).toEqual(5)
+test.only('gets all customers', () => {
+  const businessId = 115
+  return db.getCustomers(businessId, testDb)
+    .then((id) => {
+      expect(id).toHaveLength(5)
       return null
     })
 })
@@ -113,10 +106,10 @@ test('addCustomer', () => {
 })
 
 test('gets business profile', () => {
-  const id = 110
+  const id = '110'
   return db.getBusinessProfile(id, testDb)
     .then(result => {
-      expect(result).toHaveLength([110])
+      expect(result).toEqual({})
       return null
     })
 })

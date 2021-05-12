@@ -4,6 +4,14 @@ const connection = require('knex')(config)
 const bcrypt = require('bcryptjs')
 const saltRounds = 10
 
+// getCustomerById,
+// getBusinessProfile,
+// getCustomerCards,
+// getCustomerByUsername,
+// getStampCount,
+// updateStampCount,
+// resetStampCount,
+
 module.exports = {
   deleteCard,
   deleteCustomer,
@@ -21,7 +29,7 @@ module.exports = {
   getCustomerByUsername,
   getStampCount,
   updateStampCount,
-  resetStampCount,
+  resetStampCount
 }
 
 // returns an array of objects of customer_id signed up under the business. EX:
