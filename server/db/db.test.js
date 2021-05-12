@@ -10,12 +10,9 @@ beforeEach(() => {
 
 afterEach(() => testEnv.cleanup(testDb))
 
-// getCustomers,
-// customerExists,
 // getCustomerById,
 // getBusinessProfile,
 // getCustomerCards,
-// addCustomer,
 // addCard,
 // getCustomerByUsername,
 // getStampCount,
@@ -61,7 +58,7 @@ test('card exists', () => {
 })
 
 test('customer exists', () => {
-  const username = 'Knet'
+  const username = 'Bob'
   return db.customerExists(username, testDb)
     .then(result => {
       expect(result).toEqual(false)
@@ -92,7 +89,7 @@ test('get all cards', () => {
 test('gets all customers', () => {
   return db.getCustomers(testDb)
     .then(id => {
-      expect(id).toHaveLength(5)
+      expect(id).toBe(5)
       return null
     })
 })
