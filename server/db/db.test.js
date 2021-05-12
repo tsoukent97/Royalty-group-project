@@ -10,11 +10,13 @@ beforeEach(() => {
 
 afterEach(() => testEnv.cleanup(testDb))
 
-// Need to make these tests
-// getting all cards for one customer
-// getting all users for one bus for admin user only
-// adding new cards, customers, bus
-// deleting customer, cards, bus
+// getCustomerById,
+// getBusinessProfile,
+// getCustomerCards,
+// getCustomerByUsername,
+// getStampCount,
+// updateStampCount,
+// resetStampCount,
 
 test('deletes a card', () => {
   const businessId = 105
@@ -26,33 +28,95 @@ test('deletes a card', () => {
     })
 })
 
-test('get a customer profile', () => {
-  const testId = 901
-  expect.assertions(1)
-  return db.getCustomerProfile(testId, testDb)
+test('deletes a customer', () => {
+  const id = 901
+  return db.deleteCustomer(id, testDb)
     .then(result => {
-      expect(result).toEqual({ id: 901, name: 'Aaron' })
+      expect(result).toEqual(1)
       return null
     })
 })
 
-test('get a business profile', () => {
-  const testId = 101
-  expect.assertions(1)
-  return db.getBusinessProfile(testId, testDb)
+test('deletes a business', () => {
+  const id = 105
+  return db.deleteBusiness(id, testDb)
     .then(result => {
-      expect(result).toEqual({ id: 101, name: 'Starbucks', address: '2 Fun Lane', phone_number: 123, email: 'example@example.com' })
+      expect(result).toEqual(1)
       return null
     })
 })
 
-test('add a new customer', () => {
-  const testName = 'bob'
-  const testUserName = 'bobby123'
-  expect.assertions(1)
-  return db.addCustomer(testName, testUserName, testDb)
+test('card exists', () => {
+  const customerId = 901
+  const businessId = 105
+  return db.cardExists(businessId, customerId, testDb)
     .then(result => {
-      expect(result).toEqual([906])
+      expect(result).toHaveLength(1)
+      return null
+    })
+})
+
+test('customer exists', () => {
+  const username = 'Bob'
+  return db.customerExists(username, testDb)
+    .then(result => {
+      expect(result).toEqual(false)
+      return null
+    })
+})
+
+test('addBusiness', () => {
+  const business = 'Bunnings'
+  const address = '2 Fun Lane'
+  const phoneNumber = '123'
+  const email = 'example@example.com'
+  return db.addBusiness(business, address, phoneNumber, email, testDb)
+    .then(result => {
+      expect(result).toEqual([116])
+      return null
+    })
+})
+
+test('add card', () => {
+  const businessId = '107'
+  const customerId = '903'
+  return db.addCard(businessId, customerId, testDb)
+    .then(result => {
+      expect(result).toEqual([26])
+      return null
+    })
+})
+
+test('get all cards', () => {
+  return db.getAllCards(testDb)
+    .then((businesses) => {
+      expect(businesses).toHaveLength(15)
+      return null
+    })
+})
+
+test('gets all customers', () => {
+  return db.getCustomers(testDb)
+    .then(id => {
+      expect(id).toEqual(5)
+      return null
+    })
+})
+
+test('addCustomer', () => {
+  const customer = 'Billy'
+  return db.addCustomer(customer, testDb)
+    .then(result => {
+      expect(result).toEqual(6)
+      return null
+    })
+})
+
+test('gets business profile', () => {
+  const id = 110
+  return db.getBusinessProfile(id, testDb)
+    .then(result => {
+      expect(result).toHaveLength([110])
       return null
     })
 })
