@@ -2,10 +2,12 @@ import React from 'react'
 import { screen, render } from '@testing-library/react'
 import Login from '../Login'
 
-describe('Customer sign up form', () => {
-  it('Finds heading', () => {
-    render(<SignUp />)
-    const heading = screen.getByText('Sign up: Customer')
-    expect(heading).not.toBe(undefined)
+describe('<Login />', () => {
+  it('Finds the login button', () => {
+    render(<Login />)
+
+    const button = screen.getByRole('button', { name: /Home/i })
+    // eslint-disable-next-line jest/prefer-to-be-undefined
+    expect(button).not.toBe(undefined)
   })
 })

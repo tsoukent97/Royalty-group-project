@@ -40,11 +40,3 @@ test('deletes a business profile', () => {
       return null
     })
 })
-// test('get all customers of a business', () => {
-//     db.getCustomers.mockImplementation(() => {
-//       return Promise.resolve([
-//         {}
-//       ])
-
-//     })
-// })

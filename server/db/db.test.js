@@ -10,14 +10,6 @@ beforeEach(() => {
 
 afterEach(() => testEnv.cleanup(testDb))
 
-// getCustomerById,
-// getBusinessProfile,
-// getCustomerCards,
-// getCustomerByUsername,
-// getStampCount,
-// updateStampCount,
-// resetStampCount,
-
 test('deletes a card', () => {
   const businessId = 105
   const customerId = 901
@@ -65,18 +57,6 @@ test('customer exists', () => {
     })
 })
 
-test('addBusiness', () => {
-  const business = 'Bunnings'
-  const address = '2 Fun Lane'
-  const phoneNumber = '123'
-  const email = 'example@example.com'
-  return db.addBusiness(business, address, phoneNumber, email, testDb)
-    .then(result => {
-      expect(result).toEqual([116])
-      return null
-    })
-})
-
 test('add card', () => {
   const businessId = '107'
   const customerId = '903'
@@ -96,27 +76,94 @@ test('get all cards', () => {
 })
 
 test('gets all customers', () => {
-  return db.getCustomers(testDb)
-    .then(id => {
-      expect(id).toEqual(5)
-      return null
-    })
-})
-
-test('addCustomer', () => {
-  const customer = 'Billy'
-  return db.addCustomer(customer, testDb)
-    .then(result => {
-      expect(result).toEqual(6)
+  const businessId = 115
+  return db.getCustomers(businessId, testDb)
+    .then((id) => {
+      expect(id).toHaveLength(5)
       return null
     })
 })
 
 test('gets business profile', () => {
-  const id = 110
-  return db.getBusinessProfile(id, testDb)
+  const businessId = 110
+  const riversideCafe = {
+    id: 110,
+    business: 'Riverside Cafe',
+    address: '2 Fun Lane',
+    phoneNumber: 123,
+    email: 'example@example.com',
+    logo: './images/riverside-cafe.jpg'
+  }
+  return db.getBusinessProfile(businessId, testDb)
     .then(result => {
-      expect(result).toHaveLength([110])
+      expect(result).toEqual(riversideCafe)
+      return null
+    })
+})
+
+test('get customer by id', () => {
+  const customerId = 905
+  const sam = {
+    id: 905,
+    username: 'Sam',
+    userType: 'customer',
+    password: ''
+  }
+  return db.getCustomerById(customerId, testDb)
+    .then(result => {
+      expect(result).toEqual(sam)
+      return null
+    })
+})
+
+test('update stamp count', () => {
+  const businessId = 115
+  const customerId = 905
+  const stampCount = 5
+  return db.updateStampCount(businessId, customerId, stampCount, testDb)
+    .then(() => {
+      return db.getStampCount(businessId, customerId, testDb)
+    })
+    .then(result => {
+      expect(result).toEqual([{ stamp_count: 6 }])
+      return null
+    })
+})
+
+test('reset stamp count', () => {
+  const businessId = 102
+  const customerId = 902
+  return db.resetStampCount(businessId, customerId, testDb)
+    .then(() => {
+      return db.getStampCount(businessId, customerId, testDb)
+    })
+    .then(result => {
+      expect(result).toEqual([{ stamp_count: 0 }])
+      return null
+    })
+})
+
+test('get stamp count', () => {
+  const businessId = 102
+  const customerId = 902
+  return db.getStampCount(businessId, customerId, testDb)
+    .then(result => {
+      expect(result).toEqual([{ stamp_count: 9 }])
+      return null
+    })
+})
+
+test('get customer by username', () => {
+  const username = 'Kent'
+  const kent = {
+    id: 902,
+    username: 'Kent',
+    userType: 'customer',
+    password: ''
+  }
+  return db.getCustomerByUsername(username, testDb)
+    .then(result => {
+      expect(result).toEqual(kent)
       return null
     })
 })
