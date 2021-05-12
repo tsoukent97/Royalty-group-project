@@ -38,6 +38,7 @@ export default function AddCard (props) {
   return (
     <>
       <NavCustomer />
+      <br></br>
       <Error errorMessage={error} />
       <Container className='card-content' textAlign='center'>
         <Header as='h1'><Icon name='add square'/>Add a new card</Header>

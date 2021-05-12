@@ -36,6 +36,7 @@ function CustomerHome (props) {
   return (
     <>
       <NavCustomer />
+      <br></br>
       {state.length === 0 ? <Message negative>
         <Message.Header><Icon name='exclamation triangle'/>You have no cards at the moment. Please add cards.</Message.Header>
       </Message> :
