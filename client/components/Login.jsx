@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, Grid } from 'semantic-ui-react'
-import { loginCustomer, loginBusiness } from '../api/passportAPI'
+import { loginCustomer, loginBusiness } from '../api/apiClient'
 import Error from './Error'
 
 let userInfo = ''
