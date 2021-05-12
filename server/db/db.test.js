@@ -103,7 +103,7 @@ test('addCustomer', () => {
     password: ' '
   }
   return db.addCustomer(customer, testDb)
-    .then((result) => {
+    .then(result => {
       expect(result).toEqual(6)
       return null
     })
