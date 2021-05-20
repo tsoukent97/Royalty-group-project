@@ -1,4 +1,22 @@
-# A starter webpack project for React
+# Royalty
+A digital loyalty card wallet, ditch the paper/plastic cards!
+
+This is a group project created during bootcamp at EDA. I was responsible for helping co-lead a team of 5, and designing the front of the site for the user.
+The front end was made using React and Semantic UI. Authentication is handled by Passport.js and the backend is using a SQLite 3 database. The routes are handled by express.
+This project was given a week to build, and we achieved a solid MVP!
+
+## Getting started
+Requirements:
+- Node, a package manager (npm or yarm)
+- A .env file with a key for passport to work
+- Knex scripts running to create the database table
+
+## Steps
+1. In your terminal, ```npm install```
+2. Then, ```npm run knex migrate:latest && npm run knex seed:run```
+3. Finally, ```npm run dev```
+
+<!-- # A starter webpack project for React
 
 This is a starter project that uses webpack to transpile and bundle ES6 React code. To use, consider these steps:
 
@@ -24,5 +42,5 @@ and in the other:
 ```sh
 npm run server
 ```
-The client will be available on http://localhost:8080 and the server on http://localhost:3000. Note that you will still need to manage CORS between the two, as they are on different ports.
+The client will be available on http://localhost:8080 and the server on http://localhost:3000. Note that you will still need to manage CORS between the two, as they are on different ports. -->
 
